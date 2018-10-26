@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.police.mapper.taskinfo.MainTaskInfoMapper">
     <resultMap id="BaseResultMap" type="com.police.pojo.entity.taskinfo.TaskInfoPO">
-        <id column="task_id" property="taskId" jdbcType="VARCHAR"/>
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
         <result column="task_category" property="taskCategory" jdbcType="VARCHAR"/>
         <result column="issue_time" property="issueTime" jdbcType="TIMESTAMP"/>
         <result column="deadline" property="deadline" jdbcType="TIMESTAMP"/>
@@ -10,18 +11,21 @@
         <result column="task_area" property="taskArea" jdbcType="VARCHAR"/>
         <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
         <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
-        <result column="update_at" property="updateAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
         <result column="finish_status" property="finishStatus" jdbcType="VARCHAR"/>
 
     </resultMap>
 
     <sql id="main_task_info">
-		task_id,task_category,issue_time,deadline,task_detail,task_area,publisher,created_at,update_at,finish_status
+		id,task_id,task_category,issue_time,deadline,task_detail,task_area,publisher,created_at,updated_at,finish_status
 	</sql>
 
     <insert id="insertMainTask" parameterType="com.police.pojo.entity.taskinfo.TaskInfoPO">
+        <selectKey keyProperty="taskId" resultType="string" order="BEFORE">
+            select replace(uuid(), '-', '') as taskId from dual
+        </selectKey>
 		INSERT INTO taskinfo
-		(tnt_uuid_short(),task_id, task_category,issue_time,deadline,task_detail,task_area,publisher,created_at, update_at,finish_status)
+		(task_id, task_category,issue_time,deadline,task_detail,task_area,publisher,created_at, updated_at,finish_status)
 		VALUES
 		(#{taskId}, #{taskCategory}, #{issueTime}, #{deadline}, #{taskDetail},#{taskArea},#{publisher},now(),now(),#{finishStatus})
 	</insert>
@@ -145,7 +149,7 @@
         <if test="finishStatus!= null and finishStatus!=''">
             and finish_status = #{finishStatus}
         </if>
-        update_at = now()
+        updated_at = now()
         WHERE
         task_id = #{taskId}
     </update>
@@ -155,7 +159,7 @@
         taskinfo
         SET
         finish_status = #{finishStatus},
-        update_at = now()
+        updated_at = now()
         WHERE
         task_id IN
         <foreach collection="taskIds" open="(" close=")" item="taskId" separator=",">

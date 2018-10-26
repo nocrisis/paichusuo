@@ -16,8 +16,8 @@ public class BasePO {
     @JSONField(name = "created_by")
     private String createdBy;
 
-    @JSONField(name = "update_at",format = "yyyy-MM-dd HH:mm:ss")
-    private Date updateAt;
+    @JSONField(name = "updated_at",format = "yyyy-MM-dd HH:mm:ss")
+    private Date updatedAt;
 
     @JSONField(name = "updated_by")
     private String updatedBy;
@@ -49,12 +49,12 @@ public class BasePO {
         this.createdBy = createdBy;
     }
 
-    public Date getUpdateAt() {
-        return updateAt;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(Date updatedAt) {
-        this.updateAt = updatedAt;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public String getUpdatedBy() {

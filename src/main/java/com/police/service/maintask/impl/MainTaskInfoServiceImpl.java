@@ -1,5 +1,6 @@
 package com.police.service.maintask.impl;
 
+import com.police.common.enums.TaskFinishStatusEnum;
 import com.police.mapper.taskinfo.MainTaskInfoMapper;
 import com.police.pojo.dto.PageContentDTO;
 import com.police.pojo.dto.taskinfo.TaskInfoDTO;
@@ -17,7 +18,7 @@ public class MainTaskInfoServiceImpl implements MainTaskInfoService {
 
     @Override
     public Integer createMainTaskInfo(TaskInfoPO taskInfoPO) {
-
+        taskInfoPO.setFinishStatus(TaskFinishStatusEnum.TODO.name());
         return mainTaskInfoMapper.insertMainTask(taskInfoPO);
     }
 

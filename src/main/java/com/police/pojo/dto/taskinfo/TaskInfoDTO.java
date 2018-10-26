@@ -31,13 +31,9 @@ public class TaskInfoDTO  extends BasePageableDTO {
     @JSONField(name = "finish_status")
     String finishStatus;
 
-    public String getTaskId() {
-        return taskId;
-    }
+    public String getTaskId() { return taskId; }
 
-    public void setTaskId(String taskId) {
-        this.taskId = taskId;
-    }
+    public void setTaskId(String taskId) { this.taskId = taskId; }
 
     public String getTaskCategory() {
         return taskCategory;
