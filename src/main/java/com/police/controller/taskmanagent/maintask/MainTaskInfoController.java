@@ -6,12 +6,11 @@ import com.police.common.util.ResultBuilder;
 import com.police.pojo.dto.PageContentDTO;
 import com.police.pojo.dto.taskinfo.TaskInfoDTO;
 import com.police.pojo.entity.taskinfo.TaskInfoPO;
-import com.police.service.maintask.MainTaskInfoService;
+import com.police.service.task.MainTaskInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -83,9 +82,10 @@ public class MainTaskInfoController {
     @ResponseBody
     @RequestMapping(value = "/getmaintask", method = RequestMethod.GET)
     public String getMainTask(@RequestBody String payload){
-        logger.info("修改购物车商品sku，请求参数：{}", payload);
+        logger.info("获取主任务，请求参数：{}", payload);
         TaskInfoPO taskInfoQueryParam = FastJsonUtil.toBean(payload, TaskInfoPO.class);
-        TaskInfoPO taskInfoPO = mainTaskInfoService.getMainTaskInfo(taskInfoQueryParam);
+        TaskInfoPO taskInfoPO;
+        taskInfoPO = mainTaskInfoService.getMainTaskInfo(taskInfoQueryParam);
         if(taskInfoPO!=null){
             return ResultBuilder.buildSuccess(taskInfoPO);
         }

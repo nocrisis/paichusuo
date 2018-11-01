@@ -6,7 +6,6 @@ import org.apache.commons.lang3.EnumUtils;
 import org.springframework.util.StringUtils;
 
 public class BasePageableDTO {
-	
 	@JSONField(name = "page_no")
 	private Integer pageNo;
 	

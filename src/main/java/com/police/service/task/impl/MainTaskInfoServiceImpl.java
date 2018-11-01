@@ -1,11 +1,11 @@
-package com.police.service.maintask.impl;
+package com.police.service.task.impl;
 
 import com.police.common.enums.TaskFinishStatusEnum;
 import com.police.mapper.taskinfo.MainTaskInfoMapper;
 import com.police.pojo.dto.PageContentDTO;
 import com.police.pojo.dto.taskinfo.TaskInfoDTO;
 import com.police.pojo.entity.taskinfo.TaskInfoPO;
-import com.police.service.maintask.MainTaskInfoService;
+import com.police.service.task.MainTaskInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
