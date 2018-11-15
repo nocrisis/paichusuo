@@ -13,10 +13,10 @@ public class TaskInfoPO extends BasePO {
     @JSONField(name = "task_category")
     String taskCategory;
 
-    @JSONField(name = "issue_time")
+    @JSONField(name = "issue_time",format = "yyyy-MM-dd HH:mm:ss")
     Date issueTime;
 
-    @JSONField(name = "deadline")
+    @JSONField(name = "deadline",format = "yyyy-MM-dd HH:mm:ss")
     Date deadline;
 
     @JSONField(name = "task_detail")

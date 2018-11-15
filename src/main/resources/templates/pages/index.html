@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta th:remove="tag" th:include="fragements/header::header(title='主页')">
+    <link th:href="@{/styles/css/index.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+        <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+<div class="index">
+    <div class="main-box ">
+        <a class="mybutton button1" href="/taskmanagent/maintask/createmaintask.html">新建任务</a>
+        <div class="right-box">
+            <a class="mybutton button2" href="/taskmanagent/maintask/list.html">任务列表</a>
+            <a class="mybutton button3" href="sb1.html">突发登记</a>
+            <a class="mybutton button4" href="coplist.html">警员信息</a>
+            <a class="mybutton button5" href="sb3.html">任务总结</a>
+        </div>
+    </div>
+    <div class="showtime" id="showtime"></div>
+</div>
+
+<div class="myfooter">
+    <div class="footfont">
+        © 2017 Bootstrap Police Control System.
+    </div>
+
+</div>
+<footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
+    <div th:remove="tag" th:include="fragements/footer::footer"></div>
+</footer>
+<script language=Javascript>
+    function time() {
+        //获得显示时间的div
+        t_div = document.getElementById('showtime');
+        var now = new Date()
+        //替换div内容
+        t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+        //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+        setTimeout(time, 1000);
+    }
+</script>
+</body>
+</html>

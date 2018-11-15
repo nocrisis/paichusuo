@@ -1,0 +1,581 @@
+<!--主搜索框-->
+<script data-tpl-choiceLink="main" type="text/html" th:inline="javascript">
+    <div class="dialog-choiceLink" style="width: 100%">
+        {{searchBox}}
+        <table class="table search-table"></table>
+    </div>
+</script>
+
+<!--活动选择-->
+<script type="text/html" data-tpl-choiceLink="searchbox_activity" th:inline="text">
+    <form class="label-search">
+        <input type="hidden" name="site_uid" th:value="${site_uid}">
+        <input type="hidden" name="create_type" value="TYP_BAYMAX_MANAGER">
+        <div class="msg-box">
+            <select name="type" id="OnlyactivityType" class="form-control" data-placeholder="活动类型">
+                <option value="TYP_PROMOTION" selected>爆款活动</option>
+                <option value="TYP_REBATE">拼团返现券</option>
+                <option value="TYP_LOTTERY">红包活动</option>
+            </select>
+        </div>
+        <div class="msg-box">
+            <input type="text" class="form-control " name="sub_promotion_name" placeholder="请输入活动名称">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">搜索</button>
+        </div>
+    </form>
+</script>
+
+<!--返现券选择-->
+<script type="text/html" data-tpl-choiceLink="searchbox_cashBack" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <select name="type" id="activityType" class="form-control" data-placeholder="活动类型">
+                <option value="TYP__CASHBACK" selected>拼团返现</option>
+            </select>
+        </div>
+
+        <div class="msg-box">
+            <select name="rebate_promotion_uid" class="form-control" data-placeholder="活动名称">
+                <option value=""></option>
+            </select>
+
+        </div>
+        <div class="msg-box">
+            <input type="text" class="form-control autocomplete" name="catalog_name" placeholder="请输入品类名称">
+        </div>
+
+        <div class="msg-box">
+            <input type="text" class="form-control " name="rebate_name" placeholder="请输入返现券名称">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">搜索</button>
+        </div>
+    </form>
+</script>
+<!--红包选择-->
+<script type="text/html" data-tpl-choiceLink="searchbox_lottery" th:inline="text">
+    <form class="label-search">
+        <input type="hidden" name="site_uid" th:value="${site_uid}">
+
+        <div class="msg-box">
+            <input type="text" class="form-control autocomplete" name="catalog_name" placeholder="请输入品类名称">
+        </div>
+
+        <div class="msg-box">
+            <select type="text" class="form-control chosen" name="shop_uids" data-placeholder="请选择门店名称"> </select>
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">搜索</button>
+        </div>
+    </form>
+</script>
+<!--礼品选择-->
+<script type="text/html" data-tpl-choiceLink="searchbox_gift" th:inline="text">
+    <form class="label-search">
+        <input type="hidden" name="site_uid" th:value="${site_uid}">
+
+        <div class="msg-box">
+            <input type="text" class="form-control autocomplete" name="catalog_name" placeholder="请输入品类名称">
+        </div>
+
+        <div class="msg-box">
+            <select type="text" class="form-control chosen" name="shop_uids" data-placeholder="请选择门店名称"> </select>
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">搜索</button>
+        </div>
+    </form>
+</script>
+<!--商品选择-->
+<style>
+    .dialog-choiceLink .parent-thumbnail {
+        width: 240px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .dialog-choiceLink .thumbnail {
+        width: 60px;
+        height: 60px;
+        display: table-cell;
+        margin-bottom: 0;
+        margin-right: 5px;
+        padding: 0;
+        vertical-align: middle;
+        border: none;
+    }
+
+    .dialog-choiceLink .thumbnail img {
+        max-width: 60px;
+        max-height: 60px;
+        margin-right: 5px;
+        margin-bottom: 0;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+    }
+
+    .dialog-choiceLink .text-description {
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+        width: 175px;
+        position: relative;
+        word-break: break-word;
+        margin-left: 0;
+    }
+
+    .dialog-choiceLink .text-description span.product-name {
+        color: #3388ff;
+        overflow: hidden;
+        min-width: 155px;
+        max-height: 36px;
+        line-height: 18px;
+        display: inline-block;
+        word-wrap: break-word;
+    }
+
+    .dialog-choiceLink .text-description span.money {
+        color: #ff0000;
+        display: block;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .dialog-choiceLink .color-red {
+        color: #fb103b;
+    }
+
+</style>
+<script type="text/html" data-tpl-choiceLink="searchbox_product" th:inline="text">
+    <form class="label-search">
+        <input type="hidden" name="site_uid" th:value="${site_uid}">
+        <input type="hidden" name="create_type" value="TYP_BAYMAX_MANAGER">
+        <div class="msg-box">
+            <select name="type" id="activityType" class="form-control" data-placeholder="活动类型">
+                <option value="TYP_PROMOTION" selected>爆品活动</option>
+            </select>
+        </div>
+
+        <div class="msg-box">
+            <select name="sub_promotion_uid" class="form-control" data-placeholder="活动名称">
+                <option value=""></option>
+            </select>
+
+        </div>
+        <div class="msg-box">
+            <input type="text" class="form-control autocomplete" name="catalog_name" placeholder="请输入品类名称">
+        </div>
+
+        <div class="msg-box">
+            <input type="text" class="form-control " name="product_name" placeholder="请输入商品名称">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">搜索</button>
+        </div>
+    </form>
+</script>
+
+<!--      baymax-店铺主页    拼团返现   商品链接    红包链接    礼品链接   海报链接 -->
+
+<!--选择店铺-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_SHOP" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">店铺名称</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="输入店铺名称">
+        </div>
+
+        <div class="msg-box">
+            <label for="">主营品牌</label>
+            <input type="text" class="form-control autocomplete" name="major_brand_name" placeholder="输入主营品牌">
+        </div>
+
+        <div class="msg-box">
+            <label for="">商户手机</label>
+            <input type="text" class="form-control autocomplete" name="vendor_phone" placeholder="输入商户手机">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+<!--选择返现券-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_REBATE" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">返现券名称</label>
+            <input type="text" class="form-control autocomplete" name="rebate_name" placeholder="请输入返现券名称">
+        </div>
+
+        <div class="msg-box">
+            <label for="">关联门店</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="请输入关联门店">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+
+<!--选择商品链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_PRODUCT" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">商品名称：</label>
+            <input type="text" class="form-control autocomplete" name="product_name" placeholder="请输入商品名称">
+        </div>
+        <div class="msg-box">
+            <label for="">商品编号：</label>
+            <input type="text" class="form-control autocomplete" name="sku_outer_code"
+                   placeholder="请输入商品编号">
+        </div>
+
+        <div class="msg-box">
+            <label for="">爆款：</label>
+            <select class="form-control" name="is_hot_sale">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+        <div class="msg-box">
+            <label for="">新品：</label>
+            <select class="form-control" name="is_new_product">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+        <div class="msg-box">
+            <label for="">秒杀：</label>
+            <select class="form-control" name="is_seckill">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+
+        <div class="msg-box" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+<!--选择商品链接(n元m件)-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_PRODUCT_BUNDLE" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">商品名称：</label>
+            <input type="text" class="form-control autocomplete" name="product_name" placeholder="请输入商品名称">
+        </div>
+        <div class="msg-box">
+            <label for="">商品编号：</label>
+            <input type="text" class="form-control autocomplete" name="sku_outer_code"
+                   placeholder="请输入商品编号">
+        </div>
+
+        <div class="msg-box">
+            <label for="">爆款：</label>
+            <select class="form-control" name="is_hot_sale">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+        <div class="msg-box">
+            <label for="">新品：</label>
+            <select class="form-control" name="is_new_product">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+        <div class="msg-box">
+            <label for="">秒杀：</label>
+            <select class="form-control" name="is_seckill">
+                <option value="">全部</option>
+                <option value="TYP_TRUE">是</option>
+                <option value="TYP_FALSE">否</option>
+            </select>
+        </div>
+
+        <div class="msg-box" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+
+<!--选择红包链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_LOTTERY" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">红包名称:</label>
+            <input type="text" class="form-control autocomplete" name="promotion_name" placeholder="请输入红包名称">
+        </div>
+
+        <div class="msg-box">
+            <label for="">关联门店</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="请输入关联门店">
+        </div>
+
+        <div class="msg-box">
+            <label for="">归属商户：</label>
+            <input type="text" class="form-control autocomplete" name="vendor_phone" placeholder="请输入商户手机号">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+
+<!--选择礼品链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_GIFT" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">礼品名称：</label>
+            <input type="text" class="form-control autocomplete" name="promotion_name" placeholder="请输入礼品名称">
+        </div>
+
+        <div class="msg-box">
+            <label for="">关联门店</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="请输入关联门店">
+        </div>
+
+        <div class="msg-box">
+            <label for="">归属商户：</label>
+            <input type="text" class="form-control autocomplete" name="vendor_phone" placeholder="请输入商户手机号">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+<!--选择海报链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_MINA" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label>海报标签：</label>
+            <input type="text" class="form-control autocomplete" name="page_title" placeholder="请输入海报标签">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+<!--选择卡券链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_CARD" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label for="">活动名称：</label>
+            <input type="text" class="form-control autocomplete" name="promotion_name" placeholder="请输入活动名称">
+        </div>
+
+        <div class="msg-box">
+            <label for="">关联门店</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="请输入关联门店">
+        </div>
+
+        <div class="msg-box">
+            <label for="">归属商户：</label>
+            <input type="text" class="form-control autocomplete" name="vendor_phone" placeholder="请输入商户手机号">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+<!--选择拍卖链接-->
+<script type="text/html" data-tpl-choiceLink="searchbox_TYP_BAYMAX_AUCTION" th:inline="text">
+    <form class="label-search">
+        <div class="msg-box">
+            <label>拍卖商品：</label>
+            <input type="text" class="form-control autocomplete" name="promotion_name" placeholder="请输入拍卖商品名">
+        </div>
+
+        <div class="msg-box">
+            <label>关联门店</label>
+            <input type="text" class="form-control autocomplete" name="shop_name" placeholder="请输入关联门店">
+        </div>
+
+        <div class="msg-box">
+            <label>归属商户：</label>
+            <input type="text" class="form-control autocomplete" name="vendor_phone" placeholder="请输入商户手机号">
+        </div>
+
+        <div class="msg-box">
+            <button type="submit" class="btn btn-search">查询</button>
+        </div>
+    </form>
+</script>
+
+
+<style>
+    .label-search {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    .label-search .msg-box .label {
+        color: #333;
+        font-size: 100%;
+    }
+
+    .label-search .msg-box {
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    .label-search .form-control {
+        width: 150px;
+    }
+</style>
+<!--主搜索框-->
+<script data-tpl-choiceLink="main" type="text/html" th:inline="javascript">
+    <div class="dialog-choiceLink" style="width: 100%">
+        {{searchBox}}
+        <table class="table search-table"></table>
+    </div>
+</script>
+<script th:inline="javascript">
+    /**
+     * 类型转化
+     * @param type
+     * @param data
+     * @returns {*}
+     */
+    function linkTypeValObj(type, data) {
+        switch (type) {
+
+            // 家居小白配置活动
+            case 'TYP_BAYMAX_SHOP':
+                return {
+                    content: data.shop_name,
+                    promotionUid: data.shop_uid,
+                    targetUrl: data.shop_uid,
+                    promotionType: 'TYP_BAYMAX_SHOP',
+                };
+                break;
+            case 'TYP_BAYMAX_REBATE':
+                return {
+                    content: data.rebate_name,
+                    promotionUid: data.rebate_card_uid,
+                    targetUrl: data.rebate_card_uid,
+                    promotionType: 'TYP_BAYMAX_REBATE'
+                };
+                break;
+            case 'TYP_BAYMAX_PRODUCT':
+                return {
+                    content: data.productName || data.product_name,
+                    promotionUid: data.promotionProductUid || data.promotion_product_uid,
+                    targetUrl: data.promotionProductUid || data.promotion_product_uid,
+                    promotionType: 'TYP_BAYMAX_PRODUCT'
+                };
+                break;
+            case 'TYP_BAYMAX_PRODUCT_BUNDLE':
+                return {
+                    content: data.productName || data.product_name,
+                    promotionUid: data.promotionProductUid || data.promotion_product_uid,
+                    targetUrl: data.promotionProductUid || data.promotion_product_uid,
+                    promotionType: 'TYP_BAYMAX_PRODUCT'
+                };
+                break;
+            case 'TYP_BAYMAX_LOTTERY':
+                return {
+                    content: data.promotion_name,
+                    promotionUid: data.promotion_uid,
+                    targetUrl: data.promotion_uid,
+                    promotionType: 'TYP_BAYMAX_LOTTERY'
+                };
+                break;
+            case 'TYP_BAYMAX_GIFT':
+                return {
+                    content: data.promotion_name,
+                    promotionUid: data.promotion_uid,
+                    targetUrl: data.promotion_uid,
+                    promotionType: 'TYP_BAYMAX_GIFT'
+                };
+                break;
+            case 'TYP_BAYMAX_MINA':
+                return {
+                    content: data.page_name,
+                    targetUrl: data.lp_uid,
+                    promotionUid: data.lp_uid,
+                    promotionType: 'TYP_BAYMAX_MINA'
+                };
+                break;
+            case 'TYP_BAYMAX_CARD':
+                return {
+                    content: data.promotion_name,
+                    targetUrl: data.promotion_uid,
+                    promotionUid: data.promotion_uid,
+                    promotionType: 'TYP_BAYMAX_CARD'
+                };
+                break;
+            case 'TYP_BAYMAX_AUCTION':
+                return {
+                    content: data.promotion_name,
+                    targetUrl: data.promotion_uid,
+                    promotionUid: data.promotion_uid,
+                    promotionType: 'TYP_BAYMAX_AUCTION'
+                };
+                break;
+            // 前微信公众号的海报页面
+            case 'activity_rebate':
+                return {
+                    promotion_name: data.rebate_name,
+                    promotion_uid: data.rebate_card_uid,
+                    target_url: data.page_link || '/pintuan/rebateCard/' + data.rebate_card_uid + '.html'
+                };
+                break;
+            case 'activity_promotion':
+                return {
+                    promotion_name: data.productName,
+                    promotion_uid: data.promotionProductUid,
+                    target_url: data.h5Url || ''
+                };
+                break;
+            case 'activity_lottery':
+                return {
+                    promotion_name: data.promotion_name,
+                    promotion_uid: data.promotion_uid,
+                    target_url: data.page_link || '/baymax/lottery/' + data.promotion_uid + '.html'
+                };
+                break;
+            case 'activity_gift':
+                return {
+                    promotion_name: data.promotion_name,
+                    promotion_uid: data.promotion_uid,
+                    target_url: data.page_link || '/baymax/gift/' + data.promotion_uid + '.html'
+                };
+                break;
+        }
+    }
+</script>
+
+
+<script th:src="@{/scripts/jquery/jquery.chosen.min.js}"></script>
+<script th:src="@{/scripts/jquery-ui/jquery-ui-Autocomplete.min.js}"></script>
+<script th:src="@{/scripts/pages/selectionHome/makePageChooseLink.js?2018080161558}"></script>
+

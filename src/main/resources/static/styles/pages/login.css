@@ -1,0 +1,106 @@
+/***
+Login page
+***/
+
+/* logo page */
+.login {
+
+}
+
+.topBlank {
+    height: 100px;
+}
+
+
+.login .logo {
+    max-width: 800px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: left;
+}
+.login .logo .line {
+    font-size: 18px;
+    padding: 0 5px 0 10px;
+}
+.login .logo .no_account {
+    float: right;
+    display: inline-block;
+    color: #333;
+    line-height: 66px;
+}
+.login .logo img {
+    vertical-align: text-bottom;
+}
+.login .content {
+    max-width: 800px;
+    min-width: 400px;
+    margin: 0 auto;
+    border-radius: 2px;
+    padding: 60px 0;
+    border: 1px solid #e5e5e5;
+}
+
+.login .content .login-form {
+    padding: 0;
+    margin: 0 auto;
+    width: 350px;
+}
+
+.login label.checkbox {
+    margin-left: 20px;
+}
+
+.login .forgotPassword {
+    margin-top: 7px;
+    text-align: right;
+}
+
+.login .content .form-control {
+    height: 35px;
+    line-height: 35px;
+}
+
+.login .content .verify {
+    width: 127px;
+}
+
+@media (min-width: 992px) {
+    .login .content .captcha {
+        padding: 0;
+    }
+}
+
+.login .copyright {
+    text-align: center;
+    margin: 0 auto;
+    min-width: 280px;
+    padding: 10px 0 0;
+    font-size: 12px;
+}
+
+#Validform_msg {
+    display: none;
+}
+/**
+多版本选择弹框-s
+*/
+.choice_version .tit {
+    text-align: center;
+    margin:50px 0 30px 0;
+    font-size: 18px;
+}
+.choice_version .list-auto {
+    margin:0 100px;
+    text-align: justify;
+}
+
+.list-auto .justify_fix {
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+/**
+多版本选择弹框-e
+*/

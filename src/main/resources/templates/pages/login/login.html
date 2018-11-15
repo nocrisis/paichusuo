@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta  charset="utf-8">
+<title>登录页面</title>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="css/buttons.css" rel="stylesheet" type="text/css" />
+
+<script language=Javascript>
+function time() {
+    //获得显示时间的div
+    t_div = document.getElementById('showtime');
+    var now = new Date()
+        //替换div内容 
+    t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+    //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+    setTimeout(time, 1000);
+}
+</script>
+
+
+<script type="text/javascript">
+    function check(f){
+      if(f.user.value==""){
+        alert("请输入用户名！");//弹出提示框
+        f.user.focus();//文本框获取焦点
+        return false;}
+      if(f.pw.value==""){
+        alert("请输入密码！");
+        f.pw.focus();
+        return false;}
+      return false;
+    }
+</script>
+
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+    <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+<div class="load">
+    <div class="loadpage">
+        <h3>用户登录</h3><br>
+        <form class="form-signin" onsubmit="return check(this)" action="">
+            <div class="input-group">
+                <input placeholder="用户名" id="userName" class="form-control" type = text name = user />
+            </div><br>
+            <div class="input-group">
+                <input placeholder="密码" id="userPw" class="form-control" type = password name = pw />
+            </div><br><br>
+            <button class="button button-glow button-border button-rounded button-primary" type="submit" style="width: 78%;"><span>登录 </span></button><br>
+        </form>
+    </div>
+</div>
+
+<div class="notice">
+    <div class="showtime" id="showtime"></div>
+</div>
+
+<div class="footer">
+    <div class="footfont">
+    © 2017 Bootstrap Police Control System.
+    </div>
+
+</div>
+
+</body>
+</html>

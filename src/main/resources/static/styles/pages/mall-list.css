@@ -1,0 +1,155 @@
+.mall-list .main-box-top {
+    margin-bottom: 10px;
+}
+
+.mall-list .form .msg-box {
+    height: 40px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.mall-list .form .msg-box .label {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    padding: 0 10px 0 0;
+    line-height: 40px;
+    color: #333;
+    font-size: 100%;
+}
+
+.mall-list .form .msg-box input,
+.mall-list .form .msg-box select {
+    width: 180px;
+    padding-left: 10px;
+    padding-right: 24px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.mall-list .form .msg-box .input-icon input {
+    padding-left: 30px;
+}
+
+.mall-list .form .msg-box .form-control[disabled] {
+    background-color: #eee;
+}
+
+.mall-list .form .search,
+.mall-list .form .export {
+
+    /*height: 30px;*/
+    margin-left: 20px;
+}
+
+.mall-list .table-box a:after {
+    content: ' -';
+    color: #3388ff;
+}
+
+.mall-list .table-box a:last-of-type:after {
+    content: ''
+}
+
+.mall-list .fixed-table-pagination {
+    min-height: 30px;
+}
+
+.mall-list .pagination-info {
+    line-height: 30px;
+}
+
+.mall-list .footerCtrl {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 12px;
+}
+
+.mall-list .footerCtrl .numTotal {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.mall-list .footerCtrl .btn {
+    margin: -5px 30px 0 0;
+}
+
+.mall-list .footerCtrl .settleTip {
+    position: absolute;
+    bottom: 0;
+    color: #ff0000;
+    font-size: 10px;
+    transform: scale(0.833);
+    line-height: 17px;
+}
+
+.mall-list .head {
+    position: relative;
+}
+
+.mall-list .head .desc span {
+    margin-right: 15px
+}
+
+.mall-list .head .btn-groups {
+    position: absolute;
+    top: 19px;
+    right: 20px;
+}
+
+.mall-list .sendSettleBox.layer-ext-lmf .layui-layer-content {
+    padding: 0;
+}
+
+.mall-list .settleTime {
+    font-size: 17px;
+    padding: 20px 0 20px 60px;
+    background-color: #fff7eb;
+    border-bottom: 2px solid #e7e7e7;
+}
+
+.mall-list .settleTime label {
+    font-size: 17px;
+    padding: 0 10px;
+    line-height: 30px;
+    color: #000;
+    font-weight: 700;
+}
+
+.mall-list .settleTime .startTime {
+    font-weight: 400;
+    line-height: 30px;
+    color: #3388ff;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.mall-list .settleTime .endTime {
+    width: 170px;
+}
+
+.mall-list table.settleReport tr:first-child > th,
+.mall-list table.settleReport tr:last-child {
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #f8f8f8;
+}
+
+.mall-list .batchSettle .startTime {
+    text-align: left;
+    text-indent: 13px;
+    color: #3388ff;
+}
+
+.mall-list .table-box td.font-red {
+    color: #ff0000;
+}
+
+.mall-list .table-box .bs-checkbox.middle {
+    vertical-align: middle;
+}
+
+.mall-list .table-box .bs-checkbox input[type=checkbox] {
+    margin: 6px 0 0;
+}

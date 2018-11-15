@@ -1,0 +1,916 @@
+
+body {
+    font-size: 14px;
+}
+
+.fzw {
+    font-weight: bold;
+}
+
+.page-content {
+    min-width: 1200px;
+}
+
+.form-control[readonly] {
+    background-color: #fff;
+}
+.form-control[readonly][disabled] {
+    background-color: #eee;
+}
+
+/*------------ 红包 活动 的页面 css -----------*/
+.main-box {
+    padding: 0;
+    /*min-width: 1182px;*/
+    min-width: 1000px;
+}
+
+/*三个tab 选项  -----end*/
+.top-bar {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.top-bar ul {
+    display: block;
+    /*width: 435px;*/
+    width: 36%;
+}
+
+.top-bar ul li {
+    display: inline-block;
+    float: left;
+
+    width: 33%;
+    height: 40px;
+    line-height: 40px;
+
+    font-size: 14px;
+    text-align: center;
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.top-bar ul li.check {
+    border-bottom: 3px solid #2c85ff;
+    color: #2c85ff;
+}
+
+/*三个tab 选项  -----end*/
+
+/*中间部分  左手机 右编辑 */
+.content-edit {
+    padding-bottom: 40px;
+}
+
+.content-edit .phone-box {
+    width: 35.5%;
+    display: inline-block;
+    float: left;
+}
+
+.content-edit .detail-box {
+    border: 1px solid #eee;
+    border-right: 0;
+    display: inline-block;
+    /*width: 64.5%;*/
+    max-width: 720px;
+    min-height: 800px;
+    box-sizing: border-box;
+
+}
+
+.phone-box .phone-edit {
+    position: relative;
+    margin: 22px auto;
+    padding: 0 13px;
+    display: block;
+
+    width: 342px;
+    height: 670px;
+    vertical-align: top;
+    border-radius: 5px;
+
+    background: url('../../../images/pcVendor/lottery/phone1.png') no-repeat;
+    background-size: 100%;
+
+}
+
+.phone-box .phone-edit .phone-title {
+    width: 100%;
+    height: 105px;
+    text-align: center;
+}
+
+.phone-box .phone-edit .phone-title .title-text {
+    display: inline-block;
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.phone-box .phone-edit i {
+    color: #fff;
+}
+
+.phone-edit .phone-icon {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 655px;
+}
+
+.phone-edit .phone-icon.left {
+    left: -6%;
+}
+
+.phone-edit .phone-icon.right {
+    right: -5%;
+}
+
+.phone-edit .phone-icon i {
+    position: absolute;
+    top: 45%;
+    padding: 15px 5px;
+    background: #474e5d;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.phone-title {
+    background: url('../../../images/pcVendor/lottery/phone-title.png') no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-position: bottom;
+}
+
+.phone-title .title {
+    position: relative;
+    display: inline-block;
+    margin: 66px auto 0;
+    padding: 0 10px;
+
+    max-width: 66%;
+    height: 36px;
+    line-height: 36px;
+
+    color: #fff;
+    /*border: 2px dashed #fa838a;*/
+}
+
+.phone-title .edit,
+.phone-content .edit,
+.phone-content .image-replace .edit {
+    height: 28px;
+    line-height: 28px;
+    color: #fff;
+    background: #fa838a;
+    padding: 0px 12px;
+    position: absolute;
+    top: -28px;
+    right: -2px;
+    display: none;
+}
+
+.phone-title .size,
+.phone-content .size,
+.phone-content .image-replace .size {
+    height: 28px;
+    line-height: 28px;
+    /* color: #fff; */
+    /* background: #fa838a; */
+    padding: 0px 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.phone-content .edit {
+    right: 0;
+}
+
+.phone-content {
+    background-image: url('../../../images/pcVendor/lottery/bg1.png');
+
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+    width: 100%;
+    height: 74%;
+
+    position: relative;
+}
+
+.phone-content .border-box {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    /*border: 2px dashed #fa838a;*/
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+
+}
+
+.phone-content .border-box .btn-view {
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    width: 90%;
+    height: 36px;
+    line-height: 36px;
+    color: #b1082c;
+    font-size: 18px;
+    border-radius: 6px;
+    background-color: #e7cb1d;
+}
+
+.phone-content .border-box .gift-btn-color{
+	 color: #ffffff;
+	 border-radius: 20px;
+	 background-color: #D54B00;
+}
+
+.phone-content .border-box .lottery-btn-color{
+	 color: #ffffff;
+	 border-radius: 20px;
+	 background-color: #731803;
+}
+
+.phone-content .border-box .bg-box-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.phone-content .border-box .image-replace {
+    box-sizing: border-box;
+    /*border: 2px dashed #fa838a;*/
+    position: absolute;
+    /*width: 253px;*/
+    /*height: 253px;*/
+    /*top: 200px;*/
+    /*left: 34px;*/
+
+    width: 200px;
+    height: 200px;
+    top: 242px;
+    left: 59px;
+}
+
+/*.phone-content .border-box.egg-box:hover,*/
+.phone-content .border-box .bg-box-border:hover,
+.phone-title .title:hover,
+.phone-content .border-box .image-replace:hover {
+    border: 2px dashed #fa838a;
+}
+
+/*.phone-content:hover > span,*/
+.phone-content .border-box .bg-box-border:hover > span,
+.phone-title .title:hover > label,
+.phone-content .border-box .image-replace:hover > span {
+    display: block;
+}
+
+.phone-content .border-box .image-replace.egg {
+    background: url(../../../images/pcVendor/lottery/egg2.png) no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+.phone-content .border-box .image-replace.get-lottery {
+    background: url(../../../images/pcVendor/lottery/get-lottery.png) no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+
+    /*width: 138px;*/
+    /*height: 150px;*/
+
+    /*top: 138px;*/
+    /*left: 94px;*/
+
+    width: 100%;
+    height: 67%;
+    top: 0;
+    left: 0;
+}
+
+.phone-content .border-box .image-replace.lose-lottery {
+    background: url(../../../images/pcVendor/lottery/lose-lottery.png) no-repeat center;
+    -webkit-background-size: contain;
+    background-size: contain;
+
+    /*width: 150px;*/
+    /*height: 150px;*/
+
+    /*top: 68px;*/
+    /*left: 90px;*/
+
+    width: 100%;
+    height: 67%;
+    top: 0;
+    left: 0;
+}
+
+.border-box.get,
+.border-box.lose {
+    background: rgba(0, 0, 0, .6);
+}
+
+.border-box.get .text {
+    margin: 70px 0 20px;
+    font-size: 17px;
+}
+
+.border-box.get .lottery-bg {
+    width: 86%;
+    margin-left: 10px;
+}
+
+.border-box.get .get-footer,
+.border-box.lose .get-footer {
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    text-align: center;
+}
+
+/*.border.get .get-footer p:nth-child(2),*/
+.border-box.get .get-footer p:nth-child(1),
+.border-box.lose .get-footer p:nth-child(1) {
+    color: #fff;
+    font-size: 18px;
+}
+
+.border-box.get .get-footer p:nth-child(2),
+.border-box.lose .get-footer p:nth-child(2) {
+    padding: 8px 20px;
+    background: -webkit-linear-gradient(left, #ff960a, #fe5454);
+    background: -o-linear-gradient(left, #ff960a, #fe5454);
+    background: -moz-linear-gradient(left, #ff960a, #fe5454);
+    background: linear-gradient(left, #ff960a, #fe5454);
+    border-radius: 10px;
+    width: 57%;
+    font-size: 18px;
+    margin: 0 auto 10px;
+}
+
+/*弹窗编辑图片页面   Dialog*/
+.editImgDialog {
+    padding: 20px;
+
+    width: 100%;
+    height: 160px;
+}
+
+.editImgDialog .wrap-content {
+    display: inline-block;
+    vertical-align: top;
+    width: 470px;
+}
+
+.editImgDialog .align-top {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.editImgDialog .bg-box {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.editImgDialog .bg-box:hover {
+    border: 1px solid #fa838a;
+}
+
+.editImgDialog .bg-box img {
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.editImgDialog .btn-up {
+    padding: 3px 25px;
+}
+
+.editImgDialog .form-group.pr {
+    position: relative;
+}
+
+.editImgDialog input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 66px;
+    width: 122px;
+    height: 30px;
+    opacity: 0;
+}
+
+/*右 表单编辑部分~ */
+.detail-box .detail-edit {
+    padding: 20px 0 20px 2px;
+    margin-left: 40px;
+    border-bottom: 1px dashed #ddd;
+    width: auto;
+    /*min-width: 800px;*/
+    /*min-width: 720px;*/
+}
+
+.detail-box .detail-edit:nth-child(3) {
+    border-bottom: none;
+}
+
+.detail-edit input {
+    width: 488px;
+}
+
+.detail-edit input[name="winning_count"] {
+    width: 80px;
+}
+
+.detail-edit textarea {
+    width: 488px;
+    vertical-align: text-top;
+    line-height: 20px;
+    height: 99px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.detail-edit .inline-block input[type='radio'] {
+    width: 20px;
+}
+
+.detail-edit .time-width {
+    width: 233px;
+}
+
+.detail-edit .form-group.shop-group {
+    position: relative;
+}
+
+.detail-edit .shop-box {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.detail-edit .shop-box .checkbox-inline {
+    display: block;
+}
+
+.detail-edit .shop-box .checkbox-inline + .checkbox-inline {
+    margin-left: 0;
+}
+
+.detail-edit .shop-box input[type='checkbox'] {
+    width: 20px;
+}
+
+.detail-edit .form-control.shop-choose-v {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 50px;
+    z-index: -1;
+}
+
+.detail-edit .award-box {
+    padding: 5px;
+    border: 1px solid #ddd;
+    width: auto;
+    /*max-width: 750px;*/
+    /*max-width: 712px;*/
+    box-sizing: border-box;
+}
+
+.award-box .award {
+    width: auto;
+    position: relative;
+    margin: 5px 5px 15px 5px;
+    padding: 14px 5px 14px 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.award-box .award:hover .btn-close {
+    display: block;
+}
+
+.award-box .award .input-group {
+    width: 114px;
+    display: inline-table;
+    vertical-align: middle;
+}
+
+.award-box .award .btn-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 20px;
+    display: none;
+    padding: 10px;
+}
+
+.award-box .award .input-group .input-group-addon {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-left: none;
+    background: #f8f8f8;
+    color: #000;
+
+}
+
+/*  红包页面  礼券页面  奖项部分 编辑 */
+
+.award-box .award span {
+
+    display: inline-block;
+}
+
+.award-box .award span.amount {
+    width: 100px;
+}
+
+.award-box .award span.gift-text {
+    width: 245px;
+    color: #38f;
+
+    /*width: auto;*/
+    /*margin-right: 27px;*/
+}
+
+.award-box .award span.stock {
+    /*width: 60px;*/
+    /*width: 70px;*/
+    width: 103px;
+    /*max-width: 103px;*/
+}
+
+.award-box .award span.maxAmount {
+    width: 150px;
+    margin-left: 30px;
+}
+
+.award-box .award span.btn {
+    margin-left: 10px;
+}
+
+.award-box .btn-addAward {
+    position: relative;
+    height: 50px;
+    /*width: 550px;*/
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin: 20px 5px 10px 5px;
+    cursor: pointer;
+}
+
+.detail-box .detail-edit .share-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 572px;
+    box-sizing: border-box;
+}
+
+.share-box input[name='share_title'] {
+    width: 550px;
+}
+
+.share-box .lottery-icon {
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    display: inline-block;
+    float: left;
+}
+
+.share-box .lottery-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+.share-box .lottery-icon input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.share-box .lottery-icon input[name="shareImg-v"] {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    z-index: -1;
+    opacity: 0;
+}
+
+.share-box textarea[name='share_content'] {
+    width: 450px;
+    height: 80px;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+/*错误信息的处理 判断处理*/
+.verify-error-tip {
+    color: #cd2d2d;
+    margin: 5px 0 0 65px;
+    font-size: 13px;
+}
+
+input[name='winning_count'] + .verify-error-tip {
+    margin-left: 370px;
+}
+
+.verify-error-tip.amount-error,
+.verify-error-tip.gift-error {
+    margin-left: 50px;
+}
+
+.verify-error-tip.stock-error {
+    margin-left: 177px;
+}
+
+.verify-error-tip.share_title-error,
+.verify-error-tip.shareImg-v-error {
+    margin-left: 3px;
+}
+
+.verify-error-tip.share_content-error {
+    margin-left: 100px;
+}
+
+.gift-award .verify-error-tip.stock-error {
+    margin-left: 263px;
+}
+
+.verify-error-tip.maxAmount-error {
+    margin-left: 336px;
+}
+
+/*动画效果处理*/
+.award-in-up {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.check.award-in {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+/*------------ 红包 活动 的页面 css （公共）---------end  ------------*/
+
+/* ------------ 礼品券 活动 的页面 css -----------*/
+
+.award .input-group.gift-add {
+    width: 200px;
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #e8e8e8;
+}
+
+.award .form-control.gift-add-v {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.award .input-group.gift-show {
+    width: 200px;
+}
+
+.award .form-control.gift-show-text {
+    background-color: #fff;
+}
+
+/*礼品券弹窗的样式*/
+.addGiftDialog {
+    padding: 10px;
+    margin: 0 auto;
+    width: 80%;
+    height: 340px;
+    text-align: center;
+}
+
+.addGiftDialog .lottery-icon {
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px auto;
+
+}
+
+.addGiftDialog .lottery-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 27px;
+}
+
+.addGiftDialog .lottery-icon input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.addGiftDialog .name-box {
+    margin: 10px auto 20px;
+}
+
+.addGiftDialog .name-box .form-control {
+    display: inline-block;
+    width: 80%;
+}
+
+.addGiftDialog .btn-save {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+}
+
+/*库存   弹窗样式 */
+.stock-dialog .all-stock-num {
+    text-align: center;
+    width: auto;
+}
+
+.stock-dialog {
+    padding: 50px;
+}
+
+.stock-dialog .all-stock-num {
+
+    width: 340px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.stock-dialog .verify-error-tip {
+    color: red;
+    margin-left: 108px;
+    margin-top: -10px;
+}
+
+.stock-dialog .all-stock-num .num {
+    color: #3388ff;
+}
+
+.stock-dialog .add-stock {
+
+    width: 340px;
+    margin: 20px auto;
+    font-size: 14px;
+}
+
+.stock-dialog .add-stock input {
+
+    padding: 2px 5px;
+    height: 36px;
+    line-height: 36px;
+    width: 263px;
+}
+
+.stock-dialog .sure {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/*  绑定微信公众号 提示弹窗*/
+.wechat-binding {
+    margin-top: 36px;
+    text-align: center;
+}
+
+.wechat-binding p {
+    font-size: 17px;
+}
+
+.wechat-binding .btn {
+    margin-top: 20px;
+    font-size: 18px;
+    width: 186px;
+    height: 42px;
+    line-height: 30px;
+}
+
+/* 主题 */
+
+b.tit {
+    display: block;
+    padding: 30px 0 10px 0;
+}
+
+.kind-themes {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    display: inline-block;
+    /*max-width: 64.5%;*/
+    min-width: 720px;
+    box-sizing: border-box;
+}
+
+.wrap-content .theme-data{
+    float: left;
+    position: relative;
+    margin-right: 20px;
+}
+
+.wrap-content .theme-data:last-child {
+    margin-left: 0;
+}
+
+.wrap-content .theme-data:hover .use-theme{
+    display: block;
+}
+
+.wrap-content .theme-data .use-theme {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 13px;
+    font-size: 12px;
+    background-color: #44bb00;
+    border: 1px solid #44bb00;
+    cursor: pointer;
+}
+
+.icon-success {
+    position: absolute;
+    top: 60px;
+    left: 32px;
+    width: 36px;
+    height: 36px;
+    background: url('../../../../images/icon-success-big.png') no-repeat center;
+    background-size: 36px 36px;
+}
+
+.picsize-tip {
+    color:#999;
+    font-size:12px;
+}

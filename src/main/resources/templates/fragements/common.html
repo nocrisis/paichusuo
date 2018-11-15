@@ -1,0 +1,100 @@
+<!--引用方法-->
+<!--<div th:remove="tag" th:include="fragements/common::mallSelect(label='标签名称/可为空')"></div>-->
+
+<div th:fragment="mallSelect">
+    <label class="mallSelect" for="mall_uid" th:text="${label==null}?'商场名称':${label}+':'"></label>
+    <select name="mall_uid" class="form-control" id="mall_uid">
+        <option th:value="${mallInfo.mallUid}" th:text="${mallInfo.mallName}"
+                th:selected="${mallInfo.mallUid} == ${session.current_user_selected_mall.mallUid}"
+                th:each="mallInfo:${session.user_mall_list}">
+        </option>
+    </select>
+</div>
+
+
+<div th:fragment="mallChoose">
+    <div class="more current_user_selected_mall"
+         th:data-mallName="${session.current_user_selected_mall.mallName}"
+         th:data-mallUid="${session.current_user_selected_mall.mallUid}"
+    >
+        当前商场: <span th:text="${session.current_user_selected_mall.mallName}">杭州</span> <span
+            class="btn btn-choosemall" th:if="${#arrays.length(session.user_mall_list)}>1">切换商场</span>
+
+        <script type="text/html" data-tpl="tpl.mall.loop" th:inline="text">
+            {{# var total=Math.ceil(d.total/d.pageSize)+1; }}
+
+            {{# if( d.mallList.length==0) { }}
+            <div class="tips">未搜索到相关商场</div>
+            {{# }else { }}
+
+                    {{# for(var i = (d.currPage-1)*9, len =(d.currPage-1)*9+ Math.min(d.total-(d.currPage-1)*9,9); i < len; i++){ }}
+                    <li class="mallInfo hand {{# if( d.mallList[i].mallUid==d.currMallInfo.mallUid) { }}selected{{# } }}"
+                        data-mallUid="{{ d.mallList[i].mallUid }}" data-mallName="{{ d.mallList[i].mallName }}">
+                        <p>
+                            <span class="caret"></span>
+                            <span class="name">{{ d.mallList[i].mallName }}</span>
+                        </p>
+                    </li>
+                    {{# } }}
+            {{# } }}
+
+        </script>
+        <script type="text/html" data-tpl="tpl.mall.pageNav" th:inline="text">
+            {{# var total=Math.ceil(d.total/d.pageSize)+1; }}
+            {{# if (total > 2) {  }}
+            <div class="fixed-table-pagination">
+                <div class="pull-left pagination-detail">
+                    <span class="pagination-info">共{{ d.total }}条,每页{{ d.pageSize }}条</span>
+                </div>
+                <div class="pull-right pagination">
+                    <ul class="pagination">
+                        <li class="page-pre"><a href="javascript:void(0)">‹</a></li>
+
+                        {{# for(var i = 1; i < total; i++){ }}
+                            {{# if (i==1) {  }}
+                                  <li class="page-first {{# if(d.currPage==i) { }}active{{# } }}"><a href="javascript:void(0)">{{i}}</a></li>
+
+                            {{# }else if (i==total-1) { }}
+                                 <li class="page-last {{# if(d.currPage==i) { }}active{{# } }}"><a href="javascript:void(0)">{{i}}</a></li>
+
+                            {{# }else { }}
+                                 {{# if (Math.abs(d.currPage-i)<2 ) {  }}
+                                      <li class="page-number {{# if(d.currPage==i) { }}active{{# } }}"><a href="javascript:void(0)">{{i}}</a></li>
+                                {{# }else { }}
+                                    {{# if(Math.abs(d.currPage-i)==2 ) {  }}
+                                    <li class="page-last-separator disabled"><a href="javascript:void(0)">...</a></li>
+                                    {{# } }}
+
+                                 {{# } }}
+                            {{# } }}
+                        {{# } }}
+                        <li class="page-next"><a href="javascript:void(0)">›</a></li>
+                    </ul>
+                </div>
+            </div>
+            {{# } }}
+        </script>
+        <script type="text/html" data-tpl="tpl.mall.main" th:inline="text">
+            <div class="mallListForSelect">
+                <div class="search">
+                    <form name="mallSearch" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control placeholderCenter" name="mallName" placeholder="&#xE003; 请输入商场名称或城市名">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn" type="submit">搜索 </button>
+                        </div>
+                    </form>
+                </div>
+                <ul class="list">
+
+                </ul>
+                <div class="clearfix"></div>
+                <div class="pageNav"></div>
+            </div>
+        </script>
+        <script th:inline="javascript">
+                        var user_mall_list_data = [[${session.user_mall_list}]];
+        </script>
+    </div>
+</div>

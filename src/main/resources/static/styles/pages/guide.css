@@ -1,0 +1,54 @@
+form.addGuide .guide-msg-box {
+  width: 540px;
+  margin: 30px auto 0;
+}
+
+form.addGuide .verify-error-tip{
+    margin-left: 108px;
+}
+form.addGuide .guide-msg-box.add-btn-box {
+  margin-top: 70px;
+  text-align: center;
+}
+
+form.addGuide .guide-msg-box .guide-label {
+  width: 90px;
+}
+form.addGuide .guide-msg-box .guide-input {
+  width: 330px;
+}
+form.addGuide .guide-msg-box .guide-input-radio {
+  width: 20px;
+  vertical-align: text-top;
+  margin: 0;
+}
+form.addGuide .guide-msg-box .guide-input-radio.second {
+  margin-left: 20px;
+}
+form.addGuide .add-btn {
+  width: 130px;
+  height: 40px;
+  font-size: 16px;
+}
+
+form.editGuide .guide-msg-box {
+  margin-top: 15px;
+}
+
+.verify-error-tip{
+    color: #ff0000;
+}
+.guide-msg-compelete {
+  text-align: center;margin-top:30px;
+}
+
+/*# sourceMappingURL=guide.css.map */
+
+ a.layui-layer-btn0 {
+  background-color: #38F;
+  border-color: #38F;
+  color: #fff;
+}
+ .page-storeList form.addGuide .guide-msg-box .guide-input {
+   width: 276px;
+ }

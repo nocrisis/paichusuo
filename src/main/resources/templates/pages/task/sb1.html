@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta  charset="utf-8">
+<title>管理员-任务列表</title>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="js/echarts.min.js"></script>
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+<link href="css/worklist.css" rel="stylesheet" type="text/css" />
+<link href="css/buttons.css" rel="stylesheet" type="text/css" />
+
+<script language=Javascript>
+function time() {
+    //获得显示时间的div
+    t_div = document.getElementById('showtime');
+    var now = new Date()
+        //替换div内容 
+    t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+    //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+    setTimeout(time, 1000);
+}
+</script>
+
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+    <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+
+<div class="work">
+    <div class="back"> <a href="/homepage/load.html"> <button class="button button-primary button-circle button-border" ><span class="glyphicon glyphicon-chevron-left"></span></button></a></div>
+    <div class="make">
+        <table class="lists">
+            <tr>
+                <th>主任务ID</th>
+                <th>任务类别</th>
+                <th>发布时间</th>
+                <th>截止时间</th>
+                <th>任务详情</th> 
+                <th>任务区域</th> 
+                <th>任务发布人</th>
+                <th>是否完成</th>                
+            </tr>
+            <tr>
+                <td>1001</td>
+                <td>类别1</td>
+                <td>2018.10.1</td>
+                <td>2018.10.7</td>
+                <td>详情</td>
+                <td>区域1</td> 
+                <td>jerry</td>
+                <td>1</td>                        
+            </tr>
+            <tr>
+                <td>1002</td>
+                <td>类别3</td>
+                <td>2018.10.20</td>
+                <td>2018.10.30</td>
+                <td>详情</td>
+                <td>区域7</td> 
+                <td>nana</td>
+                <td>0</td>                        
+            </tr>
+
+        </table>
+    </div>
+    <div class="showtime" id="showtime"></div>
+</div>
+
+<div class="footer">
+    <div class="footfont">
+    © 2017 Bootstrap Police Control System.
+    </div>
+</div>
+
+</body>
+</html>

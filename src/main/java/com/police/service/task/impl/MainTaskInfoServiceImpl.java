@@ -33,14 +33,14 @@ public class MainTaskInfoServiceImpl implements MainTaskInfoService {
     }
 
     @Override
-    public TaskInfoPO getMainTaskInfo(TaskInfoPO taskInfoPO) {
-        return mainTaskInfoMapper.getMainTask(taskInfoPO);
+    public TaskInfoPO getMainTaskInfo(String taskId) {
+        return mainTaskInfoMapper.getMainTask(taskId);
     }
 
     @Override
     public PageContentDTO listMainTaskInfo(TaskInfoDTO pageableDTO) {
         Integer total = mainTaskInfoMapper.countMainTask(pageableDTO);
-        if(total!=null){
+        if(total==null){
             return PageContentDTO.emptyInstance();
         }
         List<TaskInfoPO> taskInfoPOList = mainTaskInfoMapper.listMainTask(pageableDTO);

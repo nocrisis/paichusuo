@@ -1,0 +1,96 @@
+/***
+Login page
+***/
+
+/* logo page */
+.resetPassport {
+
+}
+
+.topBlank {
+    height: 100px;
+}
+
+
+.resetPassport .logo {
+    max-width: 800px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: left;
+}
+.resetPassport .logo .line {
+    font-size: 18px;
+    padding: 0 5px 0 5px;
+}
+.resetPassport .logo img {
+    vertical-align: text-bottom;
+}
+.resetPassport .content {
+    max-width: 800px;
+    min-width: 400px;
+    margin: 0 auto;
+    border-radius: 2px;
+    padding: 60px 0;
+    border: 1px solid #e5e5e5;
+}
+
+.resetPassport .content .reset-form {
+    padding: 0;
+    margin: 0 auto;
+    width: 350px;
+}
+
+.resetPassport label.checkbox {
+    margin-left: 20px;
+}
+
+.resetPassport .forgotPassword {
+    margin-top: 7px;
+    text-align: right;
+}
+
+.resetPassport .content .form-control {
+    height: 35px;
+    line-height: 35px;
+}
+
+.resetPassport .content .verify {
+    width: 127px;
+}
+
+@media (min-width: 992px) {
+    .login .content .captcha {
+        padding: 0;
+    }
+}
+
+.resetPassport .copyright {
+    text-align: center;
+    margin: 0 auto;
+    min-width: 280px;
+    padding: 10px 0 0;
+    font-size: 12px;
+}
+
+#Validform_msg {
+    display: none;
+}
+.fr {
+    float:right;
+}
+._user {
+    margin-right:10px;
+}
+.mt10 {
+    margin-top:10px;
+}
+.back {
+    display:inline-block;
+}
+.resetPassport .send-code.sms_text {
+    height: 35px;
+    border-radius: 0;
+    border: none;
+    margin-left: 0;
+}

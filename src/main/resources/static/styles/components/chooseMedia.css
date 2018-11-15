@@ -1,0 +1,110 @@
+
+.chosen-multi .chosen-choices {
+    display: block;
+    max-width: 500px;
+}
+
+.chosen-multi .chosen-choices .search-choice {
+    height: 53px;
+}
+
+.chosen-multi .chosen-choices .search-choice:hover .glyphicon-remove-sign {
+    opacity: 1;
+}
+
+.chosen-multi .chosen-choices .search-choice:hover .chosen-multi img {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+
+}
+
+.chosen-multi .chosen-choices .glyphicon-remove-sign {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    font-size: 15px;
+    color: #000;
+    opacity: 0;
+}
+
+.wrap-upload-content .upload-content {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 146px;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    box-sizing: content-box;
+    font-size: 14px;
+}
+
+.chosen-multi input[type="file"] + img {
+    border: 1px solid #3388ff;
+    display: inline-block;
+    text-align: center;
+    line-height: 22.5px;
+    color: #3388ff;
+    font-size: 12px;
+}
+
+.wrap-upload-content .upload-content .img-upload-warp {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    padding: 5px 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #888;
+    display: inline-block;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.wrap-upload-content .upload-content .img-upload-warp b {
+    font-size: 28px;
+}
+
+.wrap-upload-content  .upload-content .upload-mark {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: transparent;
+    overflow: hidden;
+
+}
+
+.wrap-upload-content .upload-content .upload-mark .delete {
+    width: 100%;
+    position: absolute;
+    background-color: #303030;
+    opacity: 0.8;
+    color: #fff;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    top: 55px;
+    cursor: pointer;
+}
+
+.wrap-upload-content .upload-content .upload-mark input.store-input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    font-size: 999px;
+    border: none;
+    opacity: 0;
+}
+
+.wrap-upload-content .upload-content  .thumbnail-pic {
+    width: 100%;
+}

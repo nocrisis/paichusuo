@@ -1,0 +1,22 @@
+<head th:fragment="header">
+	<meta charset="utf-8" />
+    <meta name="robots" content="nofollow" />
+    <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	<link th:href="@{/styles/bootstrap.css}" rel="stylesheet" type="text/css" />
+
+	<link th:href="@{/styles/bootstrap-table.css}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
+
+
+	<link th:href="@{/styles/style.css?201708241122}" rel="stylesheet" type="text/css" />
+
+
+	<link th:href="@{/styles/bootstrap.theme.lmf.css?20180801}" rel="stylesheet" type="text/css" />
+	<link th:href="@{/scripts/layer/skin/default/layer.css?201711272120}" id="layuicss-skinlayercss" rel="stylesheet" type="text/css" />
+	<link th:href="@{/scripts/layer/skin/lmf/style.css}" id="layuicss-skinlmfstylecss" rel="stylesheet" type="text/css" />
+
+	</head>

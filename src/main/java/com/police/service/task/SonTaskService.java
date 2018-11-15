@@ -7,11 +7,11 @@ import com.police.pojo.entity.taskinfo.SonTaskPO;
 public interface SonTaskService {
     Integer createSonTask (SonTaskPO sonTaskPO);
 
-    Integer deleteSonTask (String taskId);
+    Integer deleteSonTask (String sonTaskId);
 
     Integer updateSonTask (SonTaskPO sonTaskPO);
 
-    SonTaskPO getSonTask (SonTaskPO sonTaskPO);
+    SonTaskPO getSonTask (String sonTaskId);
 
     PageContentDTO listSonTask (SonTaskDTO pageableDTO);
 

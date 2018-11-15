@@ -1,0 +1,213 @@
+/*  数据报表 头列表   ---start*/
+
+.msg-box input,
+.msg-box select {
+    width: 180px;
+    padding-left: 10px;
+    padding-right: 24px;
+
+    background-color: #fff;
+}
+
+.Form .msg-box {
+    height: 40px;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.Form .msg-box .label {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin-right: 10px;
+    padding: 0 10px 0 0;
+    line-height: 40px;
+    color: #333;
+    font-size: 100%;
+}
+
+.Form .search,
+.Form .export {
+    /*height: 30px;*/
+    margin-left: 20px;
+}
+
+/*  数据报表 头列表    --end*/
+
+/*-----------对账报表-------start--*/
+.account .main-box-top {
+    background: #f4f4f4;
+    padding: 0;
+    border: #e8e8e8 solid 1px;
+}
+
+.account .main-box-top.POS {
+    height: 100px;
+    margin-bottom: 0;
+    border-bottom: none;
+    background: none;
+    position: relative;
+}
+
+.account .main-box-top.POS img {
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    left: 20px;
+}
+
+.account .main-box-top.POS .msg-box {
+    display: inline-block;
+    position: absolute;
+    top: 22px;
+    left: 100px;
+}
+
+.account .main-box-top.POS .msg-box h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.account .main-box-top.POS .msg-box .ENum {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.account .main-box-top.tag {
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 40px;
+    padding-left: 20px;
+}
+
+.account .main-box-top.tag span,
+.account .main-box-top.tag a {
+    padding: 0 10px;
+}
+
+.account .main-box-top.tag span {
+    border-left: solid #3388ff 3px;
+}
+
+.account .main-box-top .txt-box {
+    display: inline-block;
+    width: 110px;
+    float: left;
+    vertical-align: middle;
+    padding-left: 30px;
+}
+
+.account .main-box-top .txt-box > h5 {
+    height: 35px;
+    line-height: 50px;
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
+
+.account .main-box-top .txt-box > p {
+    display: inline-block;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.account .main-box-top .txt-box > p::after {
+    display: inline-block;
+    content: "(元)";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.account .main-box-top .txt-box.first {
+    text-align: center;
+    line-height: 75px;
+    padding: 0;
+    border-right: #e8e8e8 solid 1px;
+}
+
+.account .main-box-top .txt-box.horizontal,
+.account .main-box-top .txt-box.horizontal * {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.account .main-box-top .txt-box.horizontal {
+    width: 160px;
+    padding: 0;
+    border: none;
+}
+
+.account .main-box-top .txt-box > p.unit-bi::after {
+    display: inline-block;
+    content: "(笔)";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.total_data_analysis {
+    margin-bottom: 20px;
+}
+
+.total_data_analysis li {
+    float: left;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background-color: #666;
+}
+
+/* pcVendor 导购选择标签页面*/
+.guideTag,.guideTagDialog {
+    width: 180px;
+    padding-left: 10px;
+    padding-right: 24px;
+    vertical-align: middle;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAJCAYAAAAGuM1UAAAAH0lEQVR42mNgoDnQ13f7TwiTpIkkm0hyHkl+YhhQAABcfyjsqSyTLgAAAABJRU5ErkJggg==) no-repeat scroll 97% center transparent;
+}
+
+.tag_list,.dialog_tag {
+    position: absolute;
+    left: 90px;
+    width: 180px;
+    z-index: 2;
+    max-height: 124px;
+    overflow-y: scroll;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    background-color: #fff;
+}
+
+.dialog_tag {
+    width: 280px;
+    left: 103px;
+}
+
+.tag_list input,.dialog_tag input {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    text-indent: 10px;
+}
+
+.tag_list li, .dialog_tag li {
+    padding: 0 2px;
+    padding-left: 10px;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.tag_list li:first-child, .dialog_tag li:first-child {
+    border-top: 0;
+}

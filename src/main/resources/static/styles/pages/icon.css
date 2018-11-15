@@ -1,0 +1,204 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-add-pic-mini {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -272px -280px;
+  width: 12px;
+  height: 12px;
+}
+.icon-add-picture {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -160px -280px;
+  width: 36px;
+  height: 36px;
+}
+.icon-add {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -236px -280px;
+  width: 20px;
+  height: 20px;
+}
+.icon-choose {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -216px -280px;
+  width: 20px;
+  height: 20px;
+}
+.icon-choosed {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -196px -280px;
+  width: 20px;
+  height: 20px;
+}
+.icon-crowdfunding-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -80px -280px;
+  width: 40px;
+  height: 40px;
+}
+.icon-crowdfunding-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: 0px -160px;
+  width: 80px;
+  height: 80px;
+}
+.icon-crowdfunding {
+  background-image: url(../../images/sprite-active.png);
+  background-position: 0px -280px;
+  width: 40px;
+  height: 40px;
+}
+.icon-crowdfunding2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -160px -160px;
+  width: 80px;
+  height: 80px;
+}
+.icon-explain {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -284px -280px;
+  width: 13px;
+  height: 10px;
+}
+.icon-hot-style-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -40px -280px;
+  width: 40px;
+  height: 40px;
+}
+.icon-hot-style-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -240px -160px;
+  width: 80px;
+  height: 80px;
+}
+.icon-hot-style {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -40px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-hot-style2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -240px -80px;
+  width: 80px;
+  height: 80px;
+}
+.icon-red-pack-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -80px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-red-pack-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: 0px 0px;
+  width: 80px;
+  height: 80px;
+}
+.icon-red-pack {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -160px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-red-pack2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -240px 0px;
+  width: 80px;
+  height: 80px;
+}
+.icon-search {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -256px -280px;
+  width: 16px;
+  height: 16px;
+}
+.icon-seckill-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -280px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-seckill-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -80px -160px;
+  width: 80px;
+  height: 80px;
+}
+.icon-seckill {
+  background-image: url(../../images/sprite-active.png);
+  background-position: 0px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-seckill2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -160px -80px;
+  width: 80px;
+  height: 80px;
+}
+.icon-sell-card-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -120px -280px;
+  width: 40px;
+  height: 40px;
+}
+.icon-sell-card-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -160px 0px;
+  width: 80px;
+  height: 80px;
+}
+.icon-sell-card {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -240px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-sell-card2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -80px -80px;
+  width: 80px;
+  height: 80px;
+}
+.icon-sqrcode-end {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -200px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-sqrcode-end2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: 0px -80px;
+  width: 80px;
+  height: 80px;
+}
+.icon-sqrcode {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -120px -240px;
+  width: 40px;
+  height: 40px;
+}
+.icon-sqrcode2 {
+  background-image: url(../../images/sprite-active.png);
+  background-position: -80px 0px;
+  width: 80px;
+  height: 80px;
+}

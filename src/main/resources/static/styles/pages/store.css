@@ -1,0 +1,378 @@
+.store #store-list .table > tbody > tr > td,
+.store #store-list .table > tbody > tr > th,
+.store #store-list .table > thead > tr > td,
+.store #store-list .table > thead > tr > th {
+    line-height: 26px;
+}
+
+.store #store-list .table thead .title th {
+    border-top: 2px solid #ddd;
+}
+.store .main-box  .mb20 {  margin-bottom: 20px}
+.addstore .main-box .main-box-content {
+    margin-bottom: 20px;
+}
+
+
+.addstore .main-box .main-box-content .large-sum {
+    margin-top: 5px;
+    margin-left: 115px;
+    font-size: 12px;
+}
+
+.addstore .main-box .main-box-top .title {
+    font-weight: 700;
+}
+
+.addstore .main-box .main-box-content .store-msg-box {
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box label {
+    font-weight: normal;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .icon-tip {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    vertical-align: middle;
+    margin-left: 5px;
+    cursor: pointer;
+    background-image: url('../../../images/icon-tip.png');
+}
+
+.thumbnail-pic {
+    width: 80px;
+    height: 80px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .upload-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 80px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .pic-groups {
+    display: inline-block;
+    width: 780px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .img-upload {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    z-index: -1;
+}
+
+.addstore .main-box .main-box-content .choose-stores {
+    display: inline-block;
+    width: 800px;
+    vertical-align: top;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .img-upload .icon {
+    margin: 22px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .upload {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: transparent;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .upload .delete {
+    position: absolute;
+    background-color: #303030;
+    opacity: 0.8;
+    color: #fff;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    width: 80px;
+    text-align: center;
+    top: 55px;
+    cursor: pointer;
+}
+
+.addstore .main-box .main-box-content .store-msg-box input[type="file"] {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    font-size: 999px;
+    border: none;
+    opacity: 0;
+}
+
+.addstore .main-box .main-box-content .store-msg-box input[type="file"]:focus {
+    outline: 0;
+}
+
+.addstore .main-box .main-box-content .store-msg-box.btn-box {
+    margin-top: 70px;
+    text-align: center;
+    background: #eaeab4;
+    height: 80px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box.btn-box .btn-store {
+    width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box.box-first {
+    margin-top: 30px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .store-label {
+    width: 85px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .vertical-top {
+    vertical-align: top;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .store-select {
+    width: 190px;
+    height: 30px;
+    padding-left: 8px;
+    line-height: 30px;
+    border: solid 1px #E8E8E8;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .store-select + i {
+    margin-left: -20px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .short {
+    width: 180px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box textarea {
+    width: 390px;
+    vertical-align: top;
+    padding: 8px;
+    height: auto;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .to {
+    margin: 0 9px;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .tips {
+    margin-left: 90px;
+    color: #333333;
+}
+
+.addstore .main-box .main-box-content .store-msg-box .brank {
+    position: relative;
+}
+
+
+#addStoreForm {
+    margin-bottom: 50px;
+}
+
+.addstore .main-box .main-box-content .form-control {
+    position: relative;
+    width: 177px;
+    display: inline-block;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.addstore .main-box-content .store-msg-box .long-input {
+    width: 390px;
+    vertical-align: middle;
+}
+
+.addstore .main-box-content .store-msg-box .short-input {
+    width: 90px;
+}
+
+.addstore .main-box-content .store-msg-box .checkbox-list {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.addstore .main-box-content .store-msg-box .checkbox-list label {
+    display: block;
+}
+
+.addstore .main-box-content .store-msg-box label .checker {
+    display: inline-block;
+    zoom: 1;
+    vertical-align: text-bottom;
+}
+
+.store-msg-box .zhibao {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.store-msg-box .zhibao label{
+    display: block;
+}
+
+/****** 秒杀活动样式 start ************/
+
+.addstore .store-msg-box .checkbox-inline .checker input {
+    top: 0;
+}
+
+.addstore .store-msg-box .batch {
+
+}
+
+/****** 秒杀活动样式 end *************/
+
+/***** 新建活动商品页面弹窗  start*****/
+
+.addstore .layui-layer-content .dialog-merchants {
+    width: 600px;
+    margin: 0 auto;
+    height: 300px;
+    /*overflow-y: scroll;*/
+}
+
+.addstore .layui-layer-content .dialog-merchants .choose-business {
+    color: #3388ff;
+    cursor: pointer;
+}
+
+.addstore .layui-layer-content .dialog-merchants .label-search {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.addstore .layui-layer-content .dialog-merchants .label-search .search {
+    width: 240px;
+    display: inline-block;
+}
+
+.addstore .layui-layer-content .dialog-merchants .search .search-val {
+    height: 40px;
+    line-height: 40px;
+}
+
+.addstore .layui-layer-content .dialog-merchants a {
+    width: 70px;
+    height: 40px;
+    line-height: 26px;
+    background-color: #3388ff;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.addstore .layui-layer-content .dialog-merchants .table td {
+    width: 33.33333%;
+    width: calc(100% / 3);
+}
+
+.verify-error-tip {
+    margin-top: 5px;
+    margin-left: 118px;
+    font-size: 12px;
+    color: red;
+}
+
+.addstore .opactityNone {
+    width: 0;
+    opacity: 0;
+    left: -2000px;
+}
+
+/***** 新建活动商品页面弹窗  end*****/
+
+.layui-layer-tips .layui-layer-content {
+    text-align: left !important;
+}
+
+.import-box .reminder {
+	background: #FFFEDD;
+	margin: .5rem;
+	padding: 2rem 1rem;
+}
+
+.import-box .reminder .ft-18 {
+	font-size: 18px;
+}
+
+.import-box .uploader .content {
+	float: left;
+	margin: .5rem;
+}
+
+.import-box .uploader .input-box {
+	border: 1px solid #ddd;
+	width: 220px;
+	height: 30px;
+}
+
+.import-box .uploader .desc {
+	line-height: 30px;
+}
+
+.import-box .uploader .clear {
+	clear: both;
+}
+
+.import-box .selectfile {
+	float: left; 
+	background-color: #fff; 
+	border-color: #ccc;
+	color: #808080;
+}
+
+.import-box .qq-upload-list-selector {
+	float: left; 
+	line-height: 30px; 
+	margin-left: 1rem;
+}
+
+.import-box .qq-upload-cancel {
+	margin-left: 1rem;
+	color: #38F;
+}
+
+.import-box .btn a {
+	color: #fff;
+}
+
+.after-import-box {
+	font-size: 1.6rem;
+	padding: 3rem;
+}
+
+.after-import-box div {
+	text-align: center;
+}
+
+.after-import-box .btn {
+	margin: 2rem auto;
+	width: 10rem;
+}
+
+.after-import-box .btn a {
+	color: #fff;
+	width: 100%;
+    display: inline-block;
+}

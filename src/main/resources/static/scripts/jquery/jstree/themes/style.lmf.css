@@ -1,0 +1,24 @@
+.jstree-default>.jstree-striped {
+    background: url('');
+}
+
+.jstree-default .jstree-anchor {
+    line-height: 18px;
+    height: 18px;
+    font-size: 12px;
+}
+
+.jstree-default .jstree-checkbox {
+    background-position: -164px -5px;
+}
+
+.jstree-default.jstree-checkbox-selection .jstree-clicked>.jstree-checkbox, .jstree-default .jstree-checked>.jstree-checkbox {
+    background-position: -228px -5px;
+}
+
+.jstree-default .jstree-themeicon {
+    height: 17px !important;
+    width: 19px !important;
+    background: url('../../../../images/themeicon.svg');
+    background-position: 0 0;
+}

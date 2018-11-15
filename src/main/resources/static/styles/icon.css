@@ -1,0 +1,44 @@
+
+
+[class^="fa-"], [class^="glyphicon-"], [class^="icon-"], [class*=" fa-"], [class*=" glyphicon-"], [class*=" icon-"] {
+    display: inline-block;
+    margin-top: 1px;
+    font-size: 14px;
+    line-height: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa-search{
+    background: url(../images/ico-search.png) no-repeat;
+}
+.input-icon > .form-control {
+    padding-left: 33px;
+}
+.input-icon{
+    position: relative;
+}
+.input-icon > i {
+
+    display: block;
+    position: absolute;
+    top:50%;
+    left: 10px;
+    z-index: 3;
+
+    margin-top: -8px;
+
+    width: 16px;
+    height: 16px;
+
+    color: #ccc;
+    font-size: 16px;
+    text-align: center;
+}

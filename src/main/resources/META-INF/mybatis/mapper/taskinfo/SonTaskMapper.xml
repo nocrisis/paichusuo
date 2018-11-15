@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.police.mapper.taskinfo.SonTaskMapper">
+    <resultMap id="SonTaskMap" type="com.police.pojo.entity.taskinfo.SonTaskPO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="son_task_id" property="sonTaskId" jdbcType="VARCHAR"/>
+        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
+        <result column="cop_id" property="copId" jdbcType="VARCHAR"/>
+        <result column="task_category" property="taskCategory" jdbcType="VARCHAR"/>
+        <result column="task_detail" property="taskDetail" jdbcType="VARCHAR"/>
+        <result column="task_area" property="taskArea" jdbcType="VARCHAR"/>
+        <result column="delay_deadline" property="delayDeadline" jdbcType="TIMESTAMP"/>
+        <result column="deadline" property="deadline" jdbcType="TIMESTAMP"/>
+        <result column="place" property="place" jdbcType="VARCHAR"/>
+        <result column="finish_time" property="taskArea" jdbcType="VARCHAR"/>
+        <result column="finish_status" property="finishStatus" jdbcType="VARCHAR"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="son_task_info">
+		son_task_id,task_id,cop_id,task_category,task_detail,task_area,place,deadline,delay_deadline,finish_time,finish_status,created_at,updated_at
+	</sql>
+
+    <insert id="insertSonTask" parameterType="com.police.pojo.entity.taskinfo.SonTaskPO">
+        <selectKey keyProperty="sonTaskId" resultType="string" order="BEFORE">
+            select replace(uuid(), '-', '') as sonTaskId from dual
+        </selectKey>
+        INSERT INTO coptask
+        (<include refid="son_task_info"/>)
+        VALUES
+        (#{sonTaskId},#{taskId},#{copId},#{taskCategory},#{taskArea},#{place},#{deadline},#{delayDeadline},#{finish_time},#{finishStatus},now(),now())
+    </insert>
+
+    <select id="listSonTask" resultMap="SonTaskMap" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO">
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        <if test="finishStatus!= null and finishStatus!=''">
+            finish_status = #{finishStatus}
+        </if>
+        <if test="taskCategory!= null and taskCategory!=''">
+            and task_category = #{taskCategory}
+        </if>
+        <if test="copId!= null and copId!=''">
+            and cop_id = #{copId}
+        </if>
+        <if test="deadline!= null and deadline!=''">
+            and deadline > #{deadline}
+        </if>
+        <if test="taskArea!= null and taskArea!=''">
+            and task_area = #{taskArea}
+        </if>
+        <if test="sortField != null and sortField != ''">
+            ORDER BY ${sortField} ${order}
+        </if>
+        Limit #{pageStart},#{pageSize}
+    </select>
+
+    <select id="countSonTask" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO" resultType="integer">
+        select count(*) from coptask where archive = 1
+        <if test="finishStatus!= null and finishStatus!=''">
+            and finish_status = #{finishStatus}
+        </if>
+        <if test="taskCategory!= null and taskCategory!=''">
+            and task_category = #{taskCategory}
+        </if>
+        <if test="copId!= null and copId!=''">
+            and cop_id = #{copId}
+        </if>
+        <if test="deadline!= null and deadline!=''">
+            and deadline > #{deadline}
+        </if>
+        <if test="taskArea!= null and taskArea!=''">
+            and task_area = #{taskArea}
+        </if>
+    </select>
+
+    <select id="getSonTask" parameterType="java.lang.String"
+            resultType="com.police.pojo.entity.taskinfo.SonTaskPO">
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        son_task_id = #{sonTaskId}
+    </select>
+
+
+    <delete id="deleteSonTask" parameterType="java.lang.String">
+        delete from coptask
+        where son_task_id = #{sonTaskId}
+    </delete>
+
+
+    <update id="updateSonTask" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO">
+        UPDATE
+        coptask
+        SET
+        <if test="taskDetail!= null and taskDetail!=''">
+            and task_detail = #{taskDetail}
+        </if>
+        <if test="copId!= null and copId!=''">
+            and cop_id = #{copId}
+        </if>
+        <if test="deadline!= null and deadline!=''">
+            and deadline > #{deadline}
+        </if>
+        <if test="finishStatus!= null and finishStatus!=''">
+            and finish_status = #{finishStatus}
+        </if>
+        <if test="place!= null and place!=''">
+            and place = #{place}
+        </if>
+        <if test="delayDeadline!= null and delayDeadline!=''">
+            and delay_deadline = #{delayDeadline}
+        </if>
+        updated_at = now()
+        WHERE
+        son_task_id = #{sonTaskId}
+    </update>
+
+    <update id="batchUpdateFinishStatus">
+        UPDATE
+        coptask
+        SET
+        finish_status = #{finishStatus},
+        updated_at = now()
+        WHERE
+        son_task_id IN
+        <foreach collection="sonTaskIds" open="(" close=")" item="sonTaskId" separator=",">
+            #{sonTaskId}
+        </foreach>
+    </update>
+
+</mapper>

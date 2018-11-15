@@ -1,0 +1,144 @@
+.bf-select {
+    position: relative;
+    /*float: left;*/
+    width: 390px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 10px;
+    /*border: 1px solid #ccc;*/
+}
+
+.hide {
+    display: none;
+}
+
+.ks-overlay {
+    width: 390px;
+    top: 29px;
+    left: -1px;
+    position: absolute;
+    z-index: 999999;
+}
+
+.ks-overlay-hidden {
+    visibility: hidden;
+}
+
+.city-select-tab {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 35px;
+    background: #f0f0f0;
+}
+
+.city-select-tab a {
+    float: left;
+    margin-bottom: -1px;
+    padding: 2px 20px;
+    width: 70px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid transparent;
+    color: #4d4d4d;
+    text-align: center;
+    outline: 0;
+    cursor: pointer;
+}
+
+.city-select-tab .current {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    color: #f60;
+}
+
+.city-select {
+    border: 1px #ccc solid;
+    border-top: 0;
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 12px;
+}
+
+.city-title {
+    margin-right: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    text-indent: 3px;
+}
+
+.city-title:focus {
+    outline: 0;
+}
+
+.has-city-title {
+    color: #333;
+}
+
+.city-select dl {
+    line-height: 2;
+    clear: both;
+    padding: 3px 0;
+    margin: 0;
+}
+
+.city-select dl:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.city-select dt {
+    width: 40px;
+    float: left;
+    padding-right: 10px;
+    font-weight: 700;
+    text-align: right;
+    height: 24px;
+    line-height: 24px;
+}
+
+.city-select dd {
+    width: 280px;
+    float: left;
+    margin-left: 0;
+}
+
+.city-select a {
+    display: inline-block;
+    color: #4d4d4d;
+    padding: 0 10px;
+    outline: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 2px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.city-select a:hover,
+.city-select a:focus {
+    background-color: #fff8f3;
+    border-radius: 2px;
+    color: #f60;
+}
+
+.city-select a.current {
+    background-color: #f60;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.operate {
+    margin-left: 400px;
+    line-height: 32px;
+}
+
+.no-padding {
+    padding: 0 !important;
+}

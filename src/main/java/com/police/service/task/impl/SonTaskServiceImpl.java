@@ -3,8 +3,8 @@ package com.police.service.task.impl;
 import com.police.common.enums.TaskFinishStatusEnum;
 import com.police.mapper.taskinfo.SonTaskMapper;
 import com.police.pojo.dto.PageContentDTO;
-import com.police.pojo.dto.taskinfo.TaskInfoDTO;
-import com.police.pojo.entity.taskinfo.TaskInfoPO;
+import com.police.pojo.dto.taskinfo.SonTaskDTO;
+import com.police.pojo.entity.taskinfo.SonTaskPO;
 import com.police.service.task.SonTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,38 +17,38 @@ public class SonTaskServiceImpl implements SonTaskService {
     private SonTaskMapper sonTaskMapper;
 
     @Override
-    public Integer createSonTask(TaskInfoPO taskInfoPO) {
-        taskInfoPO.setFinishStatus(TaskFinishStatusEnum.TODO.name());
-        return  sonTaskMapper.insertMainTask(taskInfoPO);
+    public Integer createSonTask(SonTaskPO sonTaskPO) {
+        sonTaskPO.setFinishStatus(TaskFinishStatusEnum.TODO.name());
+        return  sonTaskMapper.insertSonTask(sonTaskPO);
     }
 
     @Override
     public Integer deleteSonTask(String taskId) {
-        return  sonTaskMapper.deleteMainTask(taskId);
+        return  sonTaskMapper.deleteSonTask(taskId);
     }
 
     @Override
-    public Integer updateSonTask(TaskInfoPO taskInfoPO) {
-        return  sonTaskMapper.updateMainTask(taskInfoPO);
+    public Integer updateSonTask(SonTaskPO sonTaskPO) {
+        return  sonTaskMapper.updateSonTask(sonTaskPO);
     }
 
     @Override
-    public TaskInfoPO getSonTask(TaskInfoPO taskInfoPO) {
-        return  sonTaskMapper.getMainTask(taskInfoPO);
+    public SonTaskPO getSonTask(String sonTaskId) {
+        return  sonTaskMapper.getSonTask(sonTaskId);
     }
 
     @Override
-    public PageContentDTO listSonTask(TaskInfoDTO pageableDTO) {
-        Integer total =  sonTaskMapper.countMainTask(pageableDTO);
+    public PageContentDTO listSonTask(SonTaskDTO pageableDTO) {
+        Integer total =  sonTaskMapper.countSonTask(pageableDTO);
         if(total!=null){
             return PageContentDTO.emptyInstance();
         }
-        List<TaskInfoPO> taskInfoPOList =  sonTaskMapper.listMainTask(pageableDTO);
-        return  new PageContentDTO(total,taskInfoPOList);
+        List<SonTaskPO> sonTaskPOList =  sonTaskMapper.listSonTask(pageableDTO);
+        return  new PageContentDTO(total,sonTaskPOList);
     }
 
     @Override
-    public Integer countMainTask(TaskInfoDTO taskInfoDTO) {
-        return  sonTaskMapper.countMainTask(taskInfoDTO);
+    public Integer countSonTask(SonTaskDTO SonTaskDTO) {
+        return  sonTaskMapper.countSonTask(SonTaskDTO);
     }
 }

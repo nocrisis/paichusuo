@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head></head>
+<body>
+
+<div th:fragment="sidebar">
+
+
+    <!--左侧主栏目 遍历  start-->
+    <ul th:if="${ session.menu!=null && #arrays.length(session.menu)>0}" class="page-sidebar-menu" >
+
+        <!--&lt;!&ndash;logo&ndash;&gt;
+        <li>
+            <img src="http://dkongjian.lmfun.cn/mina-sys/baymax-logo.png?2711081000" alt="后台管理系统"/>
+        </li>-->
+
+        <!--主目录-->
+        <li th:each="parent : ${session.menu}"
+            th:if="${parent.layer} == 1"
+            th:class="(${#strings.isEmpty(session.menuDTO?.parent)} and  ${parent.id}==1 ) or ${(!#strings.isEmpty(session.menuDTO?.parent) and  ((session.menuDTO?.parent == parent.id) or  #arrays.contains(#strings.arraySplit(session.menuDTO.code,','),parent.code)   ) )}?'active':'none'"
+        >
+
+            <a th:href="@{${parent.skipUrl}?:'#'}" th:attr="data-menu=${parent.id}">
+
+                <img class="icon-cogs" th:attr="data-src-checked=${parent.menuIconChecked}"
+                     th:src="@{${parent.menuIcon}}">
+                <span class="title" th:text="${parent.name}"></span>
+            </a>
+        </li>
+
+        <!--底部用户信息-->
+        <li class="role">
+            <a href="javascript:void(0)">
+                <span class="title">账户管理</span>
+            </a>
+        </li>
+        <li class="user-dropdown">
+            <ul>
+                <li>
+                    <span>当前账户</span>
+                    <span th:text="${session.login_name}">用户名</span>
+
+                </li>
+                <li class="linkList">
+                    <a href="/user/resetPassport">修改密码</a>
+                    <a th:href="@{/logout}">退出登录</a>
+                </li>
+            </ul>
+            <!--向下的三角-->
+            <span class="arrow-down">
+            </span>
+        </li>
+    </ul>
+    <!--左侧主栏目 遍历  end-->
+
+    <!--左侧子栏目 遍历  start-->
+    <ul class="page-sidebar-menu-sub"
+        th:if="${parent.layer}==1 and ${#strings.isEmpty(parent.skipUrl)} "
+        th:attr="data-menu=${parent.id}"
+        th:each="parent:${session.menu}"
+        th:class="(${#strings.isEmpty(session.menuDTO?.parent)} and  ${parent.id}==1 ) or ${(!#strings.isEmpty(session.menuDTO?.parent) and  ((session.menuDTO?.parent == parent.id) or  #strings.startsWith(session.menuDTO.code,parent.code)) )}?'page-sidebar-menu-sub ':'hide'"
+    >
+
+        <li class="menu-sub-title">
+            <a href="javascript:void(0)">
+                <span class="title" th:text="|${parent.name}管理|"></span>
+            </a>
+        </li>
+
+        <li th:if="${children.layer}== 2 and ${parent.id == children.parent}"
+            th:attr="data-menu=${children.id}"
+            th:each="children:${session.menu}"
+            th:class="${!#strings.isEmpty(session.menuDTO?.parent) and (( #arrays.contains(session.menuDTO.codeList, children.codeList) or session.menuDTO.id == children.id))?'active':'none'}">
+            <a th:href="@{${children.skipUrl}}?:'#'" th:text="${children.name}"> </a>
+            <ul class="hide"
+                th:if="${children_sub.layer}== 3 and ${children.id == children_sub.parent}"
+                th:each="children_sub:${session.menu}"
+                th:attr="data-menu=${children_sub.id}"
+            >
+                <a th:href="@{${children_sub.skipUrl}?:'#'}" th:text="${children_sub.name}"></a>
+            </ul>
+        </li>
+
+    </ul>
+    <!--左侧子栏目 遍历  end-->
+</div>
+<!-- END SIDEBAR -->
+
+</body>
+</html>

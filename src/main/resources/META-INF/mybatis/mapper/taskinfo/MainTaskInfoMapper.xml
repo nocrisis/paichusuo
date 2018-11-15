@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.police.mapper.taskinfo.MainTaskInfoMapper">
     <resultMap id="BaseResultMap" type="com.police.pojo.entity.taskinfo.TaskInfoPO">
-        <id column="id" property="id" jdbcType="INTEGER" />
+        <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
         <result column="task_category" property="taskCategory" jdbcType="VARCHAR"/>
         <result column="issue_time" property="issueTime" jdbcType="TIMESTAMP"/>
@@ -24,29 +24,33 @@
         <selectKey keyProperty="taskId" resultType="string" order="BEFORE">
             select replace(uuid(), '-', '') as taskId from dual
         </selectKey>
-		INSERT INTO taskinfo
-		(task_id, task_category,issue_time,deadline,task_detail,task_area,publisher,created_at, updated_at,finish_status)
-		VALUES
-		(#{taskId}, #{taskCategory}, #{issueTime}, #{deadline}, #{taskDetail},#{taskArea},#{publisher},now(),now(),#{finishStatus})
-	</insert>
+        INSERT INTO taskinfo
+        (task_id, task_category,issue_time,deadline,task_detail,task_area,publisher,created_at,
+        updated_at,finish_status,archive)
+        VALUES
+        (#{taskId}, #{taskCategory}, #{issueTime}, #{deadline},
+        #{taskDetail},#{taskArea},#{publisher},now(),now(),#{finishStatus},1)
+    </insert>
 
     <select id="listMainTask" resultMap="BaseResultMap" parameterType="com.police.pojo.dto.taskinfo.TaskInfoDTO">
         SELECT
         <include refid="main_task_info"/>
         FROM
         taskinfo
-        WHERE
+        WHERE archive = 1
         <if test="finishStatus!= null and finishStatus!=''">
-            finish_status = #{finishStatus}
+            and finish_status = #{finishStatus}
         </if>
         <if test="taskCategory!= null and taskCategory!=''">
             and task_category = #{taskCategory}
         </if>
-        <if test="issueTime!= null and issueTime!=''">
-            and issue_time = #{issueTime}
+        <if test="(issueStartAt != null and issueStartAt != '')
+                        and (issueEndAt != null and issueEndAt != '')">
+            and issue_time BETWEEN #{issueStartAt} AND #{issueEndAt}
         </if>
-        <if test="deadline!= null and deadline!=''">
-            and deadline = #{deadline}
+        <if test="(deadlineStartAt != null and deadlineStartAt != '')
+                        and (deadlineEndAt != null and deadlineEndAt != '')">
+            and deadline BETWEEN #{deadlineStartAt} AND #{deadlineEndAt}
         </if>
         <if test="taskDetail!= null and taskDetail!=''">
             and task_detail = #{taskDetail}
@@ -64,18 +68,20 @@
     </select>
 
     <select id="countMainTask" parameterType="com.police.pojo.dto.taskinfo.TaskInfoDTO" resultType="integer">
-        select count(*) from taskinfo where
+        select count(*) from taskinfo where archive = 1
         <if test="finishStatus!= null and finishStatus!=''">
-            finish_status = #{finishStatus}
+             and finish_status = #{finishStatus}
         </if>
         <if test="taskCategory!= null and taskCategory!=''">
             and task_category = #{taskCategory}
         </if>
-        <if test="issueTime!= null and issueTime!=''">
-            and issue_time = #{issueTime}
+        <if test="(issueStartAt != null and issueStartAt != '')
+                        and (issueEndAt != null and issueEndAt != '')">
+            and issue_time BETWEEN #{issueStartAt} AND #{issueEndAt}
         </if>
-        <if test="deadline!= null and deadline!=''">
-            and deadline = #{deadline}
+        <if test="(deadlineStartAt != null and deadlineStartAt != '')
+                        and (deadlineEndAt != null and deadlineEndAt != '')">
+            and deadline BETWEEN #{deadlineStartAt} AND #{deadlineEndAt}
         </if>
         <if test="taskDetail!= null and taskDetail!=''">
             and task_detail = #{taskDetail}
@@ -88,33 +94,14 @@
         </if>
     </select>
 
-    <select id="getMainTask" parameterType="com.police.pojo.entity.taskinfo.TaskInfoPO"
+    <select id="getMainTask" parameterType="java.lang.String"
             resultType="com.police.pojo.entity.taskinfo.TaskInfoPO">
         SELECT
         <include refid="main_task_info"/>
         FROM
         taskinfo
         WHERE
-        <if test="taskId!= null and taskId!=''">
-            task_id = #{taskId}
-        </if>
-        <if test="taskCategory!= null and taskCategory!=''">
-            and task_category = #{taskCategory}
-        </if>
-
-        <if test="taskDetail!= null and taskDetail!=''">
-            and task_detail = #{taskDetail}
-        </if>
-        <if test="taskArea!= null and taskArea!=''">
-            and task_area = #{taskArea}
-        </if>
-        <if test="publisher!= null and publisher!=''">
-            and LIKE concat('%',#{publisher},'%')
-        </if>
-        <if test="finishStatus!= null and finishStatus!=''">
-            and finish_status = #{finishStatus}
-        </if>
-
+        task_id = #{taskId}
     </select>
 
 
@@ -141,7 +128,7 @@
             and issue_time = #{issueTime}
         </if>
         <if test="deadline!= null and deadline!=''">
-            and deadline = #{deadline}
+            and deadline > #{deadline}
         </if>
         <if test="publisher!= null and publisher!=''">
             and LIKE concat('%',#{publisher},'%')

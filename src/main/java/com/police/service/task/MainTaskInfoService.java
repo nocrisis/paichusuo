@@ -11,7 +11,7 @@ public interface MainTaskInfoService {
 
     Integer updateMainTaskInfo(TaskInfoPO TaskInfoPO);
 
-    TaskInfoPO getMainTaskInfo(TaskInfoPO TaskInfoPO);
+    TaskInfoPO getMainTaskInfo(String taskId);
 
     PageContentDTO listMainTaskInfo(TaskInfoDTO pageableDTO);
 

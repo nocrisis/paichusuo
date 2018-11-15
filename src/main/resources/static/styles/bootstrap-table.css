@@ -1,0 +1,255 @@
+/*分页样式 pagination    wzd*/
+
+
+.fixed-table-pagination {
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.pagination-detail,
+.pagination {
+    display: inline-block;
+}
+
+.pagination-detail.pull-left,
+.pagination.pull-right {
+    float: none !important;
+    margin-right: 10px;
+}
+
+.pagination {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    color: #333;
+}
+
+.pagination li a {
+    color: #333;
+    line-height: 28px;
+    min-width: 28px;
+    height: 28px;
+    display: inline-block;
+}
+
+.pagination .page-pre,
+.pagination .page-next {
+    padding: 0 8px;
+}
+
+.pagination .total,
+.pagination .page-first,
+.pagination .page-first-separator,
+.pagination .page-last-separator,
+.pagination .page-pre,
+.pagination .page-next,
+.pagination .page-last,
+.pagination .page-number,
+.pagination .goto-input,
+.pagination .goto-btn {
+    display: inline-block;
+    color: #333;
+}
+
+.pagination .page-first,
+.pagination .page-first-separator,
+.pagination .page-last-separator,
+.pagination .page-pre,
+.pagination .page-next,
+.pagination .page-last,
+.pagination .page-number,
+.pagination .goto {
+    /*padding: 5px 8px;*/
+    margin: 0 2px 0 2px;
+    min-width: 28px;
+    border: 1px solid #ddd;
+    background: #fff;
+    text-align: center;
+    border-radius: 2px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.pagination .active {
+    background: #e8e8e8;
+    border-color: #ddd;
+}
+
+.pagination .goto {
+    padding: 8px 8px;
+    margin-right: 2px;
+}
+
+.pagination .goto-input {
+    font-weight: normal;
+    border-radius: 2px;
+    width: 30px;
+    min-width: 30px;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 0 4px;
+}
+
+/*分页样式结束*/
+
+/* dataTables列内容居中 */
+
+.table{
+    margin-bottom: 0;
+}
+.table > tbody > tr > td,th {
+    text-align: center;
+}
+
+/* dataTables表头居中 */
+
+.table > thead:first-child > tr:first-child > th {
+    text-align: center;
+    background-color: #F2F2F2;
+    vertical-align: middle;
+}
+
+/* dataTables 行高 */
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    line-height: 22px;
+}
+
+
+/* dataTables 下划线 */
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
+.main-box .table-box {
+    position: relative;
+    /*margin-top: 20px;*/
+}
+
+.main-box .table-box .table tbody a {
+    color: #38f;
+}
+
+
+/* dataTables  数据加载的loading页面 ----start wzd*/
+
+.fixed-table-loading .loading {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -40px;
+}
+.lmf-loading-wrap {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.lmf-loading-wrap .loading-box {
+    position: absolute;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 10px solid #ccc;
+    clip: rect(0, 80px, 40px, 0px);
+    animation: loading-box-ani .5s ease-in-out infinite;
+    -webkit-animation: loading-box-ani .5s ease-in-out infinite;
+}
+
+.lmf-loading-wrap .loading-rings {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    border: 10px solid #f00;
+    clip: rect(0px, 80px, 80px, 40px);
+}
+
+.lmf-loading-wrap .loading-logo {
+    position: absolute;
+    box-sizing: border-box;
+    width: 70px;
+    height: 70px;
+    line-height: 60px;
+    text-align: center;
+    left: 5px;
+    top: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.lmf-loading-wrap .loading-logo img {
+    width: 65%;
+    vertical-align: middle;
+}
+
+@-webkit-keyframes loading-box-ani {
+    from {
+        -webkit-transform: rotate(0turn);
+    }
+    to {
+        -webkit-transform: rotate(1turn);
+    }
+}
+
+@keyframes loading-box-ani {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+/* dataTables  数据加载的loading页面 ----end  wzd*/
+
+/*---dataTable 特殊样式---*/
+.table-box{
+    border:1px solid #ddd;
+}
+th.cell-box{
+    border-left:1px solid #ddd;
+}
+.text-left{
+    text-align: left !important;
+}
+.text-right{
+    text-align: right !important;
+}
+.th-first{
+    text-indent: 15px;
+}
+
+.page-footer-ctrl-button {
+    margin: 0;
+    float: left;
+}
+
+.page_footer_buttons {
+    display: inline-block;
+    margin: 0 10px;
+}

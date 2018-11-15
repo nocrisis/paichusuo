@@ -1,0 +1,95 @@
+﻿body{ 
+    margin:0;
+    padding:0; 
+    font-family: 微软雅黑;}
+
+.top{
+    width:100%;
+    height:80px;
+    /*background:#00BA8B;*/
+    margin-bottom: 20px;
+}
+
+.toptitle{
+    height: 80px;
+    width:700px;
+    font-size:24px;
+    position: relative;
+    top:12px;
+    left:130px;
+}
+
+h1{
+    width:400px;
+    display:block; 
+    ine-height:1.5em; 
+    overflow:visible; 
+    font-size:35px; 
+    text-shadow:#f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0;
+}
+
+.work{
+    height:420px;
+    width:1120px;
+    border: 4px solid #376956;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 140px;
+    float: left;
+    }
+
+.back{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 30px;
+    width: 30px;
+}
+
+.make{
+    height:325px;
+    width:850px;
+    border:2px solid grey;
+    margin-top:40px;
+    margin-left: 120px;
+    background-color: #F2EFE6;
+}
+
+.lists{
+    width:100%;
+    overflow: scroll;
+    border-collapse:collapse;
+}
+
+.lists td, .lists th {
+    font-size:1em;
+    border:1px solid #98bf21;
+    padding:3px 7px 2px 7px;
+}
+
+.lists th {
+    font-size:1.1em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:#ffffff;
+}
+
+.showtime{
+    width: 250px;
+    margin-left: 860px;
+    margin-top:15px;
+
+}
+
+.footer{
+    width:100%; height:40px;background:#1A1A1A;margin: 0 auto;position: absolute;bottom: 0px;
+}
+
+.footfont{
+    font-size: 15px;
+    color:white;
+    margin-top:10px;
+    margin-left: 40px;
+}

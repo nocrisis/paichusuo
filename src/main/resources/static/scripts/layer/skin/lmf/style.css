@@ -1,0 +1,265 @@
+﻿/** 
+ 
+ @Name: layer皮肤--lmf
+ @Date: 2016.10.11
+ @Author: andy
+ @remark:
+    1.却换为flat风格图标，替换layer默认图标，新图标大小为48px;
+    2.更改按钮位置，居中对齐
+    3.关闭按钮增加动画效果
+    4.确认按钮背景颜色及高度调整
+    5.内容自动填充10px,去除横向滚动
+
+**/
+
+html #layui_layer_skinlmfstylecss {
+    display: none;
+    position: absolute;
+    width: 1989px;
+}
+
+body .layer-ext-lmf.layui-layer-page {
+    /*border: 5px rgba(78, 76, 76, 0.4) solid;*/
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+body .layer-ext-lmf.layer-ext-lmf-msg {
+    background-color: #000;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+body .layer-ext-lmf .layui-layer-title {
+    background: #f6f6f6;
+    color: #000;
+    border: 1px #e7e7e7 solid;
+}
+
+body .layer-ext-lmf .layui-layer-content {
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+body .layer-ext-lmf .layui-layer-content .layui-layer-ico {
+    width: 48px;
+    height: 48px;
+}
+
+body .layer-ext-lmf .layui-layer-ico0 {
+    background: url(default.png) no-repeat 0 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico1 {
+    background: url(default.png) no-repeat -48px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico2 {
+    background: url(default.png) no-repeat -96px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico3 {
+    background: url(default.png) no-repeat -144px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico4 {
+    background: url(default.png) no-repeat -192px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico5 {
+    background: url(default.png) no-repeat -240px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico6 {
+    background: url(default.png) no-repeat -288px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico7 {
+    background: url(default.png) no-repeat -336px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico8 {
+    background: url(default.png) no-repeat -384px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico9 {
+    background: url(default.png) no-repeat -432px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico10 {
+    background: url(default.png) no-repeat -480px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico11 {
+    background: url(default.png) no-repeat -528px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico12 {
+    background: url(default.png) no-repeat -576px 0;
+}
+
+body .layer-ext-lmf .layui-layer-ico13 {
+    background: url(default.png) no-repeat -624px 0;
+}
+
+body .layer-ext-lmf .layui-layer-setwin {
+    top: 11px
+}
+
+body .layer-ext-lmf .layui-layer-setwin .layui-layer-close1 {
+    width: 20px;
+    height: 20px;
+    background: url(close.png) no-repeat;
+    border-radius: 50%;
+    padding: 5px;
+    transition: .5s
+}
+
+body .layer-ext-lmf .layui-layer-setwin .layui-layer-close1:hover {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+
+/*弹窗的关闭按钮   --- 修改 wzd*/
+body .layer-ext-lmf .layui-layer-setwin .layui-layer-close2 {
+    position: absolute;
+    top: -7px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    margin-left: 0;
+    background-position: -149px -31px;
+}
+
+body .layer-ext-lmf .layui-layer-padding {
+    padding-top: 28px;
+    padding-left: 74px;
+    padding-bottom: 30px;
+}
+
+body .layer-ext-lmf .layui-layer-btn {
+    padding: 15px 0;
+    text-align: center;
+}
+
+body .layer-ext-lmf .layui-layer-btn a {
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    border-color: #ccc;
+    color: #333
+}
+
+body .layer-ext-lmf .layui-layer-btn a.layui-layer-btn0 {
+    background-color: #38F;
+    border-color: #38F;
+    color: #fff
+}
+
+body .layer-ext-lmf.layui-layer-loading .layui-layer-content {
+    width: 100px;
+    height: 110px;
+    /*background: url(loading.gif) no-repeat;*/
+    background: none;
+}
+
+body .layer-ext-lmf.layui-layer-tips {
+    background-color: #fff;
+    padding: 0;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-content {
+    /*display: inline-block;*/
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    padding: 10px;
+    /*line-height: 28px;*/
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+    vertical-align: middle;
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-resize {
+    display: none;
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-btn {
+    /*display: inline-block;*/
+    padding: 0 0 10px 0;
+    border-top: 0;
+    vertical-align: middle;
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-btn a {
+    height: 20px;
+    padding: 0 10px;
+    line-height: 20px;
+    font-size: 12px;
+
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-btn .layui-layer-btn1 {
+    color: #000;
+    background-color: #fff;
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-content .layui-layer-TipsG.layui-layer-TipsL {
+    border-bottom-color: #fff;
+}
+
+body .layer-ext-lmf.layui-layer-tips .layui-layer-content .layui-layer-TipsG.layui-layer-TipsR {
+    border-bottom-color: #fff;
+}
+
+body .layer-ext-lmf .layui-layer-content#moreContent {
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+}
+body .layer-ext-lmf.layer-ext-lmf-notify {
+    
+}
+body .layer-ext-lmf.layer-ext-lmf-notify .layui-layer-content{
+    
+}
+
+body .layer-ext-lmf.layer-ext-lmf-notify {
+    position: fixed;
+    top: 80px;
+    left: 25%;
+    right: 25%;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    z-index: 10000;
+    min-height: 40px;
+
+}
+
+body .layer-ext-lmf.layer-ext-lmf-notify.lmf-notify-success {
+    border: 1px solid #0a0;
+    background: #396;
+}
+
+body .layer-ext-lmf.layer-ext-lmf-notify.lmf-notify-error {
+    border: 1px solid #e33;
+    background: #f44;
+}
+body .layer-ext-lmf.layer-ext-lmf-notify.lmf-notify-notice {
+    border: 1px solid #f60;
+    background: #f85;
+}
+body .layer-ext-lmf.layer-ext-lmf-notify.lmf-notify-info {
+    border: 1px solid #feb;
+    background: #fff7cc;
+    color: #fc0 ;
+}

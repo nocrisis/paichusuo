@@ -8,28 +8,35 @@ import java.util.Date;
 
 public class TaskInfoDTO  extends BasePageableDTO {
     @JSONField(name = "task_id")
-    String taskId;
+    private String taskId;
 
     @JSONField(name = "task_category")
-    String taskCategory;
+    private  String taskCategory;
 
-    @JSONField(name = "issue_time")
-    Date issueTime;
+    @JSONField(name = "issue_start_at")
+    private Date issueStartAt;
 
-    @JSONField(name = "deadline")
-    Date deadline;
+    @JSONField(name = "issue_end_at")
+    private Date issueEndAt;
+
+    @JSONField(name = "deadline_start_at")
+    private Date deadlineStartAt;
+
+    @JSONField(name = "deadline_end_at")
+    private Date deadlineEndAt;
+
 
     @JSONField(name = "task_detail")
-    String taskDetail;
+    private String taskDetail;
 
     @JSONField(name = "task_area")
-    String taskArea;
+    private String taskArea;
 
     @JSONField(name = "publisher")
-    String publisher;
+    private String publisher;
 
     @JSONField(name = "finish_status")
-    String finishStatus;
+    private String finishStatus;
 
     public String getTaskId() { return taskId; }
 
@@ -43,20 +50,36 @@ public class TaskInfoDTO  extends BasePageableDTO {
         this.taskCategory = taskCategory;
     }
 
-    public Date getIssueTime() {
-        return issueTime;
+    public Date getIssueStartAt() {
+        return issueStartAt;
     }
 
-    public void setIssueTime(Date issueTime) {
-        this.issueTime = issueTime;
+    public void setIssueStartAt(Date issueStartAt) {
+        this.issueStartAt = issueStartAt;
     }
 
-    public Date getDeadline() {
-        return deadline;
+    public Date getIssueEndAt() {
+        return issueEndAt;
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public void setIssueEndAt(Date issueEndAt) {
+        this.issueEndAt = issueEndAt;
+    }
+
+    public Date getDeadlineStartAt() {
+        return deadlineStartAt;
+    }
+
+    public void setDeadlineStartAt(Date deadlineStartAt) {
+        this.deadlineStartAt = deadlineStartAt;
+    }
+
+    public Date getDeadlineEndAt() {
+        return deadlineEndAt;
+    }
+
+    public void setDeadlineEndAt(Date deadlineEndAt) {
+        this.deadlineEndAt = deadlineEndAt;
     }
 
     public String getTaskDetail() {
