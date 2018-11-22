@@ -1,3 +1,23 @@
+$(function() {
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        todayBtn:  1,
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        format: "Y-m-d", //选择日期后，文本框显示的日期格式
+        timepicker:false,
+        autoclose: true
+    });
+    $('.form_time').datetimepicker({
+        language:  'zh-CN',
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+});
 $(function () {
     var ajaxUrl = {
         'editMainTask': '/taskmanagent/maintask/updatemaintask'
@@ -37,7 +57,9 @@ $(function () {
         }
     }
 
-    function beforeSubmit(curform) {
+
+
+    $('#updateSubmit').click(function () {
         loadingIndex = layer.load();
 
         $.when({})
@@ -49,5 +71,5 @@ $(function () {
             });
 
         return false;
-    }
+    })
 });
