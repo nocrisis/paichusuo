@@ -4,11 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.police.common.util.FastJsonUtil;
 import com.police.common.util.ResultBuilder;
 import com.police.pojo.dto.PageContentDTO;
-import com.police.pojo.dto.taskinfo.SonTaskDTO;
 import com.police.pojo.dto.taskinfo.TaskInfoDTO;
 import com.police.pojo.entity.taskinfo.TaskInfoPO;
 import com.police.service.task.MainTaskInfoService;
-import com.police.service.task.SonTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 @Controller
 @RequestMapping("taskmanagent/maintask")
 public class MainTaskInfoController {
     private static final Logger logger = LoggerFactory.getLogger(MainTaskInfoController.class);
     @Autowired
     private MainTaskInfoService mainTaskInfoService;
-
-    @Autowired
-    private SonTaskService sonTaskService;
 
     @ResponseBody
     @RequestMapping(value = "/createmaintask", method = RequestMethod.POST)
@@ -97,7 +93,5 @@ public class MainTaskInfoController {
         model.addAttribute("mainTask",taskInfoPO);
         return "pages/task/maintask/edit";
     }
-
-
 
 }

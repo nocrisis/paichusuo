@@ -1,12 +1,12 @@
 $(function () {
     var ajaxUrl = {
-        'editMainTask': '/taskmanagent/maintask/updatemaintask',
+        'editMainTask': '/taskmanagent/maintask/updatemaintask'
     };
 
     var submitSet = {
         getAjaxSumitData: function () {
-            var submit_data = $('.create-lottery-form').serializeObject();
-
+            var submit_data = $('#editTaskForm').serializeObject();
+            console.log(submit_data);
             return submit_data;
         },
         ajaxSubmit: function (submit_data) {
@@ -37,7 +37,6 @@ $(function () {
         }
     }
 
-
     function beforeSubmit(curform) {
         loadingIndex = layer.load();
 
@@ -52,5 +51,3 @@ $(function () {
         return false;
     }
 });
-
-

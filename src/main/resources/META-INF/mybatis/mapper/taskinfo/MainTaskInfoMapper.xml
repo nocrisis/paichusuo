@@ -128,7 +128,7 @@
             and issue_time = #{issueTime}
         </if>
         <if test="deadline!= null and deadline!=''">
-            and deadline > #{deadline}
+            and deadline = #{deadline}
         </if>
         <if test="publisher!= null and publisher!=''">
             and LIKE concat('%',#{publisher},'%')
