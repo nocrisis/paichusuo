@@ -8,7 +8,7 @@
 <!--<![endif]-->
 
 <head>
-    <meta th:remove="tag" th:include="fragements/header::header(title='总任务列表')">
+    <meta th:remove="tag" th:include="fragements/header::header(title='子任务列表')">
     <!--<meta name="changeMallRedirectUrl" content="/marketing/layout/hot/homepage/load.html">-->
     <!--页面扩展link放这里-->
     <link th:href="@{/scripts/layui/lmf-1.0.18/css/layui.css}" rel="stylesheet"/>
@@ -22,13 +22,15 @@
 
 <body onLoad="time()" class="page-header-fixed child-active mall-list">
 <div class="main-box">
-    <!--<div class="work">-->
     <div class="back"><a href="/homepage/load.html">
         <button class="button button-primary button-circle button-border"><span
                 class="glyphicon glyphicon-chevron-left"></span></button>
     </a></div>
     <div class="main-box-top">
         <form class="form search child-search" id="searchForm" lay-filter="listShipments-search-box">
+            <div hidden>
+                <input class="form-control text-left" type="text" name="task_id" th:value="${task_id}">
+            </div>
             <div class="msg-box">
                 <label class="label">完成情况:</label>
                 <select name="finish_status" class="form-control" style="width: 150px;">
@@ -41,28 +43,22 @@
                 </select>
             </div>
             <div class="msg-box">
-                <label class="label">任务类别:</label>
-                <select name="task_category" class="form-control" style="width: 150px;">
-                    <option value="">全部</option>
-                    <option value="SEXY">扫黄排查</option>
-                    <option value="FIRE">消防安全排查</option>
-                    <option value="DRUGS">毒品排查</option>
-                    <option value="GAMBLE">赌博排查</option>
-                    <option value="RESIDENT">户口排查</option>
-                    <option value="FOCUS_PEOPLE">重点关注人口排查</option>
-                </select>
-            </div>
-            <div class="msg-box">
-                <label class="label">发布人:</label>
-                <input class="form-control text-left" type="text" placeholder="请输入发布人"
+                <label class="label">执行人:</label>
+                <input class="form-control text-left" type="text" placeholder="请输入执行人"
                        maxlength="10"
-                       name="publisher">
+                       name="cop_name">
             </div>
             <div class="msg-box">
                 <label class="label">任务区域:</label>
                 <input class="form-control text-left" type="text" placeholder="请输入任务区域"
                        maxlength="10"
                        name="task_area">
+            </div>
+            <div class="msg-box">
+                <label class="label">任务地点:</label>
+                <input class="form-control text-left" type="text" placeholder="请输入任务地点"
+                       maxlength="10"
+                       name="place">
             </div>
             <div class="msg-box">
                 <label class="label text-center" style="width:60px;">截止时间:</label>
@@ -72,15 +68,6 @@
                 <input class="form-control text-left layer-icon" type="text" id="end_date"
                        placeholder="请输入结束时间"
                        name="deadline_end_at">
-            </div>
-            <div class="msg-box">
-                <label class="label text-center" style="width:60px;">发布时间:</label>
-                <input class="form-control text-left layer-icon" type="text" id="start_date"
-                       placeholder="请输入开始时间"
-                       name="issue_start_at">
-                <input class="form-control text-left layer-icon" type="text" id="end_date"
-                       placeholder="请输入结束时间"
-                       name="issue_end_at">
             </div>
             <div class="msg-box">
                 <button class="search btn " type="submit">查询</button>
@@ -97,7 +84,7 @@
                     &#xe716;</i></button>
             </div>
         </div>
-        <table class="table-list-card" id="mainTaskTableList" lay-filter="listShipments-table">
+        <table class="table-list-card" id="sontaskTableList" lay-filter="listShipments-table">
         </table>
     </div>
     <div class="showtime" id="showtime"></div>
@@ -108,20 +95,15 @@
     <div th:remove="tag" th:include="fragements/footer::footer"></div>
     <!--页面扩展js放这里-->
     <script id="operateTemplate" type="text/html">
-        {{# if(d.allocate_status == 1){ }}
-        <a class="get-sontask ctrl opt"
-           href="/taskmanagement/sontask/list/{{d.task_id}}.html" >子任务列表</a>
-        {{# } }}
-        <a class="get-sontask ctrl opt"
-           href="/taskmanagement/sontask/allocatesontask/{{d.task_id}}.html">分配子任务</a>
-        <a class="delete-maintask ctrl opt" href="/taskmanagement/maintask/deletemaintask" lay-event="delete"
-           data-task_id="{{d.task_id}}">删除</a>
-        <a class="edit-maintask ctrl opt" href="/taskmanagement/maintask/edit/{{d.task_id}}.html" lay-event="edit">编辑</a>
+        <a class="delete-sontask ctrl opt" href="/taskmanagement/sontask/deletesontask" lay-event="delete"
+           data-task_id="{{d.son_task_id}}">删除</a>
+        <a class="edit-sontask ctrl opt" href="/taskmanagement/sontask/edit/{{d.son_task_id}}.html" lay-event="edit">编辑</a>
         <!--d是bootstrapsTable里的每一行column-->
     </script>
 
     <script type="text/javascript" th:inline="javascript">
         /*<![CDATA[*/
+        var task_id = [[${task_id}]];
         layui.config({
             base: '/scripts/modules/',
             version: '201808011357'
@@ -130,7 +112,7 @@
         /*]]>*/
     </script>
     <script type="text/javascript" th:src="@{/scripts/common_table.js}"></script>
-    <script th:src="@{/scripts/pages/task/maintask/list.js?201812101428}"></script>
+    <script th:src="@{/scripts/pages/task/sontask/list.js?201812112148}"></script>
     <!--脚本内容分界线**************************************************************************  -->
 </footer>
 </html>

@@ -14,19 +14,20 @@ layui.use(['layer', 'lmfTable'], function () {
     var common_table = layui.lmfTable;
 
     var ajaxUrl = {
-        getList: '/taskmanagement/maintask/listmaintask',
-        delete: '/taskmanagement/maintask/deletemaintask'
+        getList: '/taskmanagement/sontask/listsontask',
+        delete: '/taskmanagement/sontask/deletesontask'
     };
 
     var TABLE_CONFIG = {
         //数据请求地址
         url: ajaxUrl.getList,
         //数据渲染表
-        elem: '#mainTaskTableList',
+        elem: '#sontaskTableList',
         tableFilter: 'listShipments-table',
         //搜索form表单
         searchFilter: 'listShipments-search-box',
         where: {
+            task_id: task_id,
             order: 'desc',
             sort_field: 'created_at'
         },
@@ -36,6 +37,12 @@ layui.use(['layer', 'lmfTable'], function () {
         cols: [[
             {
                 field: 'task_id',
+                title: '子任务编号',
+                valign: 'middle',
+                align: 'left'
+            },
+            {
+                field: 'son_task_id',
                 title: '主任务编号',
                 valign: 'middle',
                 align: 'left'
@@ -59,11 +66,6 @@ layui.use(['layer', 'lmfTable'], function () {
                 }
             },
             {
-                field: 'issue_time',
-                valign: 'middle',
-                title: '发布时间',
-            },
-            {
                 field: 'deadline',
                 valign: 'middle',
                 title: '截止时间',
@@ -74,7 +76,7 @@ layui.use(['layer', 'lmfTable'], function () {
                 title: '任务详情',
             },
             {
-                field: 'task_area',
+                field: '',
                 valign: 'middle',
                 title: '任务区域',
                 templet: function (row) {
@@ -82,9 +84,25 @@ layui.use(['layer', 'lmfTable'], function () {
                 }
             },
             {
-                field: 'publisher',
+                field: '',
                 valign: 'middle',
-                title: '任务发布人',
+                title: '任务地点',
+                templet: function (row) {
+                    return place[row.place];
+                }
+            },
+            {
+                field: '',
+                valign: 'middle',
+                title: '任务负责人',
+                templet: function (row) {
+                    return row.cop_id + ' ' + row.cop_name;
+                }
+            },
+            {
+                field: 'finish_time',
+                valign: 'middle',
+                title: '完成时间',
             },
             {
                 valign: 'middle',

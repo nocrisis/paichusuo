@@ -1,6 +1,18 @@
 $(function () {
+    $('.form_date').datetimepicker({
+        weekStart: 1,
+        format:'yyyy-mm-dd HH:ii:ss',
+        showSecond: true, //显示秒
+        stepHour: 1,//设置步长
+        stepMinute: 5,
+        stepSecond: 30,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1
+    });
+
     var ajaxUrl = {
-        'editMainTask': '/taskmanagent/maintask/updatemaintask'
+        'editMainTask': '/taskmanagement/maintask/updatemaintask'
     };
 
     var submitSet = {
@@ -35,9 +47,9 @@ $(function () {
                 }
             });
         }
-    }
+    };
 
-    function beforeSubmit(curform) {
+    function beforeSubmit() {
         loadingIndex = layer.load();
 
         $.when({})
@@ -50,4 +62,7 @@ $(function () {
 
         return false;
     }
+    $('#submitForm').click(function(e){
+        beforeSubmit()
+    });
 });

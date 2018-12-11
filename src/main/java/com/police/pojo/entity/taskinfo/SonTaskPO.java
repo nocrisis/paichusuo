@@ -29,17 +29,20 @@ public class SonTaskPO extends BasePO {
     @JSONField(name = "place")
     private String place;
 
-    @JSONField(name = "deadline")
+    @JSONField(name = "deadline",format = "yyyy-MM-dd HH:mm:ss")
     private Date deadline;
 
-    @JSONField(name = "delay_deadline")
+    @JSONField(name = "delay_deadline",format = "yyyy-MM-dd HH:mm:ss")
     private Date delayDeadline;
 
-    @JSONField(name = "finish_time")
+    @JSONField(name = "finish_time",format = "yyyy-MM-dd HH:mm:ss")
     private Date finishTime;
 
     @JSONField(name = "finish_status")
     private String finishStatus;
+
+    @JSONField(name = "cop_name")
+    private String copName;
 
     public String getSonTaskId() {
         return sonTaskId;
@@ -97,13 +100,21 @@ public class SonTaskPO extends BasePO {
         this.place = place;
     }
 
-    public Date getDeadline() { return deadline; }
+    public Date getDeadline() {
+        return deadline;
+    }
 
-    public void setDeadline(Date deadline) { this.deadline = deadline; }
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
 
-    public Date getDelayDeadline() { return delayDeadline; }
+    public Date getDelayDeadline() {
+        return delayDeadline;
+    }
 
-    public void setDelayDeadline(Date delayDeadline) { this.delayDeadline = delayDeadline; }
+    public void setDelayDeadline(Date delayDeadline) {
+        this.delayDeadline = delayDeadline;
+    }
 
     public Date getFinishTime() {
         return finishTime;
@@ -113,13 +124,25 @@ public class SonTaskPO extends BasePO {
         this.finishTime = finishTime;
     }
 
-    public String getFinishStatus() { return finishStatus; }
+    public String getFinishStatus() {
+        return finishStatus;
+    }
 
-    public void setFinishStatus(String finishStatus) { this.finishStatus = finishStatus; }
+    public void setFinishStatus(String finishStatus) {
+        this.finishStatus = finishStatus;
+    }
+
+    public String getCopName() {
+        return copName;
+    }
+
+    public void setCopName(String copName) {
+        this.copName = copName;
+    }
 
     @Override
     public String toString() {
-        return "SonTaskDTO{" +
+        return "SonTaskPO{" +
                 "sonTaskId='" + sonTaskId + '\'' +
                 ", taskId='" + taskId + '\'' +
                 ", taskCategory='" + taskCategory + '\'' +
@@ -131,6 +154,7 @@ public class SonTaskPO extends BasePO {
                 ", delayDeadline=" + delayDeadline +
                 ", finishTime=" + finishTime +
                 ", finishStatus='" + finishStatus + '\'' +
+                ", copName='" + copName + '\'' +
                 '}';
     }
 }

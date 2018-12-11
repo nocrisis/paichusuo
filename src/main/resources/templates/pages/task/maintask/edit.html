@@ -45,17 +45,17 @@
             </div>
             <div class="form-group form-group2-1">
                 <label>发布时间</label>
-                <div class="controls date form_date" data-date="" data-date-format="yyyy-MM-dd"
-                     data-link-format="yyyy-mm-dd">
-                    <input name="issue_time" class="form-control" th:value="${mainTask.issueTime}">
+                <div class="controls date form_date">
+                    <input name="issue_time" class="form-control"
+                           th:value="${#dates.format(mainTask.issueTime,'yyyy-MM-dd HH:mm:ss')}">
                     <span class="add-on"><i class="icon-th"></i></span>
                 </div>
             </div>
             <div class="form-group form-group2-2">
                 <label>截止时间</label>
-                <div class="controls date form_date" data-date="" data-date-format="yyyy-MM-dd"
-                     data-link-format="yyyy-mm-dd">
-                    <input name="deadline" class="form-control" th:value="${mainTask.deadline}">
+                <div class="controls date form_date">
+                    <input name="deadline" class="form-control"
+                           th:value="${#dates.format(mainTask.deadline,'yyyy-MM-dd HH:mm:ss')}">
                     <span class="add-on"><i class="icon-th"></i></span>
                 </div>
             </div>
@@ -69,6 +69,16 @@
                     <option value="FINISHED" th:selected="${mainTask.finishStatus} eq 'FINISHED'">已完成</option>
                 </select>
             </div>
+            <div class="form-group form-group3">
+                <label>任务区域</label>
+                <select  class="form-control" name="task_area" placeholder="请选择任务区域">
+                    <option value="">全部</option>
+                    <option value="CH" th:selected="${mainTask.taskArea} eq 'CH'">长河社区</option>
+                    <option value="ZJC" th:selected="${mainTask.taskArea} eq 'ZJC'">张家村社区</option>
+                    <option value="JE" th:selected="${mainTask.taskArea} eq 'JE'">江二社区</option>
+                    <option value="JS" th:selected="${mainTask.taskArea} eq 'JS'">江三社区</option>
+                </select>
+            </div>
             <div class="form-group form-group4">
                 <label>任务发布者</label>
                 <input type="text" class="form-control" id="publisher" name="publisher"
@@ -77,7 +87,7 @@
             <div class="form-group form-group5">
                 <label>任务详情</label>
                 <input type="text" class="form-control" rows="3" name="task_detail"
-                          th:value="${mainTask.taskDetail}">
+                       th:value="${mainTask.taskDetail}">
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -111,6 +121,6 @@
     })
     /*]]>*/
 </script>
-<script th:src="@{/scripts/pages/task/maintask/edit.js?2018112201212}"></script>
+<script th:src="@{/scripts/pages/task/maintask/edit.js?201811222044}"></script>
 </body>
 </html>

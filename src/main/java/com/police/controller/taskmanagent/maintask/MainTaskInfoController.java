@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping("taskmanagent/maintask")
+@RequestMapping("taskmanagement/maintask")
 public class MainTaskInfoController {
     private static final Logger logger = LoggerFactory.getLogger(MainTaskInfoController.class);
     @Autowired
@@ -50,8 +50,6 @@ public class MainTaskInfoController {
     }
 
 
-
-
     @ResponseBody
     @RequestMapping(value = "/deletemaintask", method = RequestMethod.POST)
     public String deleteMainTask(@RequestBody String payload){
@@ -79,7 +77,7 @@ public class MainTaskInfoController {
     }
 
     @RequestMapping(value = "createmaintask.html", method = RequestMethod.GET)
-    public String createBundle(Model model) {
+    public String createMainTask(Model model) {
         return "pages/task/maintask/create";
     }
 

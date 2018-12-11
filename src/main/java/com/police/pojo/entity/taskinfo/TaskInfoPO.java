@@ -31,6 +31,9 @@ public class TaskInfoPO extends BasePO {
     @JSONField(name = "finish_status")
     String finishStatus;
 
+    @JSONField(name = "allocate_status")
+    private int allocateStatus;
+
     public String getTaskId() {
         return taskId;
     }
@@ -94,6 +97,10 @@ public class TaskInfoPO extends BasePO {
     public void setFinishStatus(String finishStatus) {
         this.finishStatus = finishStatus;
     }
+
+    public int getAllocateStatus() { return allocateStatus; }
+
+    public void setAllocateStatus(int allocateStatus) { this.allocateStatus = allocateStatus; }
 
     @Override
     public String toString() {

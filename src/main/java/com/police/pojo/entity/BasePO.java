@@ -7,9 +7,6 @@ import java.util.Date;
 
 public class BasePO {
 
-    @JSONField(name="id")
-    protected Integer id;
-
     @JSONField(name = "created_at",format = "yyyy-MM-dd HH:mm:ss")
     protected Date createdAt;
 
@@ -24,14 +21,6 @@ public class BasePO {
 
     @JSONField(name = "archive")
     private String archive;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Date getCreatedAt() {
         return createdAt;

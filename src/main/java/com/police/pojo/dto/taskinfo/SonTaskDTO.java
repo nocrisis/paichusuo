@@ -21,6 +21,9 @@ public class SonTaskDTO extends BasePageableDTO {
     @JSONField(name = "cop_id")
     private String copId;
 
+    @JSONField(name = "cop_name")
+    private String copName;
+
     @JSONField(name = "task_area")
     private String taskArea;
 
@@ -115,6 +118,14 @@ public class SonTaskDTO extends BasePageableDTO {
 
     public void setFinishStatus(String finishStatus) { this.finishStatus = finishStatus; }
 
+    public String getCopName() {
+        return copName;
+    }
+
+    public void setCopName(String copName) {
+        this.copName = copName;
+    }
+
     @Override
     public String toString() {
         return "SonTaskDTO{" +
@@ -123,6 +134,7 @@ public class SonTaskDTO extends BasePageableDTO {
                 ", taskCategory='" + taskCategory + '\'' +
                 ", taskDetail='" + taskDetail + '\'' +
                 ", copId='" + copId + '\'' +
+                ", copName='" + copName + '\'' +
                 ", taskArea='" + taskArea + '\'' +
                 ", place='" + place + '\'' +
                 ", deadline=" + deadline +
