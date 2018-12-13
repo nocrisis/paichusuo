@@ -37,7 +37,7 @@ public class SonTaskInfoController {
         if (resultColumn != null) {
             TaskInfoPO taskInfoPO = new TaskInfoPO();
             taskInfoPO.setTaskId(sonTask.getTaskId());
-            taskInfoPO.setAllocateStatus(1);
+            taskInfoPO.setAllocateStatus(taskInfoPO.getAllocateStatus()+1);
             Integer setAllocateResult = mainTaskInfoService.updateMainTaskInfo(taskInfoPO);
             if (setAllocateResult != null) {
                 return ResultBuilder.buildSuccess("创建子任务成功");
@@ -67,10 +67,18 @@ public class SonTaskInfoController {
     @RequestMapping(value = "/deletesontask", method = RequestMethod.POST)
     public String deleteSonTask(@RequestBody String payload) {
         logger.info("删除子任务，请求参数：{}", payload);
+        String sonTaskId = JSON.parseObject(payload).getString("son_task_id");
         String taskId = JSON.parseObject(payload).getString("task_id");
-        Integer resultColumn = sonTaskService.deleteSonTask(taskId);
+        Integer resultColumn = sonTaskService.deleteSonTask(sonTaskId);
         if (resultColumn != null) {
-            return ResultBuilder.buildSuccess("删除子任务成功");
+            TaskInfoPO taskInfoPO = new TaskInfoPO();
+            taskInfoPO.setTaskId(taskId);
+            taskInfoPO.setAllocateStatus(taskInfoPO.getAllocateStatus()-1);
+            Integer setDeleteResult = mainTaskInfoService.updateMainTaskInfo(taskInfoPO);
+            if (setDeleteResult != null) {
+                return ResultBuilder.buildSuccess("删除子任务成功");
+            }
+            return ResultBuilder.buildSuccess("删除子任务更新主任务同步失败");
         } else {
             return ResultBuilder.buildError("删除子任务失败");
         }
@@ -99,11 +107,13 @@ public class SonTaskInfoController {
     }
 
 
-    @ResponseBody
     @RequestMapping(value = "/getsontask/{sonTaskId}.html", method = RequestMethod.GET)
     public String getSonTask(@PathVariable("sonTaskId") String sonTaskId, Model model) {
+        logger.info("获取任务获取sonTaskId={}的详情", sonTaskId);
         SonTaskPO sonTaskPO = sonTaskService.getSonTask(sonTaskId);
+        TaskInfoPO taskInfoPO = mainTaskInfoService.getMainTaskInfo(sonTaskPO.getTaskId());
         model.addAttribute("sonTask", sonTaskPO);
+        model.addAttribute("mainTask", taskInfoPO);
         return "pages/task/sontask/edit";
     }
 

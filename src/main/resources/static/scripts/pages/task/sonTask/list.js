@@ -17,6 +17,62 @@ layui.use(['layer', 'lmfTable'], function () {
         getList: '/taskmanagement/sontask/listsontask',
         delete: '/taskmanagement/sontask/deletesontask'
     };
+    var operate_config = {
+        delete:function(row){
+            var son_task_id = row.data.son_task_id;
+            var task_id = row.data.task_id;
+            var content = '<p style="padding-top:30px;padding-left: 30px;">确认删除该子任务?</p>';
+
+            layer.open({
+                type: 1,
+                area: ['430px', '260px'],
+                id: 'stock',
+                shadeClose: true,
+                scrollbar: false,
+                resize: false,
+                title: '删除管理',
+                content: content,
+                btn: ['确认删除','取消'],
+                btnAlign: 'r',
+                success: function (index, layero) {
+                    $(layero).find('.tip').text('');
+                },
+                yes: function (index, layero) {
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            son_task_id: son_task_id,
+                            task_id:task_id
+                        }),
+                        url: ajaxUrl.delete
+                    })
+                        .then(function (delResult) {
+                            if (delResult.code != 200) {
+                                layer.Notify.error(delResult.errorMsg || '删除失败!');
+                                return;
+                            }
+                            layer.Notify.success(delResult.errorMsg || '删除成功!');
+                            layer.close(index);
+                            $tableList.reloadWithKeepPage();
+                            // $tableList.refresh();
+                        })
+                        .fail(function (error) {
+                            layer.Notify.error('暂时无法连接服务器，请稍后再试!');
+                        })
+
+                },
+                btn2: function () {
+                    layer.closeAll();
+                },
+                cancel: function () {
+                    layer.closeAll();
+                }
+            });
+
+        }
+    };
 
     var TABLE_CONFIG = {
         //数据请求地址
@@ -117,7 +173,8 @@ layui.use(['layer', 'lmfTable'], function () {
         ]
     };
 
-    var $tableList = common_table(TABLE_CONFIG);
+    var $tableList = common_table(TABLE_CONFIG,operate_config);
 
 });
+
 

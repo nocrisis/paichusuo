@@ -125,7 +125,7 @@
             place = #{place},
         </if>
         <if test="delayDeadline!= null and delayDeadline!=''">
-            delay_deadline = #{delayDeadline}
+            delay_deadline = #{delayDeadline},
         </if>
         updated_at = now()
         WHERE

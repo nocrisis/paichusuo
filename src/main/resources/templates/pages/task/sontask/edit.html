@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员-编辑子任务</title>
+    <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
+    <meta th:remove="tag" th:include="fragements/header::header(title='子任务')">
+    <link th:href="@{/styles/css/newwork.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
+
+    <script language=Javascript>
+        function time() {
+            //获得显示时间的div
+            t_div = document.getElementById('showtime');
+            var now = new Date()
+            //替换div内容
+            t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+            //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+            setTimeout(time, 1000);
+        }
+    </script>
+
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+        <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+
+<div class="work">
+    <div class="back"><a href="/homepage/load.html">
+        <button class="button button-primary button-circle button-border"><span
+                class="glyphicon glyphicon-chevron-left"></span></button>
+    </a></div>
+    <div class="make">
+        <form role="form" id="addTaskForm">
+            <div class="form-group form-group1">
+                <label>主任务编号</label>
+                <input class="form-control text-left" name="task_id" th:value="${mainTask.taskId}" readonly>
+            </div>
+            <div class="form-group form-group1">
+                <label>子任务编号</label>
+                <input class="form-control text-left" name="son_task_id" th:value="${sonTask.sonTaskId}" readonly>
+            </div>
+            <div class="form-group form-group1">
+                <label>任务类别</label>
+                <input class="form-control text-left" name="task_category" id="task-Category" readonly>
+            </div>
+            <div class="form-group form-group2-1">
+                <label>总任务发布时间</label>
+                <div class="controls date ">
+                    <input class="form-control"
+                           th:value="${#dates.format(mainTask.issueTime,'yyyy-MM-dd HH:mm:ss')}" readonly>
+                </div>
+            </div>
+            <div class="form-group form-group2-2">
+                <label>总任务截止时间</label>
+                <div class="controls date ">
+                    <input class="form-control"
+                           th:value="${#dates.format(mainTask.deadline,'yyyy-MM-dd HH:mm:ss')}" readonly>
+                </div>
+            </div>
+            <!--<div class="form-group form-group2-1">-->
+            <!--<label>子任务发布时间</label>-->
+            <!--<div class="controls date form_date">-->
+            <!--<input name="issue_time" class="form-control"-->
+            <!--th:value="${#dates.format(mainTask.issueTime,'yyyy-MM-dd HH:mm:ss')}">-->
+            <!--<span class="add-on"><i class="icon-th"></i></span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-group form-group2-1">
+                <label>子任务截止时间</label>
+                <div class="controls date form_date">
+                    <input name="deadline" class="form-control" type="text" placeholder="请选择时间"
+                           th:value="${#dates.format(sonTask.deadline,'yyyy-MM-dd HH:mm:ss')}">
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+            <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'CH'">
+                <label>总任务区域</label>
+                <input class="form-control text-left" name="task_area" value="长河社区" readonly>
+            </div>
+            <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'ZJC'">
+                <label>总任务区域</label>
+                <input class="form-control text-left" name="task_area" value="张家村社区" readonly>
+            </div>
+
+            <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'CH'">
+                <label>子任务地点</label>
+                <!--<select th:if class="form-control" name="place" placeholder="请选择任务区域">-->
+                <!--<option value="CH001" th:selected="${mainTask.place} eq 'CH001'">彩虹城</option>-->
+                <!--<option value="CH002" th:selected="${mainTask.place} eq 'CH002'">连连大厦</option>-->
+                <!--<option value="CH003" th:selected="${mainTask.place} eq 'CH003'">中控科技园</option>-->
+                <!--<option value="CH004" th:selected="${mainTask.place} eq 'CH004'">杭州长河估计中学</option>-->
+                <!--<option value="CH005" th:selected="${mainTask.place} eq 'CH005'">杭州龙禧大酒店</option>-->
+                <!--<option value="CH006" th:selected="${mainTask.place} eq 'CH006'">滨江龙湖天街</option>-->
+                <!--<option value="CH007" th:selected="${mainTask.place} eq 'CH007'">中心花园</option>-->
+                <!--<option value="CH008" th:selected="${mainTask.place} eq 'CH008'">好歌汇量贩KTV</option>-->
+                <!--<option value="CH009" th:selected="${mainTask.place} eq 'CH009'">浙江大学医学院附属儿童医院</option>-->
+                <!--<option value="CH0010" th:selected="${mainTask.place} eq 'CH0010'">宝龙城</option>-->
+                <!--</select>-->
+                <select name="place" placeholder="请选择任务区域" th:value="${sonTask.place}" readonly>
+                    <option value="CH001" th:selected="${sonTask.place=='CH001'}">彩虹城</option>
+                    <option value="CH002" th:selected="${sonTask.place=='CH002'}">连连大厦</option>
+                    <option value="CH003" th:selected="${sonTask.place=='CH003'}">中控科技园</option>
+                    <option value="CH004" th:selected="${sonTask.place=='CH004'}">杭州长河高级中学</option>
+                    <option value="CH005" th:selected="${sonTask.place=='CH005'}">杭州龙禧大酒店</option>
+                    <option value="CH006" th:selected="${sonTask.place=='CH006'}">滨江龙湖天街</option>
+                    <option value="CH007" th:selected="${sonTask.place=='CH007'}">中心花园</option>
+                    <option value="CH008" th:selected="${sonTask.place=='CH008'}">好歌汇量贩KTV</option>
+                    <option value="CH009" th:selected="${sonTask.place=='CH009'}">浙江大学医学院附属儿童医院</option>
+                    <option value="CH0010" th:selected="${sonTask.place=='CH0010'}">宝龙城</option>
+                </select>
+            </div>
+            <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'ZJC'" readonly>
+                <label>子任务地点</label>
+                <select name="place" placeholder="请选择任务区域">
+                    <option value="ZJC001" th:selected="${sonTask.place=='ZJC001'}">冠山小区</option>
+                    <option value="ZJC002" th:selected="${sonTask.place=='ZJC002'}">华数数字电视产业园</option>
+                    <option value="ZJC003" th:selected="${sonTask.place=='ZJC003'}">杭州白马湖国际会展中心</option>
+                </select>
+            </div>
+            <div class="form-group form-group4">
+                <label>子任务负责警员</label>
+                <select name="cop_id" id="cop_id" placeholder="请输入执行者">
+                    <option value="a001" th:selected="${>张杰</option>
+                    <option value="b002">华音</option>
+                    <option value="b003">杭家豪</option>
+                </select>
+            </div>
+            <div class="form-group form-group5">
+                <label>子任务详情要求</label>
+                <textarea type="text" class="form-control" rows="3" name="task_detail"
+                          placeholder="请输入任务详情"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="button button-caution button-small button-border"
+                            style="margin-left: 30%;" id="submitForm"> 编辑任务
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="showtime" id="showtime"></div>
+</div>
+
+
+<div class="footer">
+    <div class="footfont">
+        © 2017 Bootstrap Police Control System.
+    </div>
+
+</div>
+
+
+<footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
+    <div th:remove="tag" th:include="fragements/footer::footer"></div>
+</footer>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var mainTask = [[${mainTask}]];
+    $(function () {
+        var task_category = mainTask.taskCategory;
+        var task_category_text = taskCategory[task_category];
+        $('#task-Category').val(task_category_text);
+    })
+    /*]]>*/
+</script>
+<script th:src="@{/scripts/pages/task/sontask/edit.js?201812122110}"></script>
+</body>
+</html>

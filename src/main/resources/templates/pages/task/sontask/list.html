@@ -95,9 +95,8 @@
     <div th:remove="tag" th:include="fragements/footer::footer"></div>
     <!--页面扩展js放这里-->
     <script id="operateTemplate" type="text/html">
-        <a class="delete-sontask ctrl opt" href="/taskmanagement/sontask/deletesontask" lay-event="delete"
-           data-task_id="{{d.son_task_id}}">删除</a>
-        <a class="edit-sontask ctrl opt" href="/taskmanagement/sontask/edit/{{d.son_task_id}}.html" lay-event="edit">编辑</a>
+        <a class="delete-sontask ctrl opt" lay-event="delete">删除</a>
+        <a class="edit-sontask ctrl opt" href="/taskmanagement/sontask/getsontask/{{d.son_task_id}}.html" lay-event="edit">编辑</a>
         <!--d是bootstrapsTable里的每一行column-->
     </script>
 
@@ -112,7 +111,7 @@
         /*]]>*/
     </script>
     <script type="text/javascript" th:src="@{/scripts/common_table.js}"></script>
-    <script th:src="@{/scripts/pages/task/sontask/list.js?201812112148}"></script>
+    <script th:src="@{/scripts/pages/task/sontask/list.js?201812131516}"></script>
     <!--脚本内容分界线**************************************************************************  -->
 </footer>
 </html>

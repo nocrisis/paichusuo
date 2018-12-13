@@ -108,15 +108,16 @@
     <div th:remove="tag" th:include="fragements/footer::footer"></div>
     <!--页面扩展js放这里-->
     <script id="operateTemplate" type="text/html">
-        {{# if(d.allocate_status == 1){ }}
+        {{# if(d.allocate_status  >= 1){ }}
         <a class="get-sontask ctrl opt"
-           href="/taskmanagement/sontask/list/{{d.task_id}}.html" >子任务列表</a>
+           href="/taskmanagement/sontask/list/{{d.task_id}}.html">子任务列表</a>
         {{# } }}
         <a class="get-sontask ctrl opt"
            href="/taskmanagement/sontask/allocatesontask/{{d.task_id}}.html">分配子任务</a>
         <a class="delete-maintask ctrl opt" href="/taskmanagement/maintask/deletemaintask" lay-event="delete"
            data-task_id="{{d.task_id}}">删除</a>
-        <a class="edit-maintask ctrl opt" href="/taskmanagement/maintask/edit/{{d.task_id}}.html" lay-event="edit">编辑</a>
+        <a class="edit-maintask ctrl opt" href="/taskmanagement/maintask/edit/{{d.task_id}}.html"
+           lay-event="edit">编辑</a>
         <!--d是bootstrapsTable里的每一行column-->
     </script>
 

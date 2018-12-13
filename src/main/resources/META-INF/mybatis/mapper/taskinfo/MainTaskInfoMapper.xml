@@ -129,7 +129,7 @@
            finish_status = #{finishStatus},
         </if>
         <if test="allocateStatus!= null and allocateStatus!=''">
-           allocate_status = #{allocateStatus}
+           allocate_status = #{allocateStatus},
         </if>
         updated_at = now()
         WHERE
