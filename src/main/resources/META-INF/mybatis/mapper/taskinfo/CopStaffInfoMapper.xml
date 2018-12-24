@@ -1,0 +1,167 @@
+ <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.police.mapper.taskinfo.CopStaffInfoMapper">
+    <resultMap id="BaseResultMap" type="com.police.pojo.entity.copstaff.CopInfoPO">
+        <result column="cop_id" property="copId" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="cop_name" property="copName" jdbcType="VARCHAR"/>
+        <result column="cop_sex" property="copSex" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="role_flag" property="flag" jdbcType="INTEGER"/>
+        <result column="manage_area" property="manageArea" jdbcType="VARCHAR"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+
+
+    </resultMap>
+
+    <sql id="main_task_info">
+        id,cop_id,password,cop_name,cop_sex,birthday,role_flag,manage_area,created_at,updated_at
+    </sql>
+
+    <insert id="createCopStaffInfo" parameterType="com.police.pojo.entity.copstaff.CopInfoPO">
+        <selectKey keyProperty="copId" resultType="string" order="BEFORE">
+            select replace(uuid(), '-', '') as copId from dual
+        </selectKey>
+        INSERT INTO copinfo
+        (cop_id,password,cop_name,cop_sex,birthday,role_flag,manage_area,created_at,updated_at)
+        VALUES
+        (#{cop_id}, #{password}, #{cop_name}, #{cop_sex}, #{birthday},#{role_flag},#{manage_area},now(),now()})
+    </insert>
+
+    <select id="listCopStaffInfo" resultMap="BaseResultMap" parameterType="com.police.pojo.dto.copstaff.CopInfoDTO">
+        SELECT
+        <include refid="main_task_info"/>
+        FROM
+        copinfo
+        WHERE archive = 1
+        <if test="copName!= null and copName!=''">
+            and cop_name = #{copName}
+        </if>
+        <if test="copSex!= null and copSex!=''">
+            and cop_sex = #{copSex}
+        </if>
+        <if test="birthday!= null and birthday!=''">
+            and birthday = #{birthday}
+        </if>
+        <if test="flag!= null and flag!=''">
+            and role_flag = #{flag}
+        </if>
+        <if test="manageArea!= null and manageArea!=''">
+            and manage_area = #{manageArea}
+        </if>
+        <if test="sortField != null and sortField != ''">
+            ORDER BY ${sortField} ${order}
+        </if>
+
+        Limit #{pageStart},#{pageSize}
+    </select>
+
+    <select id="countCopStaffInfo" parameterType="com.police.pojo.dto.copstaff.CopInfoDTO" resultType="integer">
+        select count(*) from copinfo where archive = 1
+        <if test="copName!= null and copName!=''">
+            and cop_name = #{copName}
+        </if>
+        <if test="copSex!= null and copSex!=''">
+            and cop_sex = #{copSex}
+        </if>
+        <if test="birthday!= null and birthday!=''">
+            and birthday = #{birthday}
+        </if>
+        <if test="flag!= null and flag!=''">
+            and role_flag = #{flag}
+        </if>
+        <if test="manageArea!= null and manageArea!=''">
+            and manage_area = #{manageArea}
+        </if>
+    </select>
+
+   <!-- <select id="getCopStaffInfo" parameterType="com.police.pojo.entity.copstaff.CopInfoPO"
+            resultType="com.police.pojo.entity.copstaff.CopInfoPO">
+        SELECT
+        <include refid="main_task_info"/>
+        FROM
+        copfinfo
+        WHERE
+        <if test="copId!= null and copId!=''">
+            cop_id = #{copId}
+        </if>
+        <if test="copName!= null and copName!=''">
+            and cop_name = #{copName}
+        </if>
+        <if test="copSex!= null and copSex!=''">
+            and cop_sex = #{copSex}
+        </if>
+        <if test="birthday!= null and birthday!=''">
+            and birthday = #{birthday}
+        </if>
+        <if test="flag!= null and flag!=''">
+            and role_flag = #{flag}
+        </if>
+        <if test="manageArea!= null and manageArea!=''">
+            and manage_area = #{manageArea}
+        </if>
+        <if test="finishStatus!= null and finishStatus!=''">
+            and finish_status = #{finishStatus}
+        </if>
+
+    </select>-->
+
+    <select id="getCopStaffInfo" parameterType="java.lang.String"
+            resultType="com.police.pojo.entity.copstaff.CopInfoPO">
+        SELECT
+        <include refid="main_task_info"/>
+        FROM
+        copfinfo
+        WHERE
+        cop_id = #{copId}
+    </select>
+
+
+    <delete id="deleteCopStaffInfo" parameterType="java.lang.String">
+        delete from copinfo
+        where cop_id = #{copId}
+    </delete>
+
+
+    <update id="updateCopStaffInfo" parameterType="com.police.pojo.dto.copstaff.CopInfoDTO">
+        UPDATE
+        copinfo
+        SET
+        <if test="copName!= null and copName!=''">
+            and cop_name = #{copName}
+        </if>
+        <if test="copSex!= null and copSex!=''">
+            and cop_sex = #{copSex}
+        </if>
+        <if test="birthday!= null and birthday!=''">
+            and birthday = #{birthday}
+        </if>
+        <if test="flag!= null and flag!=''">
+            and role_flag = #{flag}
+        </if>
+        <if test="manageArea!= null and manageArea!=''">
+            and manage_area = #{manageArea}
+        </if>
+        <if test="finishStatus!= null and finishStatus!=''">
+            and finish_status = #{finishStatus}
+        </if>
+        updated_at = now()
+        WHERE
+        cop_id = #{copId}
+    </update>
+
+    <update id="batchUpdateFinishStatus">
+        UPDATE
+        copinfo
+        SET
+        finish_status = #{finishStatus},
+        updated_at = now()
+        WHERE
+        task_id IN
+        <foreach collection="copIds" open="(" close=")" item="copId" separator=",">
+            #{copId}
+        </foreach>
+    </update>
+
+</mapper>

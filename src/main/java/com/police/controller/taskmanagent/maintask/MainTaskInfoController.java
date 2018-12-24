@@ -40,6 +40,7 @@ public class MainTaskInfoController {
     public String listMainTaskInfo(@RequestBody String payload) {
         logger.info("获取主任务列表， 请求参数：{}", payload);
         TaskInfoDTO listTaskQueryParam = FastJsonUtil.toBean(payload, TaskInfoDTO.class);
+        System.out.println(listTaskQueryParam.getTaskArea());
         PageContentDTO taskList = mainTaskInfoService.listMainTaskInfo(listTaskQueryParam);
         return ResultBuilder.buildSuccess(taskList);
     }
