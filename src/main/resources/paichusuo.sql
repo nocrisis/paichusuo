@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 13/12/2018 15:30:21
+ Date: 26/12/2018 14:17:49
 */
 
 SET NAMES utf8mb4;
@@ -91,7 +91,7 @@ CREATE TABLE `coptask`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `archive` smallint(6) NOT NULL DEFAULT 1 COMMENT '-1.删除；0.禁用；1.启用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of coptask
@@ -104,26 +104,52 @@ INSERT INTO `coptask` VALUES (5, '15af2785fd4911e8aacf00ffe725274a', 'a2b6ca70fc
 INSERT INTO `coptask` VALUES (6, '33908364fd4911e8aacf00ffe725274a', 'a2b6ca70fc4711e89bee00ffe725274a', 'DRUGS', 'a001', '张杰', 'CH', 'CH008', '吸毒贩毒情况突击检查', '2018-12-26 12:00:00', NULL, NULL, 'TODO', '2018-12-11 21:32:27', '2018-12-11 21:32:27', 1);
 INSERT INTO `coptask` VALUES (9, '55ca8f5dfe9c11e8b4ee00ffe725274a', '0a62af1ee87811e887e7000ec6a06ad6', 'DRUGS', 'a001', '张杰', 'CH', 'CH005', '酒店毒品排查', '2018-12-30 07:55:38', NULL, NULL, 'TODO', '2018-12-13 14:00:04', '2018-12-13 14:00:04', 1);
 INSERT INTO `coptask` VALUES (10, '2c8d1256fea311e8b4ee00ffe725274a', '2cf0a5ddd8e811e891a4000ec6a06ad6', 'SEXY', 'b002', '华音', 'CH', 'CH003', '基本局还不够', '2018-12-31 02:50:44', NULL, NULL, 'TODO', '2018-12-13 14:49:01', '2018-12-13 14:49:01', 1);
+INSERT INTO `coptask` VALUES (11, '8345443408d011e9acbf00ffe725274a', '97f14158e89a11e887e7000ec6a06ad6', 'GAMBLE', 'b002', '华音', 'CH', 'CH006', '', NULL, NULL, NULL, 'TODO', '2018-12-26 13:38:38', '2018-12-26 13:38:38', 1);
 
 -- ----------------------------
 -- Table structure for firecontrol
 -- ----------------------------
 DROP TABLE IF EXISTS `firecontrol`;
 CREATE TABLE `firecontrol`  (
-  `id` int(8) NOT NULL,
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `fire_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `sonTaskId` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `taskId` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `copId` bigint(16) NOT NULL,
   `finishTime` date NULL DEFAULT NULL,
   `place` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `fireEquipment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `firePassage` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `other` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `archive` smallint(6) NOT NULL DEFAULT 1 COMMENT '-1.删除；0.禁用；1.启用',
+  `f1` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f2` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f3` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f4` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f5` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f6` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f7` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f8` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f9` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f10` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f11` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f12` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `f13` int(4) NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft1` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft2` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft3` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft4` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft5` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'input',
+  `ft6` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft7` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft9` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft8` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft10` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft11` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft12` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
+  `ft13` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '0否，1是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for focuspeople
@@ -261,7 +287,7 @@ CREATE TABLE `taskinfo`  (
 -- ----------------------------
 INSERT INTO `taskinfo` VALUES (2, '2cf0a5ddd8e811e891a4000ec6a06ad6', 'SEXY', '2018-12-13 14:49:01', '2018-12-16 00:00:00', '打黄扫非,突击检查', 'CH', '数据库测试者', 'TODO', '2018-12-13 14:49:01', '2018-12-13 14:49:01', 1, 1);
 INSERT INTO `taskinfo` VALUES (8, '0a62af1ee87811e887e7000ec6a06ad6', 'DRUGS', '2018-12-13 14:00:04', '2018-11-15 00:00:00', '毒品大清扫', 'CH', '所长', 'INTERRUPTED', '2018-12-13 14:00:04', '2018-12-13 14:00:04', 1, 1);
-INSERT INTO `taskinfo` VALUES (9, '97f14158e89a11e887e7000ec6a06ad6', 'GAMBLE', '2018-12-13 15:22:49', '2018-11-20 00:00:00', '赌博全面排查', 'CH', '所长', 'TODO', '2018-12-13 15:22:49', '2018-12-13 15:22:49', 0, 1);
+INSERT INTO `taskinfo` VALUES (9, '97f14158e89a11e887e7000ec6a06ad6', 'GAMBLE', '2018-12-26 13:38:38', '2018-11-20 00:00:00', '赌博全面排查', 'CH', '所长', 'TODO', '2018-12-26 13:38:38', '2018-12-26 13:38:38', 1, 1);
 INSERT INTO `taskinfo` VALUES (10, '504bf194ee1d11e887e7000ec6a06ad6', 'FIRE', '2018-12-11 21:52:25', '2018-11-29 00:00:00', '消防大排查', 'ZJC', '修改者', 'TODO', '2018-12-11 21:52:25', '2018-12-11 21:52:25', NULL, 1);
 INSERT INTO `taskinfo` VALUES (11, 'e2fdf72fee2a11e887e7000ec6a06ad6', 'SEXY', '2018-12-11 21:53:07', '2018-12-26 00:00:00', '打黄扫非,突击检查', 'ZJC', '数据库测试者', 'TODO', '2018-12-11 22:25:50', '2018-12-11 22:25:50', 1, 1);
 INSERT INTO `taskinfo` VALUES (12, 'c25f588ff37911e887e7000ec6a06ad6', 'GAMBLE', '2018-11-29 09:53:59', '2018-12-06 09:50:45', '麻将棋牌赌博严查', 'ZJC', '副所长', 'TODO', '2018-11-29 09:54:31', '2018-11-29 09:54:31', NULL, 1);
