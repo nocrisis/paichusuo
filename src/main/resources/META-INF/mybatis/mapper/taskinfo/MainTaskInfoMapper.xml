@@ -40,11 +40,11 @@
         <if test="finishStatus!= null and finishStatus!=''">
             and finish_status = #{finishStatus}
         </if>
+        <if test="taskCategory!= null and taskCategory!=''">
+            and task_category = #{taskCategory}
+        </if>
         <if test="(issueStartAt != null) and (issueEndAt != null)">
             and issue_time BETWEEN #{issueStartAt} AND #{issueEndAt}
-        </if>
-        <if test="(deadlineStartAt != null) and (deadlineEndAt != null)">
-            and deadline BETWEEN #{deadlineStartAt} AND #{deadlineEndAt}
         </if>
         <if test="(deadlineStartAt != null ) and (deadlineEndAt != null )">
             and deadline BETWEEN #{deadlineStartAt} AND #{deadlineEndAt}
@@ -56,7 +56,7 @@
             and task_area = #{taskArea}
         </if>
         <if test="publisher!= null and publisher!=''">
-            and LIKE concat('%',#{publisher},'%')
+            and publisher LIKE concat('%',#{publisher},'%')
         </if>
         <if test="sortField != null and sortField != ''">
             ORDER BY ${sortField} ${order}
@@ -85,7 +85,7 @@
             and task_area = #{taskArea}
         </if>
         <if test="publisher!= null and publisher!=''">
-            and LIKE concat('%',#{publisher},'%')
+            and publisher LIKE concat('%',#{publisher},'%')
         </if>
     </select>
 

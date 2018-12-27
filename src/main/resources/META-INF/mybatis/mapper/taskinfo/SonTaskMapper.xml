@@ -49,7 +49,7 @@
             and cop_id = #{copId}
         </if>
         <if test="copName!= null and copName!=''">
-            and cop_name = #{copName}
+            and cop_name LIKE concat('%',#{copName},'%')
         </if>
         <if test="deadline!= null ">
             and deadline > #{deadline}
@@ -75,7 +75,7 @@
             and cop_id = #{copId}
         </if>
         <if test="copName!= null and copName!=''">
-            and cop_name = #{copName}
+            and cop_name LIKE concat('%',#{copName},'%')
         </if>
         <if test="deadline!= null ">
             and deadline > #{deadline}
@@ -113,7 +113,7 @@
             cop_id = #{copId},
         </if>
         <if test="copName!= null and copName!=''">
-            cop_name = #{copName},
+            cop_name = #{copName},'
         </if>
         <if test="deadline!= null">
             deadline > #{deadline},
