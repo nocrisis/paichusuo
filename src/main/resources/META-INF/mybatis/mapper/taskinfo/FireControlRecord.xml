@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.police.mapper.taskinfo.FireControlRecordMapper">
+    <resultMap id="SonTaskMap" type="com.police.pojo.entity.sontaskrecord.FireControlRecord">
+        <result column="fire_id" property="fireId" jdbcType="VARCHAR"/>
+        <result column="son_task_id" property="sonTaskId" jdbcType="VARCHAR"/>
+        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
+        <result column="cop_id" property="copId" jdbcType="VARCHAR"/>
+        <result column="place" property="place" jdbcType="VARCHAR"/>
+        <result column="finish_time" property="finishTime" jdbcType="VARCHAR"/>
+        <result column="other" property="other" jdbcType="VARCHAR"/>
+        <result column="f1" property="f1" jdbcType="VARCHAR"/>
+        <result column="f2" property="f2" jdbcType="VARCHAR"/>
+        <result column="f3" property="f3" jdbcType="TIMESTAMP"/>
+        <result column="f4" property="f4" jdbcType="TIMESTAMP"/>
+        <result column="f5" property="f5" jdbcType="VARCHAR"/>
+        <result column="f6" property="f6" jdbcType="VARCHAR"/>
+        <result column="f7" property="f7" jdbcType="VARCHAR"/>
+        <result column="f8" property="f8" jdbcType="VARCHAR"/>
+        <result column="f9" property="f9" jdbcType="VARCHAR"/>
+        <result column="f10" property="f10" jdbcType="VARCHAR"/>
+        <result column="f11" property="f11" jdbcType="VARCHAR"/>
+        <result column="f12" property="f12" jdbcType="VARCHAR"/>
+        <result column="f13" property="f13" jdbcType="VARCHAR"/>
+        <result column="ft1" property="ft1" jdbcType="VARCHAR"/>
+        <result column="ft2" property="ft2" jdbcType="VARCHAR"/>
+        <result column="ft3" property="ft3" jdbcType="VARCHAR"/>
+        <result column="ft4" property="ft4" jdbcType="VARCHAR"/>
+        <result column="ft5" property="ft5" jdbcType="VARCHAR"/>
+        <result column="ft6" property="ft6" jdbcType="VARCHAR"/>
+        <result column="ft7" property="ft7" jdbcType="VARCHAR"/>
+        <result column="ft8" property="ft8" jdbcType="VARCHAR"/>
+        <result column="ft19" property="ft9" jdbcType="VARCHAR"/>
+        <result column="ft10" property="ft10" jdbcType="VARCHAR"/>
+        <result column="ft11" property="ft11" jdbcType="VARCHAR"/>
+        <result column="ft12" property="ft12" jdbcType="VARCHAR"/>
+        <result column="ft13" property="ft13" jdbcType="VARCHAR"/>
+
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="son_task_info">
+		fire_id,son_task_id,task_id,cop_id,place,finish_time,other,f1,f2,f3,f4,f5,f6,f7,
+		f8,f9,f10,f11,f12,f13,ft1,ft2,ft3,ft4,ft5,ft6,ft7,ft8,ft9,ft10,ft11,ft12,ft13
+	</sql>
+
+    <insert id="insertFireControlRecord" parameterType="com.police.pojo.entity.sontaskrecord.FireControlRecord">
+        <selectKey keyProperty="sonTaskId" resultType="string" order="BEFORE">
+            select replace(uuid(), '-', '') as sonTaskId from dual
+        </selectKey>
+        INSERT INTO firecontrol
+        (<include refid="son_task_info"/>)
+        VALUES
+        (#{fireId},#{sonTaskId},#{taskId},#{copId},#{place},#{finishTime},#{other},#{f1},#{f2},
+        #{f3},#{f4},#{f5},#{f6},#{f7},#{f8},#{f9},#{f10},#{f11},#{f12},#{f13},#{ft1},#{ft2},
+        #{ft3},#{ft4},#{ft5},#{ft6},#{ft7},#{ft8},#{ft9},#{ft10},#{ft11},
+        #{ft12},#{ft13},now(),now())
+    </insert>
+
+    <select id="countFireControlRecord" parameterType="com.police.pojo.dto.sontaskrecord.FireControlRecordDTO" resultType="integer">
+        select count(*) from firecontrol where archive = 1
+    </select>
+
+    <select id="getFireControlRecord" parameterType="java.lang.String"
+            resultType="com.police.pojo.entity.sontaskrecord.FireControlRecord">
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        firecontrol
+        WHERE
+        son_task_id = #{sonTaskId}
+    </select>
+
+
+    <delete id="deleteFireControlRecord" parameterType="java.lang.String">
+        delete from firecontrol
+        where son_task_id = #{sonTaskId}
+    </delete>
+
+
+</mapper>

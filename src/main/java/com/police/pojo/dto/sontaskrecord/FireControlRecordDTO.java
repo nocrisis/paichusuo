@@ -1,12 +1,11 @@
-package com.police.pojo.entity.sontaskrecord;
+package com.police.pojo.dto.sontaskrecord;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.police.pojo.entity.BasePO;
-import com.police.pojo.entity.taskinfo.SonTaskPO;
 
 import java.util.Date;
 
-public class FireControlRecord extends BasePO{
+public class FireControlRecordDTO extends BasePO{
     //SonTaskPO sonTaskPO;
     @JSONField(name = "fire_id")
     private String fireId;
@@ -374,9 +373,9 @@ public class FireControlRecord extends BasePO{
 
     @Override
     public String toString() {
-        return "FireControlRecord{" +
+        return "FireControlRecordDTO{" +
                 ", fireId='" + fireId + '\'' +
-                "sonTaskId='" + sonTaskId + '\'' +
+                ", sonTaskId='" + sonTaskId + '\'' +
                 ", taskId='" + taskId + '\'' +
                 ", copId='" + copId + '\'' +
                 ", finishTime=" + finishTime +
@@ -408,7 +407,6 @@ public class FireControlRecord extends BasePO{
                 ", ft11='" + ft11 + '\'' +
                 ", ft12='" + ft12 + '\'' +
                 ", ft13='" + ft13 + '\'' +
-
                 '}';
     }
 }
