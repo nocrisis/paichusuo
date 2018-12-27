@@ -64,6 +64,21 @@ public class SonTaskInfoController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/listallsontask", method = RequestMethod.POST)
+    public String listAllSonTask(@RequestBody String payload) {
+        logger.info("获取所有子任务列表， 请求参数：{}", payload);
+        SonTaskDTO listTaskQueryParam = FastJsonUtil.toBean(payload, SonTaskDTO.class);
+        PageContentDTO taskList = sonTaskService.listAllSonTask(listTaskQueryParam);
+        return ResultBuilder.buildSuccess(taskList);
+    }
+
+    @RequestMapping(value = "/listall.html", method = RequestMethod.GET)
+    public String listAllSonTaskPage() {
+        return "pages/task/sontask/listall";
+    }
+
+
+    @ResponseBody
     @RequestMapping(value = "/deletesontask", method = RequestMethod.POST)
     public String deleteSonTask(@RequestBody String payload) {
         logger.info("删除子任务，请求参数：{}", payload);

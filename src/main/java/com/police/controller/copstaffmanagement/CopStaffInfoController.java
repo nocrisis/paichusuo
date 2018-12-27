@@ -38,8 +38,10 @@ public class CopStaffInfoController {
     @ResponseBody
     @RequestMapping(value = "/listcop",method = RequestMethod.POST)
     public String listCopStaff(@RequestBody String payload) {
-        logger.info("获取主任务列表， 请求参数：{}", payload);
+
+        logger.info("获取警员列表， 请求参数：{}", payload);
         CopInfoDTO listTaskQueryParam = FastJsonUtil.toBean(payload, CopInfoDTO.class);
+        System.out.println("listTaskQueryParam="+listTaskQueryParam.getCopId());
         PageContentDTO taskList = copStaffInfoService.listCopStaffInfo(listTaskQueryParam);
         return ResultBuilder.buildSuccess(taskList);
     }
@@ -52,7 +54,8 @@ public class CopStaffInfoController {
     @ResponseBody
     @RequestMapping(value = "/deletecopstaff", method = RequestMethod.POST)
     public String deleteCopStaff(@RequestBody String payload){
-        logger.info("删除主任务，请求参数：{}", payload);
+
+        logger.info("删除警员，请求参数：{}", payload);
         String copId = JSON.parseObject(payload).getString("cop_id");
         Integer resultColumn = copStaffInfoService.deleteCopStaffInfo(copId);
         if (resultColumn != null) {

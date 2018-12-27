@@ -63,6 +63,36 @@
         Limit #{pageStart},#{pageSize}
     </select>
 
+    <select id="listAllSonTask" resultMap="SonTaskMap" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO">
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE archive = 1
+        <if test="finishStatus!= null and finishStatus!=''">
+            and finish_status = #{finishStatus}
+        </if>
+        <if test="taskCategory!= null and taskCategory!=''">
+            and task_category = #{taskCategory}
+        </if>
+        <if test="copId!= null and copId!=''">
+            and cop_id = #{copId}
+        </if>
+        <if test="copName!= null and copName!=''">
+            and cop_name = #{copName}
+        </if>
+        <if test="deadline!= null ">
+            and deadline > #{deadline}
+        </if>
+        <if test="taskArea!= null and taskArea!=''">
+            and task_area = #{taskArea}
+        </if>
+        <if test="sortField != null and sortField != ''">
+            ORDER BY ${sortField} ${order}
+        </if>
+        Limit #{pageStart},#{pageSize}
+    </select>
+
     <select id="countSonTask" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO" resultType="integer">
         select count(*) from coptask where task_id = #{taskId} and archive = 1
         <if test="finishStatus!= null and finishStatus!=''">

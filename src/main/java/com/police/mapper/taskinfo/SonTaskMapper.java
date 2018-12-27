@@ -11,6 +11,7 @@ import java.util.List;
 public interface SonTaskMapper {
     Integer insertSonTask(SonTaskPO sonTaskPO);
     List<SonTaskPO> listSonTask(SonTaskDTO sonTaskDTO);
+    List<SonTaskPO> listAllSonTask(SonTaskDTO sonTaskDTO);
     SonTaskPO getSonTask(@Param("sonTaskId") String  sonTaskId);
     Integer deleteSonTask(@Param("sonTaskId") String sonTaskId);
     Integer batchUpdateFinishStatus(@Param("sonTaskIds") List<String> sonTaskId,@Param("finishStatus") String finishStatus);

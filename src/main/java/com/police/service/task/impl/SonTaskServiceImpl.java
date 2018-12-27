@@ -48,6 +48,16 @@ public class SonTaskServiceImpl implements SonTaskService {
     }
 
     @Override
+    public PageContentDTO listAllSonTask(SonTaskDTO pageableDTO) {
+        Integer total =  sonTaskMapper.countSonTask(pageableDTO);
+        if(total==null){
+            return PageContentDTO.emptyInstance();
+        }
+        List<SonTaskPO> sonTaskPOList =  sonTaskMapper.listAllSonTask(pageableDTO);
+        return  new PageContentDTO(total,sonTaskPOList);
+    }
+
+    @Override
     public Integer countSonTask(SonTaskDTO SonTaskDTO) {
         return  sonTaskMapper.countSonTask(SonTaskDTO);
     }

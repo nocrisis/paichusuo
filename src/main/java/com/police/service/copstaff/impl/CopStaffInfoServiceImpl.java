@@ -8,8 +8,8 @@ import com.police.pojo.entity.copstaff.CopInfoPO;
 import com.police.service.copstaff.CopStaffInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
 public class CopStaffInfoServiceImpl implements CopStaffInfoService {
     @Autowired

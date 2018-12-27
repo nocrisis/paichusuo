@@ -53,7 +53,7 @@ INSERT INTO `coparea` VALUES (13, '张家村社区', 'ZJC', '杭州白马湖国�
 -- ----------------------------
 -- Table structure for copinfo
 -- ----------------------------
-DROP TABLE IF EXISTS `copinfo`;
+/*DROP TABLE IF EXISTS `copinfo`;
 CREATE TABLE `copinfo`  (
   `id` int(8) NOT NULL,
   `cop_id` bigint(16) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `copinfo`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `archive` smallint(6) NOT NULL DEFAULT 1 COMMENT '-1.删除；0.禁用；1.启用',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;*/
 
 -- ----------------------------
 -- Table structure for coptask

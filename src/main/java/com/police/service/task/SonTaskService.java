@@ -16,4 +16,8 @@ public interface SonTaskService {
     PageContentDTO listSonTask (SonTaskDTO pageableDTO);
 
     Integer countSonTask(SonTaskDTO SonTaskDTO);
+
+    PageContentDTO listAllSonTask (SonTaskDTO pageableDTO);
+
+
 }
