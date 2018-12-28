@@ -3,11 +3,11 @@
 <mapper namespace="com.police.mapper.taskinfo.FireControlRecordMapper">
     <resultMap id="SonTaskMap" type="com.police.pojo.entity.sontaskrecord.FireControlRecord">
         <result column="fire_id" property="fireId" jdbcType="VARCHAR"/>
-        <result column="son_task_id" property="sonTaskId" jdbcType="VARCHAR"/>
-        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
-        <result column="cop_id" property="copId" jdbcType="VARCHAR"/>
+        <result column="sonTaskId" property="sonTaskId" jdbcType="VARCHAR"/>
+        <result column="taskId" property="taskId" jdbcType="VARCHAR"/>
+        <result column="copId" property="copId" jdbcType="VARCHAR"/>
         <result column="place" property="place" jdbcType="VARCHAR"/>
-        <result column="finish_time" property="finishTime" jdbcType="VARCHAR"/>
+        <result column="finishTime" property="finishTime" jdbcType="VARCHAR"/>
         <result column="other" property="other" jdbcType="VARCHAR"/>
         <result column="f1" property="f1" jdbcType="VARCHAR"/>
         <result column="f2" property="f2" jdbcType="VARCHAR"/>
@@ -41,7 +41,7 @@
     </resultMap>
 
     <sql id="son_task_info">
-		fire_id,son_task_id,task_id,cop_id,place,finish_time,other,f1,f2,f3,f4,f5,f6,f7,
+		fire_id,sonTaskId,taskId,copId,finishTime,place,other,created_at,updated_at,f1,f2,f3,f4,f5,f6,f7,
 		f8,f9,f10,f11,f12,f13,ft1,ft2,ft3,ft4,ft5,ft6,ft7,ft8,ft9,ft10,ft11,ft12,ft13
 	</sql>
 
@@ -52,10 +52,10 @@
         INSERT INTO firecontrol
         (<include refid="son_task_info"/>)
         VALUES
-        (#{fireId},#{sonTaskId},#{taskId},#{copId},#{place},#{finishTime},#{other},#{f1},#{f2},
+        (#{fireId},#{sonTaskId},#{taskId},#{copId},#{finishTime},#{place},#{other},now(),now(),#{f1},#{f2},
         #{f3},#{f4},#{f5},#{f6},#{f7},#{f8},#{f9},#{f10},#{f11},#{f12},#{f13},#{ft1},#{ft2},
         #{ft3},#{ft4},#{ft5},#{ft6},#{ft7},#{ft8},#{ft9},#{ft10},#{ft11},
-        #{ft12},#{ft13},now(),now())
+        #{ft12},#{ft13})
     </insert>
 
     <select id="countFireControlRecord" parameterType="com.police.pojo.dto.sontaskrecord.FireControlRecordDTO" resultType="integer">
@@ -69,13 +69,13 @@
         FROM
         firecontrol
         WHERE
-        son_task_id = #{sonTaskId}
+        sonTaskId = #{sonTaskId}
     </select>
 
 
     <delete id="deleteFireControlRecord" parameterType="java.lang.String">
         delete from firecontrol
-        where son_task_id = #{sonTaskId}
+        where sonTaskId = #{sonTaskId}
     </delete>
 
 
