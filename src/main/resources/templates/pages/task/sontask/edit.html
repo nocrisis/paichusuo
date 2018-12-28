@@ -89,18 +89,6 @@
 
             <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'CH'">
                 <label>子任务地点</label>
-                <!--<select th:if class="form-control" name="place" placeholder="请选择任务区域">-->
-                <!--<option value="CH001" th:selected="${mainTask.place} eq 'CH001'">彩虹城</option>-->
-                <!--<option value="CH002" th:selected="${mainTask.place} eq 'CH002'">连连大厦</option>-->
-                <!--<option value="CH003" th:selected="${mainTask.place} eq 'CH003'">中控科技园</option>-->
-                <!--<option value="CH004" th:selected="${mainTask.place} eq 'CH004'">杭州长河估计中学</option>-->
-                <!--<option value="CH005" th:selected="${mainTask.place} eq 'CH005'">杭州龙禧大酒店</option>-->
-                <!--<option value="CH006" th:selected="${mainTask.place} eq 'CH006'">滨江龙湖天街</option>-->
-                <!--<option value="CH007" th:selected="${mainTask.place} eq 'CH007'">中心花园</option>-->
-                <!--<option value="CH008" th:selected="${mainTask.place} eq 'CH008'">好歌汇量贩KTV</option>-->
-                <!--<option value="CH009" th:selected="${mainTask.place} eq 'CH009'">浙江大学医学院附属儿童医院</option>-->
-                <!--<option value="CH0010" th:selected="${mainTask.place} eq 'CH0010'">宝龙城</option>-->
-                <!--</select>-->
                 <select name="place" placeholder="请选择任务区域" th:value="${sonTask.place}" readonly>
                     <option value="CH001" th:selected="${sonTask.place=='CH001'}">彩虹城</option>
                     <option value="CH002" th:selected="${sonTask.place=='CH002'}">连连大厦</option>
@@ -125,9 +113,9 @@
             <div class="form-group form-group4">
                 <label>子任务负责警员</label>
                 <select name="cop_id" id="cop_id" placeholder="请输入执行者">
-                    <option value="a001" th:selected="${>张杰</option>
-                    <option value="b002">华音</option>
-                    <option value="b003">杭家豪</option>
+                    <option value="a001" th:selected="${sonTask.copId=='a001'}">张杰</option>
+                    <option value="b002" th:selected="${sonTask.copId=='b002'}">华音</option>
+                    <option value="b003" th:selected="${sonTask.copId=='b003'}">杭家豪</option>
                 </select>
             </div>
             <div class="form-group form-group5">

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员-编辑任务</title>
+    <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
+    <meta th:remove="tag" th:include="fragements/header::header(title='总任务')">
+    <link th:href="@{/styles/css/newwork.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
+
+    <script language=Javascript>
+        function time() {
+            //获得显示时间的div
+            t_div = document.getElementById('showtime');
+            var now = new Date()
+            //替换div内容
+            t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+            //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+            setTimeout(time, 1000);
+        }
+    </script>
+
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+        <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+
+<div class="work">
+    <div class="back"><a href="/homepage/load.html">
+        <button class="button button-primary button-circle button-border"><span
+                class="glyphicon glyphicon-chevron-left"></span></button>
+    </a></div>
+    <div class="make">
+        <form role="form" id="editTaskForm">
+            <div hidden>
+                <input class="form-control text-left" name="task_id" th:value="${mainTask.taskId}">
+            </div>
+            <div class="form-group form-group1">
+                <label>任务类别</label>
+                <input class="form-control text-left" name="task_category" id="task-Category" readonly>
+            </div>
+            <div class="form-group form-group3">
+                <label>任务区域</label>
+                <select  class="form-control" name="task_area" placeholder="请选择任务区域">
+                    <option value="">全部</option>
+                    <option value="CH" th:selected="${mainTask.taskArea} eq 'CH'">长河社区</option>
+                    <option value="ZJC" th:selected="${mainTask.taskArea} eq 'ZJC'">张家村社区</option>
+                    <option value="JE" th:selected="${mainTask.taskArea} eq 'JE'">江二社区</option>
+                    <option value="JS" th:selected="${mainTask.taskArea} eq 'JS'">江三社区</option>
+                </select>
+            </div>
+            <div class="form-group form-group4">
+                <label>任务发布者</label>
+                <input type="text" class="form-control" id="publisher" name="publisher"
+                       th:value="${mainTask.publisher}">
+            </div>
+            <div class="form-group form-group5">
+                <label>任务详情</label>
+                <input type="text" class="form-control" rows="3" name="task_detail"
+                       th:value="${mainTask.taskDetail}">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="button button-caution button-small button-border"
+                            style="margin-left: 30%;" id="submitForm"> 编辑任务
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="showtime" id="showtime"></div>
+</div>
+
+<div class="footer">
+    <div class="footfont">
+        © 2017 Bootstrap Police Control System.
+    </div>
+
+</div>
+<footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
+    <div th:remove="tag" th:include="fragements/footer::footer"></div>
+</footer>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var info = [[${mainTask}]];
+    console.log(info);
+    $(function () {
+        var task_category = [[${mainTask.taskCategory}]];
+        var task_category_text = taskCategory[task_category];
+        $('#task-Category').val(task_category_text);
+    })
+    /*]]>*/
+</script>
+<script th:src="@{/scripts/pages/task/maintask/edit.js?201811222044}"></script>
+</body>
+</html>

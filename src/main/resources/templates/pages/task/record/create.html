@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理员-填写实时巡检记录</title>
+    <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
+    <meta th:remove="tag" th:include="fragements/header::header(title='巡检记录')">
+    <link th:href="@{/styles/css/newwork.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
+
+    <script language=Javascript>
+        function time() {
+            //获得显示时间的div
+            t_div = document.getElementById('showtime');
+            var now = new Date()
+            //替换div内容
+            t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
+            //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
+            setTimeout(time, 1000);
+        }
+    </script>
+
+</head>
+<body onLoad="time()">
+<div class="top">
+    <div class="toptitle">
+        <h1>派出所警务管理系统 </h1>
+    </div>
+</div>
+
+<div class="work">
+    <div class="back"><a href="/homepage/load.html">
+        <button class="button button-primary button-circle button-border"><span
+                class="glyphicon glyphicon-chevron-left"></span></button>
+    </a></div>
+    <div class="make">
+        <form role="form" id="addTaskForm">
+            <div class="form-group form-group1">
+                <label>子任务编号</label>
+                <input class="form-control text-left" name="son_task_id" th:value="${sonTask.sonTaskId}" readonly>
+            </div>
+            <div class="form-group form-group2-1">
+                <label>子任务截止时间</label>
+                <div class="controls date form_date">
+                    <input name="deadline" class="form-control" type="text" 
+                           th:value="${#dates.format(sonTask.deadline,'yyyy-MM-dd HH:mm:ss')}">
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group form-group3" th:if="${sonTask.taskArea} eq 'CH'">
+                <label>子任务地点</label>
+                <select name="place" placeholder="请选择任务区域" th:value="${sonTask.place}" readonly>
+                    <option value="CH001" th:selected="${sonTask.place=='CH001'}">彩虹城</option>
+                    <option value="CH002" th:selected="${sonTask.place=='CH002'}">连连大厦</option>
+                    <option value="CH003" th:selected="${sonTask.place=='CH003'}">中控科技园</option>
+                    <option value="CH004" th:selected="${sonTask.place=='CH004'}">杭州长河高级中学</option>
+                    <option value="CH005" th:selected="${sonTask.place=='CH005'}">杭州龙禧大酒店</option>
+                    <option value="CH006" th:selected="${sonTask.place=='CH006'}">滨江龙湖天街</option>
+                    <option value="CH007" th:selected="${sonTask.place=='CH007'}">中心花园</option>
+                    <option value="CH008" th:selected="${sonTask.place=='CH008'}">好歌汇量贩KTV</option>
+                    <option value="CH009" th:selected="${sonTask.place=='CH009'}">浙江大学医学院附属儿童医院</option>
+                    <option value="CH0010" th:selected="${sonTask.place=='CH0010'}">宝龙城</option>
+                </select>
+            </div>
+            <div class="form-group form-group3" th:if="${sonTask.taskArea} eq 'ZJC'" readonly>
+                <label>子任务地点</label>
+                <select name="place" placeholder="请选择任务区域">
+                    <option value="ZJC001" th:selected="${sonTask.place=='ZJC001'}">冠山小区</option>
+                    <option value="ZJC002" th:selected="${sonTask.place=='ZJC002'}">华数数字电视产业园</option>
+                    <option value="ZJC003" th:selected="${sonTask.place=='ZJC003'}">杭州白马湖国际会展中心</option>
+                </select>
+            </div>
+            <div class="form-group form-group4">
+                <label>子任务负责警员</label>
+                <select name="cop_id" id="cop_id" placeholder="请输入执行者">
+                    <option value="a001" th:selected="${sonTask.copId=='a001'}">张杰</option>
+                    <option value="b002" th:selected="${sonTask.copId=='b002'}">华音</option>
+                    <option value="b003" th:selected="${sonTask.copId=='b003'}">杭家豪</option>
+                </select>
+            </div>
+            <div class="form-group form-group5">
+                <label>子任务详情要求</label>
+                <textarea type="text" class="form-control" rows="3" name="task_detail"
+                          th:value="${sonTask.taskDetail}"></textarea>
+            </div>
+
+            <div class="form-group form-group1">
+                <label>f1</label>
+                <input name="f1" class="form-control" type="radio" value="0">没有情况
+                <input name="f1" class="form-control" type="radio" value="1">有
+            </div>
+            <div class="form-group form-group2-1">
+                <label>ft1详情</label>
+                <input name="ft1" class="form-control" type="text">
+            </div>
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f2</label>-->
+                <!--<input name="f2" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft2</label>-->
+                <!--<input name="ft2" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f3</label>-->
+                <!--<input name="f3" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft3</label>-->
+                <!--<input name="ft3" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f4</label>-->
+                <!--<input name="f4" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft4</label>-->
+                <!--<input name="ft4" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f5</label>-->
+                <!--<input name="f5" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft5</label>-->
+                <!--<input name="ft5" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f6</label>-->
+                <!--<input name="f6" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft6</label>-->
+                <!--<input name="ft6" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f7</label>-->
+                <!--<input name="f7" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft7</label>-->
+                <!--<input name="ft7" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f8</label>-->
+                <!--<input name="f8" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft8</label>-->
+                <!--<input name="ft8" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f9</label>-->
+                <!--<input name="f9" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft9</label>-->
+                <!--<input name="ft9" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f10</label>-->
+                <!--<input name="f10" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft10</label>-->
+                <!--<input name="ft" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f11</label>-->
+                <!--<input name="f11" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft11</label>-->
+                <!--<input name="ft11" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f12</label>-->
+                <!--<input name="f12" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft12</label>-->
+                <!--<input name="ft12" class="form-control" type="text">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group1">-->
+                <!--<label>f13</label>-->
+                <!--<input name="f13" class="form-control" type="radio">-->
+            <!--</div>-->
+            <!--<div class="form-group form-group2-1">-->
+                <!--<label>ft13</label>-->
+                <!--<input name="ft13" class="form-control" type="radio">-->
+            <!--</div> -->
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="button button-caution button-small button-border"
+                            style="margin-left: 30%;" id="submitForm">提交
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="showtime" id="showtime"></div>
+</div>
+
+<div class="footer">
+    <div class="footfont">
+        © 2017 Bootstrap Police Control System.
+    </div>
+
+</div>
+
+
+<footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
+    <div th:remove="tag" th:include="fragements/footer::footer"></div>
+</footer>
+<script th:src="@{/scripts/pages/task/record/create.js?201811222048}"></script>
+</body>
+</html>

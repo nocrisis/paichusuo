@@ -14,10 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("sontaskrecordmanagement/firecontrol")
@@ -31,23 +29,22 @@ public class FireControlRecordCotroller {
 
     @Autowired
     private FireControlRecordService fireControlRecordService;
+    @RequestMapping(value = "/insert/{son_task_id}.html", method = RequestMethod.GET)
+    public String allocateSonTask(@PathVariable("son_task_id") String sonTaskId, Model model) {
+        logger.info("分配任务获取taskId={}的详情", sonTaskId);
+        SonTaskPO taskInfoPO = sonTaskService.getSonTask(sonTaskId);
+        model.addAttribute("sonTask", taskInfoPO);
+        return "pages/task/record/create";
+    }
 
     @ResponseBody
-    @RequestMapping(value = "/allocatesontask", method = RequestMethod.POST)
-    @Transactional
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String insertFireControlRecord(@RequestBody String payload) {
         logger.info("添加任务记录， 请求参数：{}", payload);
         FireControlRecord sonTask = FastJsonUtil.toBean(payload, FireControlRecord.class);
         Integer resultColumn = fireControlRecordService.insertFireControlRecord(sonTask);
         if (resultColumn != null) {
-            /*TaskInfoPO taskInfoPO = new TaskInfoPO();
-            taskInfoPO.setTaskId(sonTask.getTaskId());
-            taskInfoPO.setAllocateStatus(taskInfoPO.getAllocateStatus()+1);
-            Integer setAllocateResult = mainTaskInfoService.updateMainTaskInfo(taskInfoPO);
-            if (setAllocateResult != null) {*/
                 return ResultBuilder.buildSuccess("添加成功");
-           // }
-            //return ResultBuilder.buildError("修改主任务分配状态失败");
         } else {
             return ResultBuilder.buildError("添加失败");
         }
