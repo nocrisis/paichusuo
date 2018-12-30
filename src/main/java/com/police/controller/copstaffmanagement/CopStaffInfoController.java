@@ -6,7 +6,11 @@ import com.police.common.util.ResultBuilder;
 import com.police.pojo.dto.PageContentDTO;
 import com.police.pojo.dto.copstaff.CopInfoDTO;
 import com.police.pojo.entity.copstaff.CopInfoPO;
+import com.police.pojo.entity.taskinfo.SonTaskPO;
+import com.police.pojo.entity.taskinfo.TaskInfoPO;
 import com.police.service.copstaff.CopStaffInfoService;
+import com.police.service.task.MainTaskInfoService;
+import com.police.service.task.SonTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +26,18 @@ public class CopStaffInfoController {
     @Autowired
     private CopStaffInfoService copStaffInfoService;
 
+    @Autowired
+    private SonTaskService sonTaskService;
+
+    @Autowired
+    private MainTaskInfoService mainTaskInfoService;
+
     @ResponseBody
     @RequestMapping(value = "/createcopstaff", method = RequestMethod.POST)
-    public String createCopStaff(@RequestBody String payload) {
+    public String createCopStaff(@RequestBody String payload) {                                     //新建警员
         logger.info("获取警员列表，2 请求参数：{}", payload);
         CopInfoPO copInfoPO = FastJsonUtil.toBean(payload, CopInfoPO.class);
-        Integer resultColumn = copStaffInfoService.createCopStaffInfo(copInfoPO);
+        Integer resultColumn = copStaffInfoService.createCopStaffInfo(copInfoPO);                   //创建
         if (resultColumn != null) {
             return ResultBuilder.buildSuccess("创建成功");
         } else {
@@ -37,22 +47,22 @@ public class CopStaffInfoController {
 
     @ResponseBody
     @RequestMapping(value = "/listcop",method = RequestMethod.POST)
-    public String listCopStaff(@RequestBody String payload) {
+    public String listCopStaff(@RequestBody String payload) {                                   //获取警员列表
 
         logger.info("获取警员列表， 请求参数：{}", payload);
         CopInfoDTO listTaskQueryParam = FastJsonUtil.toBean(payload, CopInfoDTO.class);
-        System.out.println("listTaskQueryParam="+listTaskQueryParam.getCopId());
+        //System.out.println("listTaskQueryParam="+listTaskQueryParam.getCopId());
         PageContentDTO taskList = copStaffInfoService.listCopStaffInfo(listTaskQueryParam);
         return ResultBuilder.buildSuccess(taskList);
     }
 
-    @RequestMapping(value = "/coplist.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/coplist.html", method = RequestMethod.GET)                                              //匹配，跳转警员信息页面
     public String listCopStaffPage(Model model) {
         return "pages/copinfo/coplist";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/deletecopstaff", method = RequestMethod.POST)
+    @RequestMapping(value = "/deletecopstaff", method = RequestMethod.POST)                                         //删除警员
     public String deleteCopStaff(@RequestBody String payload){
 
         logger.info("删除警员，请求参数：{}", payload);
@@ -66,7 +76,7 @@ public class CopStaffInfoController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/updatecopstaff", method = RequestMethod.POST)
+    @RequestMapping(value = "/updatecopstaff", method = RequestMethod.POST)                                         //更新警员信息
     public String updateCopStaff(@RequestBody String payload){
         logger.info("更新入参；{}", payload);
         CopInfoPO copInfoPO = FastJsonUtil.toBean(payload, CopInfoPO.class);
@@ -78,16 +88,20 @@ public class CopStaffInfoController {
         }
     }
 
-    @RequestMapping(value = "createmaintask.html", method = RequestMethod.GET)
+    /*@RequestMapping(value = "createmaintask.html", method = RequestMethod.GET)
     public String createBundle(Model model) {
         return "pages/task/sontask/create";
-    }
+    }*/
 
 
-    @RequestMapping(value = "/edit/{task_id}.html", method = RequestMethod.GET)
-    public String getMainTask(@PathVariable("task_id") String copId, Model model){
+    @RequestMapping(value = "/edit/{cop_id}.html", method = RequestMethod.GET)
+    public String getMainTask(@PathVariable("cop_id") String copId, Model model){                                   //根据警员id查找警员名下接受的任务
         logger.info("获取copId={}的详情", copId);
+        SonTaskPO sonTaskPO = sonTaskService.getSonTaskByCopId(copId);
         CopInfoPO copInfoPO = copStaffInfoService.getCopStaffInfo(copId);
+        TaskInfoPO taskInfoPO = mainTaskInfoService.getMainTaskInfo(sonTaskPO.getTaskId());
+        model.addAttribute("sonTask", sonTaskPO);
+        model.addAttribute("mainTask", taskInfoPO);
         model.addAttribute("copstaff",copInfoPO);
         return "pages/task/sontask/edit";
     }

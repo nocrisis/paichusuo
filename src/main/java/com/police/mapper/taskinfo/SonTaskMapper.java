@@ -17,4 +17,5 @@ public interface SonTaskMapper {
     Integer batchUpdateFinishStatus(@Param("sonTaskIds") List<String> sonTaskId,@Param("finishStatus") String finishStatus);
     Integer updateSonTask(SonTaskPO sonTaskPO);
     Integer countSonTask(SonTaskDTO sonTaskDTO);
+    SonTaskPO getSonTaskByCopId(@Param("copId") String  copId);
 }

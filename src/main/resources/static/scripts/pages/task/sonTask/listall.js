@@ -15,7 +15,7 @@ layui.use(['layer', 'lmfTable'], function () {
 
     var ajaxUrl = {
         getList: '/taskmanagement/sontask/listallsontask',
-        delete: '/taskmanagement/sontask/deletesontask',
+        delete: '/sontaskrecordmanagement/firecontrol/deletesontaskrecord',
         addRecord: '/sontaskrecordmanagement/firecontrol/create',
         getRecord: '/taskmanagement/sontask/getsontaskrecord'
     };

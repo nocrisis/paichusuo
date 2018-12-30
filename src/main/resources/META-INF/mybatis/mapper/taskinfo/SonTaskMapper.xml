@@ -115,6 +115,16 @@
         </if>
     </select>
 
+    <select id="getSonTaskByCopId" parameterType="java.lang.String"
+            resultType="com.police.pojo.entity.taskinfo.SonTaskPO">
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        cop_id = #{copId}
+    </select>
+
     <select id="getSonTask" parameterType="java.lang.String"
             resultType="com.police.pojo.entity.taskinfo.SonTaskPO">
         SELECT

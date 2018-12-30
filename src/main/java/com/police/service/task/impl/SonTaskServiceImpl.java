@@ -56,6 +56,10 @@ public class SonTaskServiceImpl implements SonTaskService {
         List<SonTaskPO> sonTaskPOList =  sonTaskMapper.listAllSonTask(pageableDTO);
         return  new PageContentDTO(total,sonTaskPOList);
     }
+    @Override
+    public SonTaskPO getSonTaskByCopId(String copId){
+        return  sonTaskMapper.getSonTaskByCopId(copId);
+    }
 
     @Override
     public Integer countSonTask(SonTaskDTO SonTaskDTO) {

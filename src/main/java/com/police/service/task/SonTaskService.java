@@ -19,5 +19,7 @@ public interface SonTaskService {
 
     PageContentDTO listAllSonTask (SonTaskDTO pageableDTO);
 
+    SonTaskPO getSonTaskByCopId (String copId);
+
 
 }

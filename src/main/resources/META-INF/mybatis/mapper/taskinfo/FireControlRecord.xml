@@ -46,9 +46,9 @@
 	</sql>
 
     <insert id="insertFireControlRecord" parameterType="com.police.pojo.entity.sontaskrecord.FireControlRecord">
-        <selectKey keyProperty="sonTaskId" resultType="string" order="BEFORE">
+       <!-- <selectKey keyProperty="sonTaskId" resultType="string" order="BEFORE">
             select replace(uuid(), '-', '') as sonTaskId from dual
-        </selectKey>
+        </selectKey>-->
         INSERT INTO firecontrol
         (<include refid="son_task_info"/>)
         VALUES

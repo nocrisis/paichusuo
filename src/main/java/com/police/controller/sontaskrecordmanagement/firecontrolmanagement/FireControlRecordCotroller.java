@@ -30,8 +30,9 @@ public class FireControlRecordCotroller {
 
     @Autowired
     private FireControlRecordService fireControlRecordService;
+
     @RequestMapping(value = "/insert/{son_task_id}.html", method = RequestMethod.GET)
-    public String allocateSonTask(@PathVariable("son_task_id") String sonTaskId, Model model) {
+    public String allocateSonTask(@PathVariable("son_task_id") String sonTaskId, Model model) {                     //根据子任务id定位子任务
         logger.info("分配任务获取taskId={}的详情", sonTaskId);
         SonTaskPO taskInfoPO = sonTaskService.getSonTask(sonTaskId);
         model.addAttribute("sonTask", taskInfoPO);
@@ -40,11 +41,15 @@ public class FireControlRecordCotroller {
 
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String insertFireControlRecord(@RequestBody String payload) {
+    public String insertFireControlRecord(@RequestBody String payload) {                                        //添加子任务记录，数据由前端传入
         logger.info("添加任务记录， 请求参数：{}", payload);
-        FireControlRecord sonTask = FastJsonUtil.toBean(payload, FireControlRecord.class);
+        FireControlRecord sonTask = FastJsonUtil.toBean(payload, FireControlRecord.class);                        //json转成record对象
         Integer resultColumn = fireControlRecordService.insertFireControlRecord(sonTask);
         if (resultColumn != null) {
+            SonTaskPO sonTaskPO = sonTaskService.getSonTaskByCopId(JSON.parseObject(payload).getString("son_task_id"));
+            sonTaskPO.setFinishTime(JSON.parseObject(payload).getTimestamp("finishTime"));
+            sonTaskPO.setFinishStatus("FINISHED");
+            sonTaskService.updateSonTask(sonTaskPO);
                 return ResultBuilder.buildSuccess("添加成功");
         } else {
             return ResultBuilder.buildError("添加失败");
@@ -52,7 +57,7 @@ public class FireControlRecordCotroller {
     }
 
     @RequestMapping(value = "/getsontaskrecord/{sonTaskId}.html", method = RequestMethod.GET)
-    public String getSonTask(@PathVariable("sonTaskId") String sonTaskId, Model model) {
+    public String getSonTask(@PathVariable("sonTaskId") String sonTaskId, Model model) {                            //根据sontaskid查找子任务记录，放入model
         logger.info("获取任务获取sonTaskId={}的详情", sonTaskId);
         SonTaskPO sonTaskPO = sonTaskService.getSonTask(sonTaskId);
         TaskInfoPO taskInfoPO = mainTaskInfoService.getMainTaskInfo(sonTaskPO.getTaskId());
@@ -66,7 +71,7 @@ public class FireControlRecordCotroller {
     }
     @ResponseBody
     @RequestMapping(value = "/deletesontaskrecord", method = RequestMethod.POST)
-    public String deleteSonTask(@RequestBody String payload) {
+    public String deleteSonTask(@RequestBody String payload) {                                                  //从payload中获取子任务id，删除任务记录
         logger.info("删除子任务，请求参数：{}", payload);
         String sonTaskId = JSON.parseObject(payload).getString("son_task_id");
         String taskId = JSON.parseObject(payload).getString("task_id");
@@ -79,7 +84,7 @@ public class FireControlRecordCotroller {
             if (setDeleteResult != null) {
                 return ResultBuilder.buildSuccess("删除子任务成功");
             }*/
-            return ResultBuilder.buildSuccess("删除子任务记录成功                                           更新主任务同步失败");
+            return ResultBuilder.buildSuccess("删除子任务记录成功                                           下面是更新主任务同步失败");
         } else {
             return ResultBuilder.buildError("删除子任务记录失败");
         }

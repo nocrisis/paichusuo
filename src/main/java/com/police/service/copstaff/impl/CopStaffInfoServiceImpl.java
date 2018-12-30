@@ -15,21 +15,21 @@ public class CopStaffInfoServiceImpl implements CopStaffInfoService {
     @Autowired
     private CopStaffInfoMapper copStaffInfoMapper;
     @Override
-    public Integer createCopStaffInfo(CopInfoPO copInfoPO) {
+    public Integer createCopStaffInfo(CopInfoPO copInfoPO) {                                 //新增警员信息
         copInfoPO.setFinishStatus(TaskFinishStatusEnum.TODO.name());
         return copStaffInfoMapper.createCopStaffInfo(copInfoPO);
     }
-    @Override
+    @Override                                                                                   //根据警员id删除警员信息
     public Integer deleteCopStaffInfo(String copId) {
         return copStaffInfoMapper.deleteCopStaffInfo(copId);
     }
 
-    @Override
+    @Override                                                                                   //更新警员信息
     public Integer updateCopStaffInfo(CopInfoPO copInfoPO) {
         return copStaffInfoMapper.updateCopStaffInfo(copInfoPO);
     }
 
-    @Override
+    @Override                                                                                   //获取警员信息
     public CopInfoPO getCopStaffInfo(String copInfoPO) {
         return copStaffInfoMapper.getCopStaffInfo(copInfoPO);
     }
