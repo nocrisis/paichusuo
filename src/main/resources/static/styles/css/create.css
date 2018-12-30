@@ -1,7 +1,6 @@
-﻿body{ 
-    margin:0;
-    padding:0; 
-    font-family: 微软雅黑;}
+﻿body{
+    font-family: 微软雅黑;
+}
 
 .work{
     height: 550px;
@@ -22,12 +21,13 @@
 }
 
 .make{
-    padding-top: 30px;
     height:480px;
     width:1000px;
-    border:3px ridge grey;
+    border:2px solid grey;
     margin-top:40px;
     margin-left: 150px;
+    padding-top: 20px;
+    overflow-y: scroll;
 }
 
 .form-horizontal{
@@ -36,40 +36,41 @@
 
 .form-group1{
     width: 300px;
-    margin-left: 100px;
+    margin-left: 120px;
     float: left;
 }
 
-.form-group2-1{
-    width: 180px;
-    margin-left: 80px;
+.form-group1-2{
+    width: 300px;
+    margin-left: 120px;
     float: left;
 }
+
+.form-group2{
+    width: 300px;
+    margin-left: 120px;
+    float: left;
+}
+
 .form-group2-2{
-    width: 180px;
-    margin-left: 30px;
+    width: 300px;
+    margin-left: 120px;
     float: left;
 }
 
 .form-group3{
     width: 300px;
-    margin-left: 100px;
+    margin-left: 120px;
     float: left;
 }
 
 .form-group3-2{
-    width: 180px;
-    margin-left: 30px;
+    width: 300px;
+    margin-left: 120px;
     float: left;
 }
 .form-group4{
-    width: 380px;
-    margin-left: 80px;
-    float: left;
-}
-
-.form-group5{
-    width: 760px;
-    margin-left: 100px;
+    width: 700px;
+    margin-left: 120px;
     float: left;
 }

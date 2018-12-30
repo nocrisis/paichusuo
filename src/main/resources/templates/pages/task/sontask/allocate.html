@@ -5,7 +5,7 @@
     <title>管理员-分配子任务</title>
     <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
     <meta th:remove="tag" th:include="fragements/header::header(title='子任务')">
-    <link th:href="@{/styles/css/newwork.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/create.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
 
@@ -23,14 +23,14 @@
 
 </head>
 <body onLoad="time()">
-<div class="top">
-    <div class="toptitle">
-        <h1>派出所警务管理系统 </h1>
-    </div>
+<div class="page-header" style="margin-top: -30px;">
+    <h1>
+        管理系统 <small>分配任务</small>
+    </h1>
 </div>
 
 <div class="work">
-    <div class="back"><a href="/homepage/load.html">
+    <div class="back"><a href="/taskmanagement/maintask/list.html">
         <button class="button button-primary button-circle button-border"><span
                 class="glyphicon glyphicon-chevron-left"></span></button>
     </a></div>
@@ -43,7 +43,7 @@
                 <label>任务类别</label>
                 <input class="form-control text-left" name="task_category" id="task-Category" readonly>
             </div>
-            <div class="form-group form-group2-1">
+            <div class="form-group form-group1-2">
                 <label>总任务发布时间</label>
                 <div class="controls date form_date">
                     <input class="form-control"
@@ -51,7 +51,7 @@
                     <span class="add-on"><i class="icon-th"></i></span>
                 </div>
             </div>
-            <div class="form-group form-group2-2">
+            <div class="form-group form-group2">
                 <label>总任务截止时间</label>
                 <div class="controls date form_date">
                     <input class="form-control"
@@ -67,7 +67,7 @@
             <!--<span class="add-on"><i class="icon-th"></i></span>-->
             <!--</div>-->
             <!--</div>-->
-            <div class="form-group form-group2-1">
+            <div class="form-group form-group2-2">
                 <label>子任务截止时间</label>
                 <div class="controls date form_date">
                     <input name="deadline" class="form-control" type="text" placeholder="请选择时间">
@@ -97,7 +97,7 @@
                 <!--<option value="CH009" th:selected="${mainTask.place} eq 'CH009'">浙江大学医学院附属儿童医院</option>-->
                 <!--<option value="CH0010" th:selected="${mainTask.place} eq 'CH0010'">宝龙城</option>-->
                 <!--</select>-->
-                <select name="place" placeholder="请选择任务区域">
+                <select name="place" class="form-control" placeholder="请选择任务区域">
                     <option value="CH001">彩虹城</option>
                     <option value="CH002">连连大厦</option>
                     <option value="CH003">中控科技园</option>
@@ -110,23 +110,23 @@
                     <option value="CH0010">宝龙城</option>
                 </select>
             </div>
-            <div class="form-group form-group3" th:if="${mainTask.taskArea} eq 'ZJC'">
+            <div class="form-group form-group3-2" th:if="${mainTask.taskArea} eq 'ZJC'">
                 <label>子任务地点</label>
-                <select name="place" placeholder="请选择任务区域">
+                <select name="place" class="form-control" placeholder="请选择任务区域">
                     <option value="ZJC001">冠山小区</option>
                     <option value="ZJC002">华数数字电视产业园</option>
                     <option value="ZJC003">杭州白马湖国际会展中心</option>
                 </select>
             </div>
-            <div class="form-group form-group4">
+            <div class="form-group form-group3">
                 <label>子任务负责警员</label>
-                <select name="cop_id" id="cop_id" placeholder="请输入执行者">
+                <select name="cop_id"  class="form-control" id="cop_id" placeholder="请输入执行者">
                     <option value="a001">张杰</option>
                     <option value="b002">华音</option>
                     <option value="b003">杭家豪</option>
                 </select>
             </div>
-            <div class="form-group form-group5">
+            <div class="form-group form-group4">
                 <label>子任务详情要求</label>
                 <textarea type="text" class="form-control" rows="3" name="task_detail"
                           placeholder="请输入任务详情"></textarea>
@@ -134,22 +134,14 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="button button-caution button-small button-border"
+                    <button type="submit" class="button button-primary button-normal button-border"
                             style="margin-left: 30%;" id="submitForm"> 分配任务
                     </button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="showtime" id="showtime"></div>
-</div>
-
-
-<div class="footer">
-    <div class="footfont">
-        © 2017 Bootstrap Police Control System.
-    </div>
-
+    <div class="showtime" style="float: right" id="showtime"></div>
 </div>
 
 

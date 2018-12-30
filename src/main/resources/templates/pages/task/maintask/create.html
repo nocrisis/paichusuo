@@ -9,24 +9,12 @@
     <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
 
-    <script language=Javascript>
-        function time() {
-            //获得显示时间的div
-            t_div = document.getElementById('showtime');
-            var now = new Date()
-            //替换div内容
-            t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
-            //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
-            setTimeout(time, 1000);
-        }
-    </script>
-
 </head>
 <body onLoad="time()">
-<div class="top">
-    <div class="toptitle">
-        <h1>派出所警务管理系统 </h1>
-    </div>
+<div class="page-header" style="margin-top: -30px;">
+    <h1>
+        管理系统 <small>新建任务</small>
+    </h1>
 </div>
 
 <div class="work">
@@ -78,28 +66,19 @@
             </div>
             <div class="form-group form-group5">
                 <label>任务详情</label>
-                <textarea type="text" class="form-control" rows="3"  name="task_detail"
+                <textarea type="text" class="form-control" rows="4"  name="task_detail"
                           placeholder="请输入任务详情"></textarea>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="button button-caution button-small button-border"
+                    <button type="submit" class="button button-action button-normal button-border"
                             style="margin-left: 30%;" id="submitForm"> 发布任务
                     </button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="showtime" id="showtime"></div>
 </div>
-
-<div class="footer">
-    <div class="footfont">
-        © 2017 Bootstrap Police Control System.
-    </div>
-
-</div>
-
 
 <footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
     <div th:remove="tag" th:include="fragements/footer::footer"></div>

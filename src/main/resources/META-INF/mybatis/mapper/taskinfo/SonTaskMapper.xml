@@ -172,6 +172,23 @@
         son_task_id = #{sonTaskId}
     </update>
 
+
+    <update id="updateSonTaskFinish" parameterType="com.police.pojo.entity.taskinfo.SonTaskPO">
+        UPDATE
+        coptask
+        SET
+        finish_time = #{finishTime},
+        <if test="finishStatus!= null and finishStatus!=''">
+            finish_status = #{finishStatus},
+        </if>
+        <!--<if test="finishTime!= null and finishTime!=''">
+            finish_time = #{finishTime},
+        </if>-->
+        updated_at = now()
+        WHERE
+        son_task_id = #{sonTaskId}
+    </update>
+
     <update id="batchUpdateFinishStatus">
         UPDATE
         coptask
@@ -184,5 +201,66 @@
             #{sonTaskId}
         </foreach>
     </update>
+
+
+
+
+
+
+    <select id="countFinishedTask" parameterType="java.lang.String"
+            resultType="integer">
+        select count(*) from coptask where cop_id = #{copId} and deadline &lt; now() and finish_status='FINISHED'
+        <!--SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        cop_id = #{copId} and deadline &lt; now() and finish_status='FINISHED'-->
+    </select>
+
+    <select id="countUnFinishedTask" parameterType="java.lang.String"
+            resultType="integer">
+        select count(*) from coptask where cop_id = #{copId} and deadline &lt; now() and finish_status='TODO'
+        <!--SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        cop_id = #{copId} and deadline &lt; now() and finish_status='TODO'-->
+    </select>
+
+    <select id="countAllFinishedTask" parameterType="java.lang.String"
+            resultType="integer">
+        select count(*) from coptask where deadline &lt; now() and finish_status='FINISHED'
+        <!--SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        deadline &lt; now() and finish_status='FINISHED'-->
+    </select>
+
+    <select id="countAllUnFinishedTask" parameterType="java.lang.String"
+            resultType="integer">
+        select count(*) from coptask where deadline &lt; now() and finish_status='TODO'
+        <!--SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        deadline &lt; now() and finish_status='TODO'-->
+    </select>
+
+    <select id="listAllOverdueSonTask" parameterType="com.police.pojo.dto.taskinfo.SonTaskDTO"
+            resultMap="SonTaskMap">
+        /*select count(*) from coptask where deadline &lt; now() and finish_status='TODO'*/
+        SELECT
+        <include refid="son_task_info"/>
+        FROM
+        coptask
+        WHERE
+        deadline &lt; now() and finish_status='TODO'
+    </select>
+
 
 </mapper>

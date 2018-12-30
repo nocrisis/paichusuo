@@ -5,97 +5,167 @@
     <title>管理员-新建任务</title>
     <title th:text="(${title==null}?'':${title}+'-')+'后台管理系统'">派出所-后台管理系统</title>
     <meta th:remove="tag" th:include="fragements/header::header(title='总任务')">
-    <link th:href="@{/styles/css/newwork.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/styles/css/create.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/styles/css/buttons.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/styles/css/bootstrap-datetimepicker.min.css}" rel="stylesheet" media="screen">
 
-    <script language=Javascript>
-        function time() {
-            //获得显示时间的div
-            t_div = document.getElementById('showtime');
-            var now = new Date()
-            //替换div内容
-            t_div.innerHTML = "现在是" + now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日" + now.getHours() + "时" + now.getMinutes() + "分" + now.getSeconds() + "秒";
-            //等待一秒钟后调用time方法，由于settimeout在time方法内，所以可以无限调用
-            setTimeout(time, 1000);
-        }
+    <script>
+        var sex = result.fireControlRecord.f1;
+        $(":radio[name='f1'][value='" + sex + "']").prop("checked", "checked");
     </script>
 
 </head>
-<body onLoad="time()">
-<div class="top">
-    <div class="toptitle">
-        <h1>派出所警务管理系统 </h1>
-    </div>
+<body >
+
+<div class="page-header" style="margin-top: -30px;">
+    <h1>
+        任务管理 <small>实时巡检记录查看</small>
+    </h1>
 </div>
 
 <div class="work">
-    <div class="back"><a href="/homepage/load.html">
+    <div class="back"><a href="/taskmanagement/sontask/listall.html">
         <button class="button button-primary button-circle button-border"><span
                 class="glyphicon glyphicon-chevron-left"></span></button>
     </a></div>
     <div class="make">
         <form role="form" id="addTaskForm">
             <div class="form-group form-group1">
-                <label>第一项记录</label>
-                <select name="f1" class="form-control"  placeholder="请选择记录类别000000000000000">
-                    <option value="">全部</option>
-                    <option value="SEXY">扫黄排查6666666</option>
-                    <option value="FIRE">消防安全排查555555555</option>
-                    <option value="DRUGS">毒品排查444444444444</option>
-                    <option value="GAMBLE">赌博排查33333333</option>
-                    <option value="RESIDENT">户口排查22222222222222</option>
-                    <option value="FOCUS_PEOPLE">重点关注人口排查11111111111111111</option>
+                <label>主任务编号</label>
+                <input class="form-control text-left" name="son_task_id" th:value="${sonTask.taskId}" readonly>
+            </div>
+
+            <div class="form-group form-group1-2">
+                <label>子任务编号</label>
+                <input class="form-control text-left" name="son_task_id" th:value="${sonTask.sonTaskId}" readonly>
+            </div>
+
+            <div class="form-group form-group2">
+                <label>子任务截止时间</label>
+                <div class="controls date form_date">
+                    <input name="deadline" class="form-control" type="text"
+                           th:value="${#dates.format(sonTask.deadline,'yyyy-MM-dd HH:mm:ss')}">
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group form-group2-2">
+                <label>子任务完成时间</label>
+                <div class="controls date form_date">
+                    <input name="finishTime" class="form-control" type="text"
+                           th:value="${#dates.format(fireControlRecord.finishTime,'yyyy-MM-dd HH:mm:ss')}">
+                    <span class="add-on"><i class="icon-th"></i></span>
+                </div>
+            </div>
+
+            <div class="form-group form-group2" th:if="${sonTask.taskArea} eq 'CH'">
+                <label>子任务地点</label>
+                <select  class="form-control" name="place" placeholder="请选择任务区域" th:value="${sonTask.place}" readonly>
+                    <option value="CH001" th:selected="${sonTask.place=='CH001'}">彩虹城</option>
+                    <option value="CH002" th:selected="${sonTask.place=='CH002'}">连连大厦</option>
+                    <option value="CH003" th:selected="${sonTask.place=='CH003'}">中控科技园</option>
+                    <option value="CH004" th:selected="${sonTask.place=='CH004'}">杭州长河高级中学</option>
+                    <option value="CH005" th:selected="${sonTask.place=='CH005'}">杭州龙禧大酒店</option>
+                    <option value="CH006" th:selected="${sonTask.place=='CH006'}">滨江龙湖天街</option>
+                    <option value="CH007" th:selected="${sonTask.place=='CH007'}">中心花园</option>
+                    <option value="CH008" th:selected="${sonTask.place=='CH008'}">好歌汇量贩KTV</option>
+                    <option value="CH009" th:selected="${sonTask.place=='CH009'}">浙江大学医学院附属儿童医院</option>
+                    <option value="CH0010" th:selected="${sonTask.place=='CH0010'}">宝龙城</option>
                 </select>
             </div>
-            <div class="form-group form-group2-1">
-                <label>第二项纪录</label>
-                <textarea type="text" class="form-control" rows="3"  name="f2"
-                          placeholder="请输入任务详情"></textarea>
+            <div class="form-group form-group2" th:if="${sonTask.taskArea} eq 'ZJC'" >
+                <label>子任务地点</label>
+                <select class="form-control" name="place" placeholder="请选择任务区域"  readonly>
+                    <option value="ZJC001" th:selected="${sonTask.place=='ZJC001'}">冠山小区</option>
+                    <option value="ZJC002" th:selected="${sonTask.place=='ZJC002'}">华数数字电视产业园</option>
+                    <option value="ZJC003" th:selected="${sonTask.place=='ZJC003'}">杭州白马湖国际会展中心</option>
+                </select>
             </div>
             <div class="form-group form-group2-2">
-                <label>第三项</label>
-                <textarea type="text" class="form-control" rows="3"  name="f3"
-                          placeholder="请输入任务详情"></textarea>
-            </div>
-            <div class="form-group form-group3">
-                <label>第四项</label>
-                <select type="text" class="form-control"  name="f4" placeholder="请选择任务区域">
-                    <option value="">全部</option>
-                    <option value="CH">长河社区</option>
-                    <option value="ZJC">张家村社区</option>
-                    <option value="JE">江二社区</option>
-                    <option value="JS">江三社区</option>
+                <label>子任务负责警员</label>
+                <select  class="form-control" name="cop_id" id="cop_id" placeholder="请输入执行者"  readonly>
+                    <option value="a001" th:selected="${sonTask.copId=='a001'}">张杰</option>
+                    <option value="b002" th:selected="${sonTask.copId=='b002'}">华音</option>
+                    <option value="b003" th:selected="${sonTask.copId=='b003'}">杭家豪</option>
                 </select>
             </div>
+            <!--<div class="form-group form-group5">
+                <label>子任务详情要求</label>
+                <textarea type="text" class="form-control" rows="3" name="task_detail"
+                          th:value="${sonTask.taskDetail}"></textarea>
+            </div>-->
+            <div class="form-group form-group3">
+                <label>安全疏散通道安全情况记录</label>
+                <textarea type="text" class="form-control" rows="2" name="ft1" th:placeholder="${fireControlRecord.f1}"  readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>疏散指示标志有效配置情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft2" th:placeholder="${fireControlRecord.ft2}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>应急照明有效配置情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft3" th:placeholder="${fireControlRecord.ft3}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>安全出口有效情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft4" th:placeholder="${fireControlRecord.ft4}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>消防车通道通畅情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft5" th:placeholder="${fireControlRecord.ft5}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>消防水源有效情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft6" th:placeholder="${fireControlRecord.ft6}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>消防设施、器材和消防安全标志是否在位、完整及有效记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft7" th:placeholder="${fireControlRecord.ft7}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>是否存在乱接线、电线老化、乱用大功率电器的情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft8" th:placeholder="${fireControlRecord.ft8}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>可燃气体浓度报警装置和切断装置运作是否良好记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft9" th:placeholder="${fireControlRecord.ft9}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>液化气钢瓶、门阀是否存在腐蚀记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft10" th:placeholder="${fireControlRecord.ft10}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>灭火器材配置及有效情况记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft11" th:placeholder="${fireControlRecord.ft11}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>建筑物是否存在安全隐患记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft12" th:placeholder="${fireControlRecord.ft12}" readonly></textarea>
+            </div>
+
+            <div class="form-group form-group3">
+                <label>是否存在易燃易爆危险物品记录</label>
+                <textarea type="text"  class="form-control" rows="2" name="ft13" th:placeholder="${fireControlRecord.ft13}" readonly></textarea>
+            </div>
+
             <div class="form-group form-group4">
-                <label>第五</label>
-                <input type="text" class="form-control" id="f5" name="f5" placeholder="请输入执行者">
-            </div>
-            <div class="form-group form-group5">
-                <label>第六</label>
-                <textarea type="text" class="form-control" rows="3"  name="f6"
-                          placeholder="请输入任务详情"></textarea>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="button button-caution button-small button-border"
-                            style="margin-left: 30%;" id="submitForm"> 保存记录
-                    </button>
-                </div>
+                <label>其他备注</label>
+                <textarea type="text"  class="form-control" rows="3" name="other" th:placeholder="${fireControlRecord.other}" readonly></textarea>
             </div>
         </form>
     </div>
-    <div class="showtime" id="showtime"></div>
 </div>
-
-<div class="footer">
-    <div class="footfont">
-        © 2017 Bootstrap Police Control System.
-    </div>
-
-</div>
-
 
 <footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
     <div th:remove="tag" th:include="fragements/footer::footer"></div>

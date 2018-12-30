@@ -1,54 +1,27 @@
 ﻿body {
-    margin: 0;
-    padding: 0;
     font-family: 微软雅黑;
 }
 
-.top {
-    width: 100%;
-    height: 80px;
-    /*background:#00BA8B;*/
-    margin-bottom: 20px;
-}
-
-.toptitle {
-    height: 80px;
-    width: 700px;
-    font-size: 24px;
-    position: relative;
-    top: 12px;
-    left: 130px;
-}
-
-h1 {
-    width: 400px;
-    display: block;
-    ine-height: 1.5em;
-    overflow: visible;
-    font-size: 35px;
-    text-shadow: #f3f3f3 1px 1px 0px, #b2b2b2 1px 2px 0;
-}
-
 .index {
-    height: 420px;
-    width: 1120px;
+    height: 550px;
+    width:1300px;
     border: 4px solid #376956;
     border-radius: 15px 15px 15px 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-left: 140px;
+    margin-left: 30px;
     float: left;
 }
 
 .main-box {
-    height: 370px;
-    width: 1000px;
+    height: 540px;
+    width: 1290px;
     margin: 0 auto;
 }
 .right-box{
     height: 95%;
     width: 65%;
-    margin-top: 2%;
-    margin-left: 40%;
+    margin-top:3%;
+    margin-left: 46%;
 }
 .mybutton {
     background-color: #4CAF50; /* Green */
@@ -70,8 +43,8 @@ h1 {
     height: 260px;
     width: 240px;
     border: 2px solid #4CAF50;
-    margin-top: 50px;
-    margin-left: 100px;
+    margin-top: 70px;
+    margin-left: 150px;
     padding-top: 100px;
     float:left;
 }
@@ -119,14 +92,14 @@ h1 {
     color: black;
     height: 120px;
     width: 230px;
-    border: 2px solid #f44336;
+    border: 2px solid #c3bed4;
     margin-top: 20px;
     margin-left: 50px;
     padding-top: 30px;
 }
 
 .button4:hover {
-    background-color: #f44336;
+    background-color: #c3bed4;
     color: white;
 }
 
@@ -135,35 +108,21 @@ h1 {
     color: black;
     height: 120px;
     width: 230px;
-    border: 2px solid #f44336;
+    border: 2px solid #ffee93;
     margin-top: 20px;
     margin-left: 50px;
     padding-top: 30px;
 }
 
 .button5:hover {
-    background-color: #f44336;
+    background-color: #ffee93;
     color: white;
 }
 
 .showtime {
-    width: 250px;
-    margin-left: 860px;
-    margin-top: 15px;
-}
-
-.myfooter {
-    width: 100%;
+    width: 1250px;
     height: 40px;
-    background: #1A1A1A;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 0px;
-}
-
-.footfont {
-    font-size: 15px;
-    color: white;
-    margin-top: 10px;
-    margin-left: 40px;
+    margin-top: -20px;
+    font-size: 20px;
+    text-align: right;
 }

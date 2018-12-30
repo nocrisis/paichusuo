@@ -21,7 +21,12 @@
 
 
 <body onLoad="time()" class="page-header-fixed child-active mall-list">
-<div class="main-box">
+<div class="page-header" style="margin-top: -50px;">
+    <h1>
+        管理系统 <small>总任务列表</small>
+    </h1>
+</div>
+<div  style="border: 4px solid #376956; border-radius: 15px 15px 15px 15px;height: 650px;"  class="main-box">
     <!--<div class="work">-->
     <div class="back"><a href="/homepage/load.html">
         <button class="button button-primary button-circle button-border"><span
@@ -91,7 +96,7 @@
     </div>
     <div style="position: relative">
         <div class="layui-table-toolbox layui-clear">
-            <div class="layui-table-setting layui-btn-group">
+            <div class="layui-table-setting layui-btn-group" style="float: right;">
                 <button class="layui-btn layui-btn-primary layui-btn-sm" lay-filter="setting"
                         lay-tips="自定义列表项"><i class="layui-icon">
                     &#xe716;</i></button>
@@ -100,7 +105,7 @@
         <table class="table-list-card" id="mainTaskTableList" lay-filter="listShipments-table">
         </table>
     </div>
-    <div class="showtime" id="showtime"></div>
+    <div class="showtime" style="float: right;" id="showtime"></div>
 </div>
 </div>
 </body>

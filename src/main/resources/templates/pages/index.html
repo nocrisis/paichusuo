@@ -5,11 +5,13 @@
     <link th:href="@{/styles/css/index.css}" rel="stylesheet" type="text/css"/>
 </head>
 <body onLoad="time()">
-<div class="top">
-    <div class="toptitle">
-        <h1>派出所警务管理系统 </h1>
-    </div>
+
+<div class="page-header">
+    <p style="margin-top: -50px;font-size: 40px;">
+       派出所 <small>警务管理系统</small>
+    </p>
 </div>
+
 <div class="index">
     <div class="main-box ">
         <a class="mybutton button1" href="/taskmanagement/maintask/createmaintask.html">新建任务</a>
@@ -19,16 +21,11 @@
             <a class="mybutton button4" href="/CopStaffManagement/info/coplist.html">警员信息</a>
             <a class="mybutton button5" href="/taskmanagement/sontask/listall.html">任务总结</a>
         </div>
+        <div class="showtime" id="showtime"></div>
     </div>
-    <div class="showtime" id="showtime"></div>
 </div>
 
-<div class="myfooter">
-    <div class="footfont">
-        © 2017 Bootstrap Police Control System.
-    </div>
 
-</div>
 <footer style=" z-index: 2;position: relative;background-color: #3d3d3d;">
     <div th:remove="tag" th:include="fragements/footer::footer"></div>
 </footer>
