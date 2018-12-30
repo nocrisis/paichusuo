@@ -33,6 +33,11 @@ public class SonTaskServiceImpl implements SonTaskService {
     }
 
     @Override
+    public Integer updateSonTaskFinish(SonTaskPO sonTaskPO) {
+        return  sonTaskMapper.updateSonTaskFinish(sonTaskPO);
+    }
+
+    @Override
     public SonTaskPO getSonTask(String sonTaskId) {
         return  sonTaskMapper.getSonTask(sonTaskId);
     }

@@ -45,11 +45,13 @@ public class FireControlRecordCotroller {
         logger.info("添加任务记录， 请求参数：{}", payload);
         FireControlRecord sonTask = FastJsonUtil.toBean(payload, FireControlRecord.class);                        //json转成record对象
         Integer resultColumn = fireControlRecordService.insertFireControlRecord(sonTask);
+        System.out.println("finished="+sonTask.getFinishTime());
+        //return ResultBuilder.buildSuccess("添加成功");
         if (resultColumn != null) {
-            SonTaskPO sonTaskPO = sonTaskService.getSonTaskByCopId(JSON.parseObject(payload).getString("son_task_id"));
-            sonTaskPO.setFinishTime(JSON.parseObject(payload).getTimestamp("finishTime"));
+            SonTaskPO sonTaskPO = sonTaskService.getSonTask(sonTask.getSonTaskId());
+            sonTaskPO.setFinishTime(sonTask.getFinishTime());
             sonTaskPO.setFinishStatus("FINISHED");
-            sonTaskService.updateSonTask(sonTaskPO);
+            sonTaskService.updateSonTaskFinish(sonTaskPO);
                 return ResultBuilder.buildSuccess("添加成功");
         } else {
             return ResultBuilder.buildError("添加失败");

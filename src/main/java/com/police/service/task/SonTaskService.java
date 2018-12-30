@@ -11,6 +11,8 @@ public interface SonTaskService {
 
     Integer updateSonTask (SonTaskPO sonTaskPO);
 
+    Integer updateSonTaskFinish (SonTaskPO sonTaskPO);
+
     SonTaskPO getSonTask (String sonTaskId);
 
     PageContentDTO listSonTask (SonTaskDTO pageableDTO);
