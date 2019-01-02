@@ -226,7 +226,7 @@ CREATE TABLE `leave` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for resident
+-- Table structure for Resident
 -- ----------------------------
 DROP TABLE IF EXISTS `resident`;
 CREATE TABLE `resident` (
@@ -248,7 +248,7 @@ CREATE TABLE `resident` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Records of resident
+-- Records of Resident
 -- ----------------------------
 
 -- ----------------------------

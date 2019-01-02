@@ -106,5 +106,11 @@ public class CopStaffInfoController {
         return "pages/task/sontask/edit";
     }
 
+
+    @RequestMapping(value = "/dddd.html", method = RequestMethod.GET)
+    public String loadHomePage() {
+        return "pages/dddd";
+    }
+
 }
 

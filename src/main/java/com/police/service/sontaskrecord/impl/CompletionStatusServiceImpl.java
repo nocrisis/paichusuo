@@ -7,9 +7,10 @@ import com.police.pojo.dto.taskinfo.SonTaskDTO;
 import com.police.pojo.entity.taskinfo.SonTaskPO;
 import com.police.service.sontaskrecord.CompletionStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CompletionStatusServiceImpl implements CompletionStatusService {
     @Autowired
     private SonTaskMapper sonTaskMapper;

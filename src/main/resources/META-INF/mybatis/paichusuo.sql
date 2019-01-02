@@ -177,7 +177,7 @@ CREATE TABLE `leave`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for resident
+-- Table structure for Resident
 -- ----------------------------
 DROP TABLE IF EXISTS `resident`;
 CREATE TABLE `resident`  (
